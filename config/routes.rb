@@ -12,8 +12,7 @@ Rails.application.routes.draw do
   end
 
   namespace :swipe do
-    resoucres :tv_shows, only: :index
+    resources :tv_shows, only: :index
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
-
