@@ -29,6 +29,8 @@
   flex-direction: row;
   width: 100%;
   margin-top: 5px;
-  overflow: hidden;
+  overflow-x: auto;
   margin-bottom: 7px;
 }
+
+.index-cards-container::-webkit-scrollbar {    display: none;}
