@@ -31,3 +31,9 @@
 .search-bar {
   margin-bottom: 7px;
 }
+
+#search-icon {
+  background: -webkit-linear-gradient(rgb(73, 168, 255), rgb(255, 0, 138));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

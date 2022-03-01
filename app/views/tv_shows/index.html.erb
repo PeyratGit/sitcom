@@ -14,7 +14,7 @@
               placeholder: "Search"
             %>
             <button name="button" type="submit" class="btn btn-flat" id="search-btn">
-              <i class="fa fa-search"></i>
+              <i class="fa fa-search" id="search-icon"></i>
             </button>
           </div>
         <% end %>
@@ -28,11 +28,13 @@
           <div class="tv-show-poster">
             <%= cl_image_tag(tv_show.poster_url, type: "fetch") %>
           </div>
-          <div class="tv-show-title">
-            <%= tv_show.title %>
-          </div>
-          <div class="friend-score">
-            9.5
+          <div class="tv-show-infos">
+            <div class="tv-show-title">
+              <%= tv_show.title %>
+            </div>
+            <div class="friend-score">
+              9.5
+            </div>
           </div>
         </div>
       <% end %>
@@ -46,11 +48,13 @@
           <div class="tv-show-poster">
             <%= cl_image_tag(tv_show.poster_url, type: "fetch") %>
           </div>
-          <div class="tv-show-title">
-            <%= tv_show.title %>
-          </div>
-          <div class="friend-score">
-            9.5
+          <div class="tv-show-infos">
+            <div class="tv-show-title">
+              <%= tv_show.title %>
+            </div>
+            <div class="friend-score">
+              9.5
+            </div>
           </div>
         </div>
       <% end %>
