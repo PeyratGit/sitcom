@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="title">
+  </div>
+  <div class="search-bar">
+  </div>
+  <div class="shows-global-container">
+    <div class="recommandation-title">
+      Recommandations from my friends
+    </div>
+    <div class="show-cards-container">
+      <% @tv_shows.each do |tv_show| %>
+        <div class="card-tv-show">
+          <div class="tv-show-poster">
+            <%= cl_image_tag(tv_show.poster_url, type: "fetch", gravity: 'face', crop: 'fill') %>
+          </div>
+          <div class="tv-show-title">
+            <%= tv_show.title %>
+          </div>
+          <div class="friend-score">
+            9.5
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
