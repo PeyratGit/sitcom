@@ -32,8 +32,8 @@
             <div class="tv-show-title">
               <%= tv_show.title %>
             </div>
-            <div class="friend-score">
-              <p>9.5</p>
+            <div class="show-score">
+              <p><%= tv_show.imdb_rating %></p>
               <i class="fa fa-users"></i>
             </div>
           </div>
@@ -53,9 +53,11 @@
             <div class="tv-show-title">
               <%= tv_show.title %>
             </div>
-            <div class="friend-score">
-              <p>9.5</p>
-              <i class="fa fa-users"></i>
+            <div class="show-score">
+              <p>
+                <%= tv_show.imdb_rating %>
+              </p>
+              <i class="fa fa-star"></i>
             </div>
           </div>
         </div>

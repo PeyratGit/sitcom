@@ -37,3 +37,9 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+#search-btn:focus {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
