@@ -7,8 +7,14 @@
   flex-direction: column;
   align-items: center;
   align-content: center;
-  height: 180px;
-  width: 110px;
+  height: 220px;
+  width: 120px;
+  .tv-show-infos {
+    display: flex;
+    flex-direction: column;
+    height: 70px;
+    width: 100%;
+  }
   .tv-show-title {
     padding: 7px;
     text-align: left;
@@ -16,24 +22,19 @@
     font-weight: bold;
     width: 100%;
     color: $tv-show-small-infos-color;
-    height: 40px;
-  }
-  .tv-show-infos {
-    display: flex;
-    flex-direction: column;
-    height: 70px;
-    width: 100%;
+    height: 50px;
   }
   .friend-score {
     display: flex;
     flex-direction: row;
-    padding: 7px;
+    padding-right: 5px;
+    padding-bottom: 7px;
     color: $tv-show-small-infos-color;
-    text-align: right;
+    text-align: center;
     font-size: 15px;
     font-weight: bold;
     width: 100%;
-    height: 30px;
+    height: 20px;
     p {
       margin: 0;
       margin-left: auto;
@@ -54,13 +55,13 @@
   .tv-show-poster {
     text-align: center;
     overflow: hidden;
-    margin-bottom: 1px;
-    height: 110px;
+    height: 150px;
     width: 110px;
-    flex-grow: 1;
     img {
-      height: 150px;
-      width: 110px;
+      height: 100%;
+      width: 100%;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
     }
   }
 }
