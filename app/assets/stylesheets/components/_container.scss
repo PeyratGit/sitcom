@@ -1,0 +1,32 @@
+.index-global-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  padding: 5px;
+  .title {
+    h1 {
+      color: white;
+      font-size: 30px;
+      font-weight: bold;
+      letter-spacing: 0.38px;
+      text-align: center;
+    }
+    width: 70%;
+  }
+  .recommendation-title {
+    color:white;
+    font-size: 17;
+    width: 100%;
+    text-align: left;
+    margin-top: 7px;
+    margin-bottom: 5px;
+  }
+}
+
+.index-cards-container {
+  display: flex;
+  flex: row;
+  width: 100%;
+  margin-top: 5px;
+}

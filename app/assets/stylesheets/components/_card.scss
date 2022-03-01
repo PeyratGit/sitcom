@@ -1,9 +1,39 @@
-.card-tv-show {
-  overflow: hidden;
-  background: white;
+.card-tv-show-small {
+  margin-right: 20px;
   border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  position: relative;
-  height: 150px;
+  box-shadow: 2px 4px 15px 0px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  height: 180px;
   width: 110px;
+  .tv-show-title {
+    padding: 7px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: bold;
+    width: 100%;
+    color: $tv-show-small-infos-color;
+  }
+  .friend-score {
+    padding: 7px;
+    color: $tv-show-small-infos-color;
+    text-align: right;
+    font-size: 15px;
+    font-weight: bold;
+    width: 100%;
+  }
+  .tv-show-poster {
+    text-align: center;
+    overflow: hidden;
+    margin-bottom: 1px;
+    height: 110px;
+    width: 110px;
+    flex-grow: 1;
+    img {
+      height: 150px;
+      width: 110px;
+    }
+  }
 }

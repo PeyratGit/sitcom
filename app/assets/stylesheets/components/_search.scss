@@ -1,0 +1,33 @@
+.search-form-control {
+  position: relative;
+  width: 360px;
+  height: 38px;
+  #query {
+    color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(118, 118, 128, 0.12);
+    border-radius: 10px !important;
+  }
+}
+
+.search-form-control .btn {
+  position: absolute;
+  top: 2px;
+  bottom: 8px;
+  right: 8px;
+}
+
+.search-form-control .form-control {
+  height: 2.5rem;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.search-form-control .form-control:focus {
+  outline: none !important;
+  border-color: none !important;
+  box-shadow: 0 0 5px rgba(230,230,230,.6);
+}
+
+.search-bar {
+  margin-bottom: 7px;
+}
