@@ -21,13 +21,21 @@
 }
 
 .dropdown-item {
-  color: $color1;
+  color: $textcolor;
 }
 
 .dropdown-toggle {
   display: grid;
+  color: $textcolor;
   gap: 12px;
   padding: 10px 20px;
-  background: linear-gradient(rgb(15, 18, 22) 0%, rgb(39, 42, 48) 100%);
+  background:linear-gradient(rgb(15, 18, 22) 0%, rgb(39, 42, 48) 100%);
   border: 1px solid #d1d1d1;
+}
+
+
+.navbar-light:focus .navbar-toggler {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
