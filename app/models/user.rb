@@ -5,10 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
-  has_many :follower_follows, class_name: "Follows", foreign_key: :follower_id, dependent: :destroy
+  has_many :follower_follows, class_name: "Follow", foreign_key: :follower_id, dependent: :destroy
   has_many :followings, through: :follower_follows, source: :following
 
-  has_many :following_follows, class_name: "Follows", foreign_key: :following_id, dependent: :destroy
+  has_many :following_follows, class_name: "Follow", foreign_key: :following_id, dependent: :destroy
   has_many :followers, through: :following_follows, source: :follower
 
   has_many :feedbacks, dependent: :destroy
