@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="title">
+  </div>
+  <div class="index-global-container">
+    <div class="title">
+      <h1>What will you watch ?</h1>
+    </div>
+    <div class="search-bar">
+        <%= form_tag tv_shows_path,class:"simple_form search", autocomplete:"off", method: :get do %>
+          <div class="search-form-control form-group">
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Search"
+            %>
+            <button name="button" type="submit" class="btn btn-flat" id="search-btn">
+              <i class="fa fa-search" id="search-icon"></i>
+            </button>
+          </div>
+        <% end %>
+    </div>
+    <div class="recommendation-title">
+      Recommendations from my friends
+    </div>
+    <div class="index-cards-container">
+      <% @tv_shows.each do |tv_show| %>
+        <div class="card-tv-show-small">
+          <div class="tv-show-poster">
+            <%= image_tag(tv_show.poster_url) %>
+          </div>
+          <div class="tv-show-infos">
+            <div class="tv-show-title">
+              <%= tv_show.title %>
+            </div>
+            <div class="show-score">
+              <p><%= tv_show.imdb_rating %></p>
+              <i class="fa fa-users"></i>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="recommendation-title">
+      Recommendations from the community
+    </div>
+    <div class="index-cards-container">
+      <% @tv_shows.each do |tv_show| %>
+        <div class="card-tv-show-small">
+          <div class="tv-show-poster">
+            <%= image_tag(tv_show.poster_url) %>
+          </div>
+          <div class="tv-show-infos">
+            <div class="tv-show-title">
+              <%= tv_show.title %>
+            </div>
+            <div class="show-score">
+              <p>
+                <%= tv_show.imdb_rating %>
+              </p>
+              <i class="fa fa-star"></i>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
