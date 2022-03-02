@@ -20,16 +20,15 @@
 
     <div>
       <h4>Activity</h4>
-      <% @user_activity = @user_id.feedbacks
-      case @user_activity
-      when @user_activity.
+      <% @feedbacks.each do |feedback| %>
+      <div>
+      <p><%= feedback.rating %></p>
+      <p><%= feedback.tv_show.title%></p>
+      <p><%= feedback.comment %></p>
+      </div>
+      <% end %>
 
-      when
 
-      else
-
-      end %>
-      <p><%= @user.first_name %>  has </p>
 
     </div>
 
