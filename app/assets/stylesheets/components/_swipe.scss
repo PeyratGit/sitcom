@@ -64,6 +64,7 @@
   justify-content: center;
   align-items: flex-start;
   z-index: 1;
+  height: 80vh;
 }
 
 .tinder--card {
@@ -142,11 +143,11 @@
 }
 
 .fa-thumbs-up {
-  color: #CDD6DD;
+  color: rgb(50,224,196)
 }
 
 .fa-thumbs-down {
-  color: #CDD6DD;
+  color: rgb(50,224,196)
 }
 
 .fa-remove {

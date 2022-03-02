@@ -1,5 +1,3 @@
-<% tv_shows = TvShow.all.first(5) %>
-
 <div class="tinder">
   <div class="tinder--status">
     <i class="fa fa-thumbs-down"></i>
@@ -7,37 +5,28 @@
   </div>
 
   <div class="tinder--cards">
+    <% @tv_shows.each do |tv_show| %>
     <div class="tinder--card">
-      <img src=<%= tv_shows[0].poster_url %>>
+      <img src=<%= tv_show.poster_url %>>
+      <%= link_to 'Test', tv_show_feedbacks_path(tv_show), method: :post, class: "love-link d-none" %>
     </div>
-    <div class="tinder--card">
-      <img src=<%= tv_shows[1].poster_url %>>
-    </div>
-    <div class="tinder--card">
-      <img src=<%= tv_shows[2].poster_url %>>
-    </div>
-    <div class="tinder--card">
-      <img src=<%= tv_shows[3].poster_url %>>
-    </div>
-    <div class="tinder--card">
-      <img src=<%= tv_shows[4].poster_url %>>
-    </div>
+    <%= simple_form_for @user, html: { id: "nope-form", class: "d-none", method: 'post', value: 'nope',
+                              action: "/tv_shows/#{tv_show.id}/feedbacks"} do |f| %>
+      <%# <%= f.input :tv_show_id %>
+      <%= f.button :submit %>
+    <% end %>
+    <% feedback = Feedback.new(user: @user, tv_show: tv_show) %>
+    <%= simple_form_for tv_show_feedbacks_path(tv_show), html: { id: "love-form-#{}", class: "d-none", action: "/tv_shows/#{tv_show.id}/feedbacks", value: 'love' } do |f| %>
+    <%# <%= simple_form_for @user, id: "love-form", class: "d-none", url: :tv_show_feedbacks_path(tv_show), method: :post, value: 'love' do |f| %>  %>
+      <%# <%= f.input :tv_show_id %>
+      <%= f.button :submit %>
+    <% end %>
+    <% end %>
   </div>
-
   <div class="tinder--buttons">
     <button id="unwatched"><i class="fa fa-remove"></i></button>
-    <button id="nope"><i class="fa fa-thumbs-up"></i></button>
-    <button id="love"><i class="fa fa-thumbs-down"></i></button>
+    <button id="nope"><i class="fa fa-thumbs-down"></i></button>
+    <button id="love"><i class="fa fa-thumbs-up"></i></button>
     <button id="superlike"><i class="fa fa-heart"></i></button>
   </div>
 </div>
-
-<%= simple_form_for @user, html: { id: "nope-form", class: "d-none" } do |f| %>
-  <%# <%= f.input :tv_show_id %>
-  <%= f.button :submit %>
-<% end %>
-
-<%= simple_form_for @user, html: { id: "love-form", class: "d-none" } do |f| %>
-  <%# <%= f.input :tv_show_id %>
-  <%= f.button :submit %>
-<% end %>

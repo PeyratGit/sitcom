@@ -1,6 +1,5 @@
 import Hammer from "hammerjs"
 
-
 const initTinder = () => {
   'use strict';
 
@@ -81,12 +80,19 @@ const initTinder = () => {
       var card = cards[0];
       var nopeform = document.getElementById('nope-form');
       var loveform = document.getElementById('love-form');
+      // var lovelink = document.getElementById('love-link');
+      var lovelink = document.querySelector('.tinder--card:not(.removed) > .love-link');
+
+      // debugger;
 
       card.classList.add('removed');
 
       if (love) {
         card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
-        loveform.click();
+        console.log("test");
+        // loveform.submit();
+        lovelink.click();
+
       } else {
         card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
         nopeform.click();
