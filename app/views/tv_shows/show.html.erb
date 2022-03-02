@@ -62,7 +62,19 @@
   </div>
   <div class="main-reviews-container">
     <div class="title">Reviews</div>
-    <div class="community-reviews">
+    <div class="community-reviews-container">
+      <div class="review-card">
+        <% @feedbacks.each do |feedback| %>
+          <div class="review-card top-container">
+            <div class="avatar-picture"><%= image_tag("https://avatars.githubusercontent.com/u/96342482?v=4", class: "avatar") %></div>
+            <div class="username"><%= User.where(id: feedback.user_id)[0].username %></div>
+            <div class="user-rating"><%= feedback.rating %>/10</div>
+          </div>
+          <div class="review-card content-container">
+            <div class="review-comment"><%= feedback.comment %></div>
+          </div>
+        <% end %>
+      </div>
     </div>
     <div class="add-feedback">
     </div>
