@@ -167,17 +167,24 @@
       font-weight: bold;
       color: rgba(255,255,255,0.75)
     }
-    .top-container {
-      height: 10%;
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      margin-bottom: 5px;
+    .community-reviews-container {
+      overflow: auto;
+      .top-container {
+        height: 35%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 5px;
+        justify-content: center;
+      }
+      .content-container {
+        display: flex;
+        height: 55%;
+        width: 100%;
+      }
     }
-    .content-container {
-      display: flex;
-      height: 80%;
-      width: 100%;
+    .add-feedback-container {
+      margin-bottom: 8px;
     }
   }
 }
