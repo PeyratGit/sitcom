@@ -6,24 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
-# create_table "tv_shows", force: :cascade do |t|
-#   t.string "title"
-#   t.string "genre"
-#   t.string "description"
-#   t.string "director"
-#   t.float "imdb_rating"
-#   t.integer "episodes_count"
-#   t.integer "seasons_count"
-#   t.string "language"
-#   t.string "poster_url"
-#   t.boolean "netflix"
-#   t.boolean "amazon"
-#   t.boolean "disney"
-#   t.datetime "created_at", precision: 6, null: false
-#   t.datetime "updated_at", precision: 6, null: false
-# end
-
 puts "Destroying tv shows..."
 TvShow.destroy_all
 puts "Destroying follows..."
