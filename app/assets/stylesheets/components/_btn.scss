@@ -1,3 +1,29 @@
 .btn {
   color: $color1;
 }
+
+.btn-interaction {
+  height: 62px;
+  width: 62px;
+  border-radius: 50%;
+  border: 3px solid white;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+  i {
+    font-size: 28px;
+  }
+}
+
+.btn-interaction-superlike {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  border: 3px solid rgb(253, 8, 122);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
