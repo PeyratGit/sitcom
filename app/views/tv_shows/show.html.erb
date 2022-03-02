@@ -22,17 +22,44 @@
     </div>
     <div class="scores-number">
       <span><%= @tv_show.imdb_rating %></span>
+      <span><%= @feedbacks_number %></span>
     </div>
     <div class="scores-text">
-      Rating
+      <span>Rating</span>
+      <span>
+        <% if @feedbacks_number == 0 %>
+          <%= "Feedbacks" %>
+        <% elsif @feedbacks_number == 1 %>
+          <%= "Feedback" %>
+        <% else %>
+          <%= "Feedbacks" %>
+        <% end %>
+      </span>
     </div>
+    <div class="bottom-border-div"></div>
   </div>
   <div class="tv-show-infos-container">
     <div class="description">
+      <%= @tv_show.description %>
     </div>
-    <div class="platforms">
+    <div class="platforms-infos-container">
+        <span>Disponible sur</span>
+        <div class="platform-logos">
+          <% if @tv_show.netflix == true %>
+            <%= image_tag("https://logos-marques.com/wp-content/uploads/2021/03/Netflix-logo.png", class:"platform-logo") %>
+          <% elsif @tv_show.amazon == true %>
+            <%= image_tag("https://logo-marque.com/wp-content/uploads/2021/03/Amazon-Prime-Video-Logo.png", class:"platform-logo") %>
+          <% elsif @tv_show.disney == true %>
+            <%= image_tag("https://logo-marque.com/wp-content/uploads/2021/03/Disney-Logo.png", class:"platform-logo") %>
+          <% elsif @tv_show.ocs == true %>
+            <%= image_tag("https://upload.wikimedia.org/wikipedia/commons/3/31/OCS_logo.png", class:"platform-logo") %>
+          <% else %>
+            <%= image_tag("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Canal%2B.svg/2560px-Canal%2B.svg.png", class:"platform-logo") %>
+          <% end %>
+        </div>
     </div>
   </div>
+  <div class="bottom-border-div"></div>
   <div class="main-reviews-container">
     <div class="community-reviews">
     </div>

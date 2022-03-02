@@ -5,5 +5,6 @@ class TvShowsController < ApplicationController
 
   def show
     @tv_show = TvShow.find(params[:id])
+    @feedbacks_number = Feedback.where(tv_show_id: @tv_show.id).count
   end
 end
