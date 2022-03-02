@@ -22,17 +22,49 @@
     </div>
     <div class="scores-number">
       <span><%= @tv_show.imdb_rating %></span>
-      <span><%= @feedbacks_number %></span>
+      <span><%= @feedbacks_superlike_number = Feedback.where(tv_show_id: @tv_show.id, status: "Superlike").count %></span>
+      <span>
+        <% if @feedbacks_like_number.nil? %>
+          <%= 0 %>
+        <% else %>
+          <%= @feedbacks_like_number %>
+        <% end %>
+      </span>
+      <span>
+        <% if @feedbacks_dislike_number.nil? %>
+          <%= 0 %>
+        <% else %>
+          <%= @feedbacks_dislike_number %>
+        <% end %>
+      </span>
     </div>
     <div class="scores-text">
       <span>Rating</span>
       <span>
-        <% if @feedbacks_number == 0 %>
-          <%= "Feedbacks" %>
-        <% elsif @feedbacks_number == 1 %>
-          <%= "Feedback" %>
+        <% if @feedbacks_superlike_number = Feedback.where(tv_show_id: @tv_show.id, status: "Superlike").count == 0 %>
+          <%= "Superlikes" %>
+        <% elsif @feedbacks_superlike_number = Feedback.where(tv_show_id: @tv_show.id, status: "Superlike").count == 1 %>
+          <%= "Superlike" %>
         <% else %>
-          <%= "Feedbacks" %>
+          <%= "Superlikes" %>
+        <% end %>
+      </span>
+      <span>
+        <% if @feedbacks_like_number == 0 %>
+          <%= "Likes" %>
+        <% elsif @feedbacks_like_number == 1 %>
+          <%= "Like" %>
+        <% else %>
+          <%= "Likes" %>
+        <% end %>
+      </span>
+      <span>
+        <% if @feedbacks_dilike_number == 0 %>
+          <%= "Dislikes" %>
+        <% elsif @feedbacks_dilike_number == 1 %>
+          <%= "Dislike" %>
+        <% else %>
+          <%= "Dislikes" %>
         <% end %>
       </span>
     </div>
@@ -61,10 +93,10 @@
     <div class="bottom-border-div"></div>
   </div>
   <div class="main-reviews-container">
-    <div class="title">Reviews</div>
+    <span class="title"><%= pluralize(@feedbacks_full_number, 'Feedback') %></span>
     <div class="community-reviews-container">
-      <div class="review-card">
-        <% @feedbacks.each do |feedback| %>
+      <% @feedbacks_full.each do |feedback| %>
+        <div class="review-card">
           <div class="review-card top-container">
             <div class="avatar-picture"><%= image_tag("https://avatars.githubusercontent.com/u/96342482?v=4", class: "avatar") %></div>
             <div class="username"><%= User.where(id: feedback.user_id)[0].username %></div>
@@ -73,10 +105,13 @@
           <div class="review-card content-container">
             <div class="review-comment"><%= feedback.comment %></div>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
-    <div class="add-feedback">
+    <div class="add-feedback-container">
+      <form>
+        <input name="add-feedback" placeholder="Add a feedback" class="form-input">
+      </form>
     </div>
   </div>
 </div>
