@@ -21,11 +21,18 @@
     <div>
       <h4>Activity</h4>
       <% @feedbacks.each do |feedback| %>
-      <div>
-      <p><%= feedback.rating %></p>
-      <p><%= feedback.tv_show.title%></p>
-      <p><%= feedback.comment %></p>
-      </div>
+        <div>
+        <% if feedback.status == "Dislike" %>
+          <p><%=  @user.first_name %> <i class="fa fa-thumbs-o-down" aria-hidden="true"></i></p>
+        <% elsif feedback.status == "Like" %>
+          <p><%=  @user.first_name %>  <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></p>
+        <% elsif feedback.status == "Superlike" %>
+          <p><%=  @user.first_name %>  <i class="fa fa-heart" aria-hidden="true"></i></p>
+        <% end %>
+        <p><%= feedback.rating %></p>
+        <p><%= feedback.tv_show.title%></p>
+        <p><%= feedback.comment %></p>
+        </div>
       <% end %>
 
 
