@@ -79,13 +79,17 @@ const initTinder = () => {
       if (!cards.length) return false;
 
       var card = cards[0];
+      var nopeform = document.getElementById('nope-form');
+      var loveform = document.getElementById('love-form');
 
       card.classList.add('removed');
 
       if (love) {
         card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
+        loveform.click();
       } else {
         card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
+        nopeform.click();
       }
 
       initCards();

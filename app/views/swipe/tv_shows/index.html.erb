@@ -2,8 +2,8 @@
 
 <div class="tinder">
   <div class="tinder--status">
-    <i class="fa fa-remove"></i>
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-thumbs-down"></i>
+    <i class="fa fa-thumbs-up"></i>
   </div>
 
   <div class="tinder--cards">
@@ -25,7 +25,19 @@
   </div>
 
   <div class="tinder--buttons">
-    <button id="nope"><i class="fa fa-remove"></i></button>
-    <button id="love"><i class="fa fa-heart"></i></button>
+    <button id="unwatched"><i class="fa fa-remove"></i></button>
+    <button id="nope"><i class="fa fa-thumbs-up"></i></button>
+    <button id="love"><i class="fa fa-thumbs-down"></i></button>
+    <button id="superlike"><i class="fa fa-heart"></i></button>
   </div>
 </div>
+
+<%= simple_form_for @user, html: { id: "nope-form", class: "d-none" } do |f| %>
+  <%# <%= f.input :tv_show_id %>
+  <%= f.button :submit %>
+<% end %>
+
+<%= simple_form_for @user, html: { id: "love-form", class: "d-none" } do |f| %>
+  <%# <%= f.input :tv_show_id %>
+  <%= f.button :submit %>
+<% end %>
