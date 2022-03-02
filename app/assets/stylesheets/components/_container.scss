@@ -46,18 +46,63 @@
   overflow: hidden;
   clear: both;
   .tv-show-top-container {
+    padding: 5px;
     display: flex;
     height: 440px;
     width: 100%;
-    background-size: 100%;
-    background-position-x: center;
-    background-position-y: top;
-    justify-content: flex-end;
+    flex-direction: column-reverse;
+    // background-size: 100%;
+    // background-position-x: center;
+    // background-position-y: top;
+    align-items: flex-end;
   }
   .like-interactions-container {
     display: flex;
     flex-direction: row;
     width: 100%;
+    height: 63px;
     justify-content: center;
+    align-items: center;
+  }
+  .tv-show-main-infos-container {
+    margin-top: 15px !important;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 69px;
+    justify-content: center;
+    align-items: center;
+    .title {
+      font-size: 25px;
+      font-weight: bold;
+      width: 100%;
+      text-align: center;
+      color: white;
+    }
+    .infos {
+      text-align: center;
+      color: rgba(255,255,255,0.7);
+      i {
+        width:10px;
+        height:10px;
+      }
+    }
+  }
+  .community-infos-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 234px;
+    .scores-number {
+      display: flex;
+      flex-direction: row;
+      height: 42px;
+      width: 100%;
+      color: #C0C0C0;
+      span {
+        font-size: 42px;
+        font-weight: bold;
+      }
+    }
   }
 }

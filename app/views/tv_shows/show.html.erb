@@ -1,21 +1,30 @@
 <div class="global-container">
-  <div class="tv-show-top-container" style="background-image: url('<%= @tv_show.poster_url %>');">
+  <div class="tv-show-top-container" style="background-image: linear-gradient(rgba(15, 18, 22, 0), rgba(39, 42, 48, 0.9)),url('<%= @tv_show.poster_url %>');">
+    <div class="tv-show-main-infos-container">
+      <div class="title">
+        <%= @tv_show.title %>
+      </div>
+      <div class="infos">
+        <%= @tv_show.language %> |
+        <%= @tv_show.genre %> |
+        <%= pluralize(@tv_show.seasons_count, "season") %> |
+        Directed by <%= @tv_show.director %>
+      </div>
+    </div>
     <div class="like-interactions-container">
       <a class="btn-interaction" href="#"><i class="fa fa-thumbs-up"></i></a>
       <a class="btn-interaction" href="#"><i class="fa fa-thumbs-down"></i></a>
-      <a class="btn-interaction superlike" href="#"><i class="fa fa-heart"></i></a>
-    </div>
-    <div class="tv-show-main-infos-container">
-      <div class="title">
-      </div>
-      <div class="infos">
-      </div>
+      <a class="btn-interaction-superlike" href="#"><i class="fa fa-heart"></i></a>
     </div>
   </div>
   <div class="community-infos-container">
     <div class="watched-by-users">
     </div>
-    <div class="scores">
+    <div class="scores-number">
+      <span><%= @tv_show.imdb_rating %></span>
+    </div>
+    <div class="scores-text">
+      Rating
     </div>
   </div>
   <div class="tv-show-infos-container">
