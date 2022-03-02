@@ -33,4 +33,158 @@
   margin-bottom: 7px;
 }
 
-.index-cards-container::-webkit-scrollbar {    display: none;}
+.index-cards-container::-webkit-scrollbar {
+  display: none;
+}
+
+.global-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  clear: both;
+  .tv-show-top-container {
+    padding: 5px;
+    display: flex;
+    height: 440px;
+    width: 100%;
+    flex-direction: column-reverse;
+    // background-size: 100%;
+    // background-position-x: center;
+    // background-position-y: top;
+    align-items: flex-end;
+  }
+  .like-interactions-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 63px;
+    justify-content: center;
+    align-items: center;
+  }
+  .tv-show-main-infos-container {
+    margin-top: 15px !important;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 69px;
+    justify-content: center;
+    align-items: center;
+    .title {
+      font-size: 25px;
+      font-weight: bold;
+      width: 100%;
+      text-align: center;
+      color: white;
+    }
+    .infos {
+      text-align: center;
+      color: rgba(255,255,255,0.7);
+      i {
+        width:10px;
+        height:10px;
+      }
+    }
+  }
+  .community-infos-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100px;
+    align-items: center;
+    .scores-number {
+      display: flex;
+      flex-direction: row;
+      height: 42px;
+      width: 100%;
+      color: #C0C0C0;
+      text-align: center;
+      justify-content: space-around;
+      span {
+        width: 63px;
+        height: 42px;
+        font-size: 36px;
+        font-weight: bold;
+      }
+    }
+    .scores-text {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      text-align: center;
+      height: 42px;
+      width: 100%;
+      color: #C0C0C0;
+      span {
+        width: 63px;
+        height: 42px;
+        font-size: 13px;
+      }
+    }
+  }
+  .bottom-border-div {
+    content : "";
+    width   : 330px;
+    height: 1px;
+    border-bottom: 1px rgba(196, 196, 196, 0.15) solid;
+  }
+  .tv-show-infos-container {
+    font-size: 14px;
+    width: 80%;
+    height: 200px;
+    color: #C0C0C0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    .description {
+      height: 80%;
+      overflow: auto;
+    }
+    .platforms-infos-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: flex-start;
+      margin-top: 20px;
+      font-size: 13px;
+      color: #C0C0C0;
+      margin-bottom: 10px;
+    }
+    .platform-logo {
+      width: 70px;
+    }
+  }
+  .main-reviews-container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    .title {
+      text-align: left;
+      font-size: 18px;
+      font-weight: bold;
+      color: rgba(255,255,255,0.75)
+    }
+    .community-reviews-container {
+      overflow: auto;
+      .top-container {
+        height: 35%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 5px;
+        justify-content: center;
+      }
+      .content-container {
+        display: flex;
+        height: 55%;
+        width: 100%;
+      }
+    }
+    .add-feedback-container {
+      margin-bottom: 8px;
+    }
+  }
+}

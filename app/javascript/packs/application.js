@@ -14,3 +14,9 @@ ActiveStorage.start()
 
 import "controllers"
 import "bootstrap"
+
+import { initTinder } from "../plugins/swipe"
+
+document.addEventListener('turbolinks:load', () => {
+  initTinder();
+})

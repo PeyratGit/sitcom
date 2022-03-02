@@ -77,3 +77,25 @@
   color: white;
   opacity: 0.85;
 }
+.review-card {
+  padding: 2px;
+  width: 100%;
+  height:min-content;
+  border-radius: 15px;
+  background-color: #454545;
+  margin-bottom: 10px;
+  .username {
+    margin-left: 5px;
+    color: darkgray;
+    font-size: 14px;
+    font-weight: normal;
+  }
+  .review-comment {
+    color:#C0C0C0
+  }
+  .user-rating {
+    margin-left: auto;
+    color: #C0C0C0;
+    font-size: 18px;
+    font-weight: bold;
+  }
