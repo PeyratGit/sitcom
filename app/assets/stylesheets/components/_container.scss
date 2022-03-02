@@ -133,11 +133,16 @@
   .tv-show-infos-container {
     font-size: 14px;
     width: 80%;
+    height: 200px;
     color: #C0C0C0;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 10px;
+    .description {
+      height: 80%;
+      overflow: auto;
+    }
     .platforms-infos-container {
       display: flex;
       flex-direction: column;
@@ -146,10 +151,19 @@
       margin-top: 20px;
       font-size: 13px;
       color: #C0C0C0;
+      margin-bottom: 10px;
     }
     .platform-logo {
-      height: 34px;
-      width: 80px;
+      width: 70px;
+    }
+  }
+  .main-reviews-container {
+    width: 80%;
+    .title {
+      text-align: left;
+      font-size: 18px;
+      font-weight: bold;
+      color: rgba(255,255,255,0.75)
     }
   }
 }
