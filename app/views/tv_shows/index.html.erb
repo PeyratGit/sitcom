@@ -26,7 +26,7 @@
       <% @tv_shows.each do |tv_show| %>
         <div class="card-tv-show-small">
           <div class="tv-show-poster">
-            <%= cl_image_tag(tv_show.poster_url, type: "fetch") %>
+            <%= image_tag(tv_show.poster_url) %>
           </div>
           <div class="tv-show-infos">
             <div class="tv-show-title">
@@ -47,7 +47,7 @@
       <% @tv_shows.each do |tv_show| %>
         <div class="card-tv-show-small">
           <div class="tv-show-poster">
-            <%= cl_image_tag(tv_show.poster_url, type: "fetch") %>
+            <%= image_tag(tv_show.poster_url) %>
           </div>
           <div class="tv-show-infos">
             <div class="tv-show-title">
