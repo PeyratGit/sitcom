@@ -33,4 +33,31 @@
   margin-bottom: 7px;
 }
 
-.index-cards-container::-webkit-scrollbar {    display: none;}
+.index-cards-container::-webkit-scrollbar {
+  display: none;
+}
+
+.global-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  clear: both;
+  .tv-show-top-container {
+    display: flex;
+    height: 440px;
+    width: 100%;
+    background-size: 100%;
+    background-position-x: center;
+    background-position-y: top;
+    justify-content: flex-end;
+  }
+  .like-interactions-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+  }
+}
