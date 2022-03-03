@@ -2,6 +2,11 @@
   <div class="title">
   </div>
   <div class="index-global-container-true">
+    <div class="back-button" id="back-index">
+      <%= link_to :back do %>
+        <i class="fa fa-arrow-left"></i>
+      <% end %>
+    </div>
     <div class="title">
       <h1>What will you watch ?</h1>
     </div>
@@ -20,47 +25,61 @@
         <% end %>
     </div>
     <div class="recommendation-title">
-      Recommendations from my friends
-    </div>
-    <div class="index-cards-container">
-      <% @tv_shows.each do |tv_show| %>
-        <div class="card-tv-show-small">
-          <div class="tv-show-poster">
-            <%= image_tag(tv_show.poster_url) %>
-          </div>
-          <div class="tv-show-infos">
-            <div class="tv-show-title">
-              <%= tv_show.title %>
-            </div>
-            <div class="show-score">
-              <p><%= tv_show.imdb_rating %></p>
-              <i class="fa fa-users"></i>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="recommendation-title">
       Recommendations from the community
     </div>
     <div class="index-cards-container">
       <% @tv_shows.each do |tv_show| %>
-        <div class="card-tv-show-small">
-          <div class="tv-show-poster">
-            <%= image_tag(tv_show.poster_url) %>
-          </div>
-          <div class="tv-show-infos">
-            <div class="tv-show-title">
-              <%= tv_show.title %>
+        <%= link_to tv_show_path(tv_show) do %>
+          <div class="card-tv-show-small">
+            <div class="tv-show-poster">
+              <%= image_tag(tv_show.poster_url) %>
             </div>
-            <div class="show-score">
-              <p>
-                <%= tv_show.imdb_rating %>
-              </p>
-              <i class="fa fa-star"></i>
+            <div class="tv-show-infos">
+              <div class="tv-show-title">
+                <%= tv_show.title %>
+              </div>
+              <div class="show-score">
+                <p>
+                  <% if Feedback.where(tv_show_id: tv_show.id).where.not(comment: nil).empty? %>
+                    <%= "?/10" %>
+                  <% else %>
+                    <% somme = 0 %>
+                    <% Feedback.where(tv_show_id: tv_show.id).where.not(comment: nil).each do |feedback| %>
+                      <% somme += feedback.rating%>
+                    <% end %>
+                    <%= "#{somme/Feedback.where(tv_show_id: tv_show.id).where.not(comment: nil).count}/10" %>
+                  <% end %>
+                  </p>
+                <i class="fa fa-users"></i>
+              </div>
             </div>
           </div>
-        </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="recommendation-title">
+      Top rated
+    </div>
+    <div class="index-cards-container">
+      <% @tv_shows.order(imdb_rating: :desc).each do |tv_show| %>
+        <%= link_to tv_show_path(tv_show) do %>
+          <div class="card-tv-show-small">
+            <div class="tv-show-poster">
+              <%= image_tag(tv_show.poster_url) %>
+            </div>
+            <div class="tv-show-infos">
+              <div class="tv-show-title">
+                <%= tv_show.title %>
+              </div>
+              <div class="show-score">
+                <p>
+                  <%= tv_show.imdb_rating %>
+                </p>
+                <i class="fa fa-star"></i>
+              </div>
+            </div>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
