@@ -100,3 +100,40 @@
     font-weight: bold;
   }
 }
+
+// Index cards friends
+.friends_title h1{
+  color: #32E0C4;
+  align-items: center;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.card-friends {
+  display: flex;
+  width: 96%;
+  flex-direction: row;
+  margin-top: 19px;
+  background-color: #272a30;
+  border-radius: 50rem;
+  align-items: center;
+  border: solid;
+  border-color: $color1;
+}
+
+.card-friends img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.card-friends-infos h2 {
+  font-size: 18px;
+  font-weight: bold;
+  color: $textcolor;
+}
+
+.card-friends >.card-friends-infos {
+  align-items: center;
+}
