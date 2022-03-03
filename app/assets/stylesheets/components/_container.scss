@@ -168,7 +168,8 @@
       color: rgba(255,255,255,0.75)
     }
     .community-reviews-container {
-      overflow: auto;
+      overflow-y: auto;
+      height: 100px;
       .top-container {
         height: 35%;
         width: 100%;
