@@ -14,7 +14,6 @@ ActiveStorage.start()
 
 import "controllers"
 import "bootstrap"
-
 import { initTinder } from "../plugins/swipe"
 import { illuminate } from "../plugins/buttons_style"
 
