@@ -187,5 +187,8 @@
     .add-feedback-container {
       margin-bottom: 8px;
     }
+    .community-reviews-container::-webkit-scrollbar {
+        display: none;
+    }
   }
 }
