@@ -5,8 +5,11 @@ const initTinder = () => {
 
   var tinderContainer = document.querySelector('.tinder');
   var allCards = document.querySelectorAll('.tinder--card');
+  var unwatched = document.getElementById('unwatched');
   var nope = document.getElementById('nope');
   var love = document.getElementById('love');
+  var superlike = document.getElementById('superlike');
+
 
   function initCards(card, index) {
     var newCards = document.querySelectorAll('.tinder--card:not(.removed)');
@@ -70,7 +73,7 @@ const initTinder = () => {
     });
   });
 
-  function createButtonListener(love) {
+  function createButtonListener(status) {
     return function (event) {
       var cards = document.querySelectorAll('.tinder--card:not(.removed)');
       var moveOutWidth = document.body.clientWidth * 1.5;
@@ -78,24 +81,27 @@ const initTinder = () => {
       if (!cards.length) return false;
 
       var card = cards[0];
-      var nopeform = document.getElementById('nope-form');
-      var loveform = document.getElementById('love-form');
-      // var lovelink = document.getElementById('love-link');
-      var lovelink = document.querySelector('.tinder--card:not(.removed) > .love-link');
+      var unwatchedbtn = document.querySelector('.tinder--card:not(.removed) .unwatched-btn');
+      var lovebtn = document.querySelector('.tinder--card:not(.removed) .love-btn');
+      var nopebtn = document.querySelector('.tinder--card:not(.removed) .nope-btn');
+      var superlikebtn = document.querySelector('.tinder--card:not(.removed) .superlike-btn');
 
       // debugger;
 
       card.classList.add('removed');
 
-      if (love) {
+      if (status === 'love' ) {
         card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
-        console.log("test");
-        // loveform.submit();
-        lovelink.click();
-
-      } else {
+        lovebtn.click()
+      } else if (status === 'nope') {
         card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
-        nopeform.click();
+        nopebtn.click();
+      } else if (status === 'unwatched') {
+        card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
+        unwatchedbtn.click();
+      } else {
+        card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
+        superlikebtn.click();
       }
 
       initCards();
@@ -104,11 +110,15 @@ const initTinder = () => {
     };
   }
 
-  var nopeListener = createButtonListener(false);
-  var loveListener = createButtonListener(true);
+  var unwatchedListener = createButtonListener('unwatched');
+  var nopeListener = createButtonListener('nope');
+  var loveListener = createButtonListener('love');
+  var superlikeListener = createButtonListener('superlike');
 
   nope.addEventListener('click', nopeListener);
   love.addEventListener('click', loveListener);
+  superlike.addEventListener('click', superlikeListener);
+  unwatched.addEventListener('click', unwatchedListener);
 
 };
 
