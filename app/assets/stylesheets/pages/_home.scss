@@ -1,12 +1,14 @@
 // Specific CSS for your home-page
-img, svg {
+.chanels, .love2{
   width: 100%;
-  margin-top: 1%;
   background-size: cover;
   background-image: -o-linear-gradient(rgb(15, 18, 22) 0%, rgb(39, 42, 48) 100%);
 }
 
-
+.love2 {
+  width: 100%;
+  background-size: cover;
+}
 .heart {
   width: 50%;
   background-size: cover;
@@ -14,30 +16,31 @@ img, svg {
   margin-top: 1%;
 }
 
+.title {
+  margin-top: -15%;
+}
+
+.title2 {
+  margin-top: 10%;
+  margin-right: 3%;
+}
+
+.title3 {
+  margin-top: 10%;
+}
 .content {
   display: flex;
 }
 
+.container_two {
+  margin-top: 5%;
+}
+
 .container, h1{
   color: $textcolor;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-right: 2%;
 }
 
-h1 {
-  text-align: center;
-  color: $textcolor;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
-  margin-top: 2%;
-}
-
-h2 {
+.card-product-infos, h2 {
   text-align: center;
 }
 

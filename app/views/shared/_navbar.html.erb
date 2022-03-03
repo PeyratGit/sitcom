@@ -1,17 +1,20 @@
 <div class="navbar navbar-expand-sm navbar-dark navbar-lewagon">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <%= image_tag "logo" %>
-    </a>
+    <div id="home-logo">
+      <%= link_to tv_shows_path, class:"navbar-brand" do %>
+        <%= image_tag "logo" %>
+      <% end %>
+    </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto" >
         <div class="dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="position: absolute; inset: 0px 0px auto auto; transform: translate3d(-16px, 52.6667px, 0px);">
-          <a class="dropdown-item" href="#"><i class="fa fa-heart"></i> Wishlist</a>
-          <a class="dropdown-item" href="#"><i class="fa fa-users"></i> Friends</a>
-          <a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i> Log out</a>
+
+          <p><i class="fa fa-star"></i><%= link_to "WishList", "", class:"dropdown-item" %></p>
+          <p><i class="fa fa-users"></i><%= link_to "Friends", users_path, class:"dropdown-item" %></p>
+          <p><i class="fa fa-sign-out"></i><%= link_to "Log out", destroy_user_session_path, method: :delete, class:"dropdown-item"%></p>
         </div>
       </ul>
     </div>
