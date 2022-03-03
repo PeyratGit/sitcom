@@ -25,7 +25,7 @@
         <% end %>
     </div>
     <div class="recommendation-title">
-      Recommendations from my friends
+      Recommendations from the community
     </div>
     <div class="index-cards-container">
       <% @tv_shows.each do |tv_show| %>
@@ -39,7 +39,17 @@
                 <%= tv_show.title %>
               </div>
               <div class="show-score">
-                <p><%= tv_show.imdb_rating %></p>
+                <p>
+                  <% if Feedback.where(tv_show_id: tv_show.id).where.not(comment: nil).empty? %>
+                    <%= "?/10" %>
+                  <% else %>
+                    <% somme = 0 %>
+                    <% Feedback.where(tv_show_id: tv_show.id).where.not(comment: nil).each do |feedback| %>
+                      <% somme += feedback.rating%>
+                    <% end %>
+                    <%= "#{somme/Feedback.where(tv_show_id: tv_show.id).where.not(comment: nil).count}/10" %>
+                  <% end %>
+                  </p>
                 <i class="fa fa-users"></i>
               </div>
             </div>
@@ -48,10 +58,10 @@
       <% end %>
     </div>
     <div class="recommendation-title">
-      Recommendations from the community
+      Top rated
     </div>
     <div class="index-cards-container">
-      <% @tv_shows.each do |tv_show| %>
+      <% @tv_shows.order(imdb_rating: :desc).each do |tv_show| %>
         <%= link_to tv_show_path(tv_show) do %>
           <div class="card-tv-show-small">
             <div class="tv-show-poster">
