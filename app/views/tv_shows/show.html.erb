@@ -17,15 +17,7 @@
       </div>
     </div>
     <div class="like-interactions-container">
-      <%= link_to tv_show_feedbacks_path(feedback: {status: "Like"}, tv_show_id: @tv_show.id), class:"btn-interaction", remote: true, method: :post do %>
-        <i class="fa fa-thumbs-up" id="thumb-up"></i>
-      <% end %>
-      <%= link_to tv_show_feedbacks_path(feedback: {status: "Dislike"}, tv_show_id: @tv_show.id), class:"btn-interaction", remote: true, method: :post do %>
-        <i class="fa fa-thumbs-down" id="thumb-down"></i>
-      <% end %>
-      <%= link_to tv_show_feedbacks_path(feedback: {status: "Superlike"}, tv_show_id: @tv_show.id), class:"btn-interaction-superlike", remote: true, method: :post do %>
-        <i class="fa fa-heart" id="heart-like"></i>
-      <% end %>
+      <%= render 'shared/buttons-verification' %>
     </div>
   </div>
   <div class="community-infos-container">
@@ -38,7 +30,7 @@
         <% if @feedbacks_like_number.nil? %>
           <%= 0 %>
         <% else %>
-          <%= @feedbacks_like_number %>
+          <%= @feedbacks_like_number%>
         <% end %>
       </span>
       <span>

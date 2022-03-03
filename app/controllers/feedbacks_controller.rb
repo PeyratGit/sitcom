@@ -7,4 +7,9 @@ class FeedbacksController < ApplicationController
       render json: @feedback
     end
   end
+
+  def update
+    @feedback = Feedback.find(params[:id])
+    @feedback.update({status: params[:status]})
+  end
 end

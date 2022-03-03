@@ -3,6 +3,7 @@
 }
 
 .btn-interaction {
+  position: relative;
   height: 62px;
   width: 62px;
   border-radius: 50%;
@@ -12,6 +13,36 @@
   justify-content: center;
   align-items: center;
   margin-right: 15px;
+  transition-duration: 0.4s;
+  overflow: hidden;
+  &:after {
+    content: "";
+    background: #1abc9c;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+  }
+  &:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+  }
+  &:focus {
+  background: #fff;
+  box-shadow: 0px 2px 10px 5px #1ABC9C;
+    #thumb-up {
+      color: #32E0C4;
+    }
+    #thumb-down {
+      color: red;
+    }
+  }
   #thumb-up {
     font-size: 28px;
     color: white;
@@ -22,7 +53,31 @@
   }
 }
 
-#heart-like {
+.active {
+  content: "";
+  background: white;
+  opacity: 0;
+  transition: all 0.8s;
+  box-shadow: 0px 2px 10px 5px #1ABC9C;
+  padding: 0;
+  opacity: 1;
+  transition: 0s;
+  outline:0;
+  #heart-like{
+    color:rgb(253, 8, 122);
+  }
+  #thumb-up {
+    font-size: 28px;
+    color: #1abc9c;
+  }
+  #thumb-down {
+    font-size: 28px;
+    color: red;
+  }
+}
+
+.btn-interaction-superlike {
+  position: relative;
   height: 48px;
   width: 48px;
   border-radius: 50%;
@@ -31,9 +86,38 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
+  margin-right: 15px;
+  transition-duration: 0.4s;
+  overflow: hidden;
+  text-align: center;
+  &:after {
+    content: "";
+    background: #1abc9c;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+  }
+  &:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+  }
+  &:focus {
+    outline:0;
+    #heart-like{
+      color:purple;
+    }
+  }
+  }
 
 .back-button {
+  position: relative;
   width: 48px;
   height: 48px;
   border-radius: 50%;
