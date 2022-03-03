@@ -1,39 +1,108 @@
-
-
-
-
 <div>
-  <div class="card-user">
-    <div>
-      <%= image_tag(@user.facebook_picture_url, :class => "avatar-xlarge") %>
+  <div class="card-user px-3 my-3">
+
+    <div class="user-header d-flex d-inline justify-content-between align-items-center my-2">
+      <div class='mx-2'>
+        <%= image_tag(@user.facebook_picture_url, :class => "avatar-xlarge") %>
+      </div>
+      <div class='mx-2 align-items-center'>
+        <div><%= @user.feedbacks.count %></div>
+        <p class = "mb-0">watched</p>
+      </div>
+      <div class='mx-2 align-items-center'>
+        <div><%= @following.count %></div>
+        <p class = "mb-0">followings</p>
+      </div>
+      <div class='mx-2 align-items-center'>
+        <div><%= @followers.count %></div>
+        <p class = "mb-0">followers</p>
+      </div>
     </div>
-    <h2><%= @user.first_name %> <%= @user.last_name %></h2>
-    <div><p>description</p></div>
 
+    <div>
+      <h2 class="user-description"><%= @user.first_name %> <%= @user.last_name %></h2>
+      <p class="user-description">description</p>
+    </div>
 
-    <div><p><%= @user.feedbacks.count %></p></div>
-    <div><p>watched</p></div>
-    <div><%= @following.count %></div>
-    <div><p>followings</p></div>
-    <div><%= @followers.count %></div>
-    <div><p>followers</p></div>
+    <%= link_to "Follow", "/ruby-book" %>
+
+    <div>
+      <h5><%= @user.first_name %>'s Superlikes list</h5>
+       <div class="index-cards-container">
+        <% @feedbacks.each do |feedback| %>
+          <% if feedback.status == "Superlike" %>
+            <div class="card-tv-show-poster">
+              <div class="tv-show-poster">
+                <%= image_tag(feedback.tv_show.poster_url) %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div>
+      <h5><%= @user.first_name %>'s Likes list</h5>
+      <div class="index-cards-container">
+        <% @feedbacks.each do |feedback| %>
+          <% if feedback.status == "Like" %>
+            <div class="card-tv-show-poster">
+              <div class="tv-show-poster">
+                <%= image_tag(feedback.tv_show.poster_url) %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div>
+      <h5><%= @user.first_name %>'s Dislikes list</h5>
+      <div class="index-cards-container">
+        <% @feedbacks.each do |feedback| %>
+          <% if feedback.status == "Dislike" %>
+            <div class="card-tv-show-poster">
+              <div class="tv-show-poster">
+                <%= image_tag(feedback.tv_show.poster_url) %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
 
     <div>
       <h4>Activity</h4>
+
       <% @feedbacks.each do |feedback| %>
-        <div>
-        <% if feedback.status == "Dislike" %>
-          <p><%=  @user.first_name %> <i class="fa fa-thumbs-o-down" aria-hidden="true"></i></p>
-        <% elsif feedback.status == "Like" %>
-          <p><%=  @user.first_name %>  <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></p>
-        <% elsif feedback.status == "Superlike" %>
-          <p><%=  @user.first_name %>  <i class="fa fa-heart" aria-hidden="true"></i></p>
-        <% end %>
-        <p><%= feedback.rating %></p>
-        <p><%= feedback.tv_show.title%></p>
-        <p><%= feedback.comment %></p>
+        <div class = "review-card">
+          <% if feedback.status == "Dislike" %>
+            <p><%=  @user.first_name %> <i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <%= feedback.tv_show.title%> <span class="feedback-time"><%= time_ago_in_words(feedback.updated_at) %></span></p>
+          <% elsif feedback.status == "Like" %>
+            <p><%=  @user.first_name %>  <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <%= feedback.tv_show.title%> <span class="feedback-time"><%= time_ago_in_words(feedback.created_at) %></span></p>
+          <% elsif feedback.status == "Superlike" %>
+            <p><%=  @user.first_name %>  <i class="fa fa-heart" aria-hidden="true"></i> <%= feedback.tv_show.title%> <span class="feedback-time"><%= time_ago_in_words(feedback.created_at) %></span></p>
+          <% end %>
         </div>
+        <% if feedback.comment %>
+          <div class = "review-card">
+            <p><%=  @user.first_name %> gave feedback on <%= feedback.tv_show.title%></p>
+            <div class = "card-mini-tvshow d-flex d-inline">
+              <%= image_tag(feedback.tv_show.poster_url, style: 'height:100%; width:20%') %>
+              <div>
+                <p><%= feedback.tv_show.title%></p>
+                <p>directed by <%= feedback.tv_show.director %></p>
+                <p><%= feedback.rating %></p>
+                <p><%= feedback.comment %></p>
+              </div>
+            </div>
+            <p class="feedback-time"><%= time_ago_in_words(feedback.created_at) %></p>
+          </div>
+        <% end %>
       <% end %>
+
+
+
 
 
 
