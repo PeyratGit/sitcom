@@ -15,8 +15,8 @@
     <% end %>
   </div>
 <% else %>
-  <% feedback = Feedback.where(user_id: current_user, comment: nil).last %>
-  <% status = Feedback.where(user_id: current_user, comment: nil).last[:status] %>
+  <% feedback = Feedback.where(user_id: current_user).last %>
+  <% status = Feedback.where(user_id: current_user).last[:status] %>
   <% if status == "Like" %>
     <div class="js-interact btn-interaction active">
       <%= link_to tv_show_feedback_path(id: feedback.id, status: "Like", tv_show_id: @tv_show.id), remote: true, method: :patch do %>
