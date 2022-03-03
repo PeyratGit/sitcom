@@ -1,0 +1,43 @@
+<div class="index-global-container-true">
+  <div class="search-bar">
+      <%= form_tag search_tv_shows_path,class:"simple_form search", autocomplete:"off", method: :get do %>
+        <div class="search-form-control form-group">
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Search"
+          %>
+          <button name="button" type="submit" class="btn btn-flat" id="search-btn">
+            <i class="fa fa-search" id="search-icon"></i>
+          </button>
+        </div>
+      <% end %>
+  </div>
+  <div class="tab-container">
+  <ul class="list-inline tabs-underlined">
+    <li>
+      <a href="" class="tab-underlined active">TV shows</a>
+    </li>
+    <li>
+      <a href="" class="tab-underlined">Friends</a>
+    </li>
+    <li>
+      <a href="" class="tab-underlined">Community</a>
+    </li>
+  </ul>
+  </div>
+  <% @tv_shows.each do |tv_show| %>
+    <div class="card-purchase mb-2">
+      <img src=<%= tv_show.poster_url %>>
+      <div class="card-purchase-infos">
+        <div class="card-purchase-details">
+          <h2><%= tv_show.title %></h2>
+        </div>
+        <div class="card-purchase-score">
+          <p class="px-2"><%= tv_show.imdb_rating %></p>
+          <i class="fa fa-users"></i>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
