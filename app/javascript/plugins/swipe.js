@@ -66,7 +66,13 @@ const initTinder = () => {
         var xMulti = event.deltaX * 0.03;
         var yMulti = event.deltaY / 80;
         var rotate = xMulti * yMulti;
-
+        var lovebtn = document.querySelector('.tinder--card:not(.removed) .love-btn');
+        var nopebtn = document.querySelector('.tinder--card:not(.removed) .nope-btn');
+        if (event.deltaX > 0) {
+          lovebtn.click();
+        } else {
+          nopebtn.click();
+        }
         event.target.style.transform = 'translate(' + toX + 'px, ' + (toY + event.deltaY) + 'px) rotate(' + rotate + 'deg)';
         initCards();
       }
@@ -92,7 +98,7 @@ const initTinder = () => {
 
       if (status === 'love' ) {
         card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
-        lovebtn.click()
+        lovebtn.click();
       } else if (status === 'nope') {
         card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
         nopebtn.click();
