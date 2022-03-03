@@ -12,12 +12,17 @@
   justify-content: center;
   align-items: center;
   margin-right: 15px;
-  i {
+  #thumb-up {
     font-size: 28px;
+    color: white;
+  }
+  #thumb-down {
+    font-size: 28px;
+    color: white;
   }
 }
 
-.btn-interaction-superlike {
+#heart-like {
   height: 48px;
   width: 48px;
   border-radius: 50%;
