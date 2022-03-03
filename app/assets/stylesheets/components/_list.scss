@@ -1,0 +1,75 @@
+.tab-container {
+  width: 75%;
+  margin: 2% auto;
+}
+
+.tabs-underlined {
+  display: flex;
+  align-items: center;
+}
+
+.tabs-underlined .tab-underlined {
+  color: white;
+  padding: 8px 4px;
+  margin: 8px;
+  opacity: .4;
+  cursor: pointer;
+  text-decoration: none;
+  border-bottom: 4px solid transparent;
+}
+
+.tabs-underlined .tab-underlined.active {
+  opacity: 1;
+  border-bottom: 3px solid white;
+}
+
+.card-purchase {
+  overflow: hidden;
+  height: 90px;
+  box-shadow: 0 0 2px 0px #dee2e699;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  width: 75%;
+  margin: 0 auto;
+  color: white;
+}
+
+
+.card-purchase img {
+  height: 100%;
+  width: 90px;
+  object-fit: cover;
+  margin-top: 0% !important;
+}
+
+.card-purchase h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-purchase p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-purchase .card-purchase-infos {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.card-purchase .card-purchase-details {
+  padding: 16px;
+}
+
+.card-purchase .card-purchase-score {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+}

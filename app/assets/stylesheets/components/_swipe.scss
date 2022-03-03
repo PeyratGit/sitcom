@@ -36,6 +36,19 @@
   pointer-events: none;
 }
 
+.tinder--title {
+  padding: 20px;
+  position: relative;
+}
+
+#exit {
+  color: white;
+  position: absolute;
+  top: 0px;
+  right: -10px;
+  font-size: 18px;
+}
+
 .tinder--status i {
   font-size: 100px;
   opacity: 0;
@@ -71,7 +84,7 @@
   display: inline-block;
   width: 90vw;
   max-width: 400px;
-  height: 70vh;
+  height: 60vh;
   background: #FFFFFF;
   padding-bottom: 0px;
   border-radius: 8px;
@@ -96,6 +109,7 @@
   pointer-events: none;
   object-fit: cover;
   height: 100%;
+  margin-top: 0% !important;
 }
 
 .tinder--card h3 {
