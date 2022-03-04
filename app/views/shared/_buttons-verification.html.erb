@@ -1,12 +1,12 @@
 <% if Feedback.where(user_id: current_user, comment: nil) == nil %>
   <div class="js-interact btn-interaction">
-    <%= link_to tv_show_feedbacks_path(feedback: {status: "Like"}, tv_show_id: @tv_show.id), remote: true, method: :post do %>
-        <i class="fa fa-thumbs-up" id="thumb-up"></i>
+    <%= link_to tv_show_feedbacks_path(feedback: {status: "Dislike"}, tv_show_id: @tv_show.id), remote: true, method: :post do %>
+      <i class="fa fa-thumbs-down" id="thumb-down"></i>
     <% end %>
   </div>
   <div class="js-interact btn-interaction">
-    <%= link_to tv_show_feedbacks_path(feedback: {status: "Dislike"}, tv_show_id: @tv_show.id), remote: true, method: :post do %>
-      <i class="fa fa-thumbs-down" id="thumb-down"></i>
+    <%= link_to tv_show_feedbacks_path(feedback: {status: "Like"}, tv_show_id: @tv_show.id), remote: true, method: :post do %>
+        <i class="fa fa-thumbs-up" id="thumb-up"></i>
     <% end %>
   </div>
   <div class="js-interact btn-interaction-superlike">
@@ -18,14 +18,14 @@
   <% feedback = Feedback.where(user_id: current_user).last %>
   <% status = Feedback.where(user_id: current_user).last[:status] %>
   <% if status == "Like" %>
-    <div class="js-interact btn-interaction active">
-      <%= link_to tv_show_feedback_path(id: feedback.id, status: "Like", tv_show_id: @tv_show.id), remote: true, method: :patch do %>
-          <i class="fa fa-thumbs-up" id="thumb-up"></i>
-      <% end %>
-    </div>
     <div class="js-interact btn-interaction">
       <%= link_to tv_show_feedback_path(id: feedback.id, status: "Dislike", tv_show_id: @tv_show.id), remote: true, method: :patch do %>
         <i class="fa fa-thumbs-down" id="thumb-down"></i>
+      <% end %>
+    </div>
+    <div class="js-interact btn-interaction active">
+      <%= link_to tv_show_feedback_path(id: feedback.id, status: "Like", tv_show_id: @tv_show.id), remote: true, method: :patch do %>
+          <i class="fa fa-thumbs-up" id="thumb-up"></i>
       <% end %>
     </div>
     <div class="js-interact btn-interaction-superlike">
@@ -34,14 +34,14 @@
       <% end %>
     </div>
   <% elsif status == "Dislike" %>
-    <div class="js-interact btn-interaction">
-      <%= link_to tv_show_feedback_path(id: feedback.id, status: "Like", tv_show_id: @tv_show.id), remote: true, method: :patch do %>
-          <i class="fa fa-thumbs-up" id="thumb-up"></i>
-      <% end %>
-    </div>
     <div class="js-interact btn-interaction active">
       <%= link_to tv_show_feedback_path(id: feedback.id, status: "Dislike", tv_show_id: @tv_show.id), remote: true, method: :patch do %>
         <i class="fa fa-thumbs-down" id="thumb-down"></i>
+      <% end %>
+    </div>
+    <div class="js-interact btn-interaction">
+      <%= link_to tv_show_feedback_path(id: feedback.id, status: "Like", tv_show_id: @tv_show.id), remote: true, method: :patch do %>
+          <i class="fa fa-thumbs-up" id="thumb-up"></i>
       <% end %>
     </div>
     <div class="js-interact btn-interaction-superlike">
@@ -51,13 +51,13 @@
    </div>
   <% else %>
     <div class="js-interact btn-interaction">
-      <%= link_to tv_show_feedback_path(id: feedback.id, status: "Like", tv_show_id: @tv_show.id), remote: true, method: :patch do %>
-          <i class="fa fa-thumbs-up" id="thumb-up"></i>
+      <%= link_to tv_show_feedback_path(id: feedback.id, status: "Dislike", tv_show_id: @tv_show.id), remote: true, method: :post do %>
+        <i class="fa fa-thumbs-down" id="thumb-down"></i>
       <% end %>
     </div>
     <div class="js-interact btn-interaction">
-      <%= link_to tv_show_feedback_path(id: feedback.id, status: "Dislike", tv_show_id: @tv_show.id), remote: true, method: :post do %>
-        <i class="fa fa-thumbs-down" id="thumb-down"></i>
+      <%= link_to tv_show_feedback_path(id: feedback.id, status: "Like", tv_show_id: @tv_show.id), remote: true, method: :patch do %>
+          <i class="fa fa-thumbs-up" id="thumb-up"></i>
       <% end %>
     </div>
     <div class="js-interact btn-interaction-superlike active">

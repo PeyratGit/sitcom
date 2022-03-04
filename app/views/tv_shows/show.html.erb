@@ -6,7 +6,7 @@
           <i class="fa fa-arrow-left"></i>
         <% end %>
       </div>
-      <div class="title">
+      <div class="title-show-page">
         <%= @tv_show.title %>
       </div>
       <div class="infos">
@@ -96,7 +96,12 @@
     <div class="bottom-border-div"></div>
   </div>
   <div class="main-reviews-container">
-    <span class="title"><%= pluralize(@feedbacks_full_number, 'Feedback') %></span>
+    <span class="title-show-page"><%= pluralize(@feedbacks_full_number, 'Feedback') %></span>
+    <div class="add-feedback-container">
+      <form>
+        <input name="add-feedback" placeholder="Add a feedback" class="form-input">
+      </form>
+    </div>
     <div class="community-reviews-container">
       <% @feedbacks_full.each do |feedback| %>
         <div class="review-card">
@@ -116,11 +121,6 @@
           </div>
         </div>
       <% end %>
-    </div>
-    <div class="add-feedback-container">
-      <form>
-        <input name="add-feedback" placeholder="Add a feedback" class="form-input">
-      </form>
     </div>
   </div>
 </div>
