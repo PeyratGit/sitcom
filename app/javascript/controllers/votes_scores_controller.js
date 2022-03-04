@@ -11,6 +11,7 @@ export default class extends Controller {
     };
   }
   testfunction(event) {
-    console.log(event.detail[2].responseURL);
+    let params = new URLSearchParams(event.detail[2].responseURL);
+    console.log(event);
   }
 }
