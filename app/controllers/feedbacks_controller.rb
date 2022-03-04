@@ -4,7 +4,7 @@ class FeedbacksController < ApplicationController
     @tv_show = TvShow.find(params[:tv_show_id])
     @feedback = Feedback.new(user: @user, tv_show: @tv_show, status: params[:feedback][:status])
     if @feedback.save
-      render json: @feedback
+      # render json: @feedback
     end
   end
 
