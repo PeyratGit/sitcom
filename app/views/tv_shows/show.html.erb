@@ -1,5 +1,5 @@
-<div class="stimulus-controller-container" data-controller="votes" data-action="ajax:success->votes_scores#testfunction">
-  <div class="index-global-container-true">
+<div class="stimulus-controller-container" data-controller="votes">
+  <div class="index-global-container-true" data-controller="votes-scores" data-action="ajax:success->votes-scores#testfunction">
     <div class="tv-show-top-container" style="background-image: linear-gradient(rgba(15, 18, 22, 0), rgba(39, 42, 48, 0.9)),url('<%= @tv_show.poster_url %>');">
       <div class="tv-show-main-infos-container">
         <div class="back-button" id="back-show">

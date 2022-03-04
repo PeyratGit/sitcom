@@ -9,8 +9,8 @@ export default class extends Controller {
       console.log(this.dislikescoreTarget);
       console.log(this.superlikescoreTarget);
     };
-    function testfunction () {
-      console.log("ajax success message");
-    }
+  }
+  testfunction(event) {
+    console.log(event);
   }
 }
