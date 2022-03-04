@@ -17,7 +17,7 @@
     <% @users.each do |user| %>
     <div class="card-friends">
       <% if user.facebook_picture_url.nil? %>
-      <%= image_tag "avatar"%>
+      <%= image_tag "avatar.png"%>
       <% else %>
         <%= image_tag(user.facebook_picture_url) %>
       <% end %>
