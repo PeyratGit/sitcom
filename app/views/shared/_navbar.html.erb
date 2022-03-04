@@ -2,20 +2,18 @@
   <div class="container-fluid">
     <div id="home-logo">
       <%= link_to tv_shows_path, class:"navbar-brand" do %>
-        <%= image_tag "logo.png" %>
+        <%= image_tag "logo.png", class: "logo"%>
       <% end %>
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto" >
-        <div class="dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="position: absolute; inset: 0px 0px auto auto; transform: translate3d(-16px, 52.6667px, 0px);">
-
-          <p><i class="fa fa-star"></i><%= link_to "WishList", "", class:"dropdown-item" %></p>
-          <p><i class="fa fa-users"></i><%= link_to "Friends", users_path, class:"dropdown-item" %></p>
-          <p><i class="fa fa-sign-out"></i><%= link_to "Log out", destroy_user_session_path, method: :delete, class:"dropdown-item"%></p>
-        </div>
+      <ul class="navbar-nav me-auto">
+        <p><i class="fa fa-star"></i><%= link_to "WishList", "", class:"dropdown-item" %></p>
+        <p><i class="fa fa-users"></i><%= link_to "Friends", users_path, class:"dropdown-item" %></p>
+        <p><i class="fa fa-sign-in"></i><%= link_to "Log In", new_user_session_path, class:"dropdown-item" %></p>
+        <p><i class="fa fa-sign-out"></i><%= link_to "Log out", destroy_user_session_path, method: :delete, class:"dropdown-item"%></p>
       </ul>
     </div>
   </div>
