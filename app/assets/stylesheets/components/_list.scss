@@ -23,9 +23,15 @@
   border-bottom: 3px solid white;
 }
 
+.list-link {
+  width: 95%;
+}
+
+
+
 .card-purchase {
   overflow: hidden;
-  height: 90px;
+  height: 120px;
   box-shadow: 0 0 2px 0px #dee2e699;
   border-radius: 1rem;
   display: flex;
@@ -50,11 +56,11 @@
 }
 
 .card-purchase p {
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
-  margin-top: 8px;
+  margin-top: 0;
 }
 
 .card-purchase .card-purchase-infos {
