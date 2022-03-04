@@ -4,4 +4,10 @@ class PagesController < ApplicationController
   def home
     @tv_shows = TvShow.all
   end
+
+  def confidentiality
+  end
+
+  def datauser
+  end
 end
