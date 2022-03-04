@@ -5,9 +5,12 @@ export default class extends Controller {
 
   connect() {
     if (this.targets) {
-      console.log(this.likescoreTarget)
-      console.log(this.dislikescoreTarget)
-      console.log(this.superlikescoreTarget)
+      console.log(this.likescoreTarget);
+      console.log(this.dislikescoreTarget);
+      console.log(this.superlikescoreTarget);
+    };
+    function testfunction () {
+      console.log("ajax success message");
     }
   }
 }
