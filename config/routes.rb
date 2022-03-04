@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
   root to: 'pages#home'
+  get '/confidentiality', to: 'pages#confidentiality'
+  get '/datauser', to: 'pages#datauser'
+
+
   resources :tv_shows, only: [:index, :show, :my] do
     resources :feedbacks, only: [:create, :update]
     resources :wishes, only: [:index, :create]
