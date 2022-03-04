@@ -109,6 +109,10 @@
   text-align: left;
 }
 
+.user-header-info {
+  font-weight: bolder;
+}
+
 // REVIEW-CARD
 
 .review-card {
@@ -193,7 +197,7 @@
   align-items: center;
 }
 
-#follow-button {
+.follow-button {
   color: #32E0C4;
   background-color: $textcolor;
   border: 1px solid;
