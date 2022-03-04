@@ -1,126 +1,128 @@
-<div class="index-global-container-true">
-  <div class="tv-show-top-container" style="background-image: linear-gradient(rgba(15, 18, 22, 0), rgba(39, 42, 48, 0.9)),url('<%= @tv_show.poster_url %>');">
-    <div class="tv-show-main-infos-container">
-      <div class="back-button" id="back-show">
-        <%= link_to :back do %>
-          <i class="fa fa-arrow-left"></i>
-        <% end %>
-      </div>
-      <div class="title-show-page">
-        <%= @tv_show.title %>
-      </div>
-      <div class="infos">
-        <%= @tv_show.language %> |
-        <%= @tv_show.genre %> |
-        <%= pluralize(@tv_show.seasons_count, "season") %> |
-        Directed by <%= @tv_show.director %>
-      </div>
-    </div>
-    <div class="like-interactions-container">
-      <%= render 'shared/buttons-verification' %>
-    </div>
-  </div>
-  <div class="community-infos-container">
-    <div class="watched-by-users">
-    </div>
-    <div class="scores-number">
-      <span><%= @tv_show.imdb_rating %></span>
-      <span><%= @feedbacks_superlike_number = Feedback.where(tv_show_id: @tv_show.id, status: "Superlike").count %></span>
-      <span>
-        <% if @feedbacks_like_number.nil? %>
-          <%= 0 %>
-        <% else %>
-          <%= @feedbacks_like_number%>
-        <% end %>
-      </span>
-      <span>
-        <% if @feedbacks_dislike_number.nil? %>
-          <%= 0 %>
-        <% else %>
-          <%= @feedbacks_dislike_number %>
-        <% end %>
-      </span>
-    </div>
-    <div class="scores-text">
-      <span>Rating</span>
-      <span>
-        <% if @feedbacks_superlike_number = Feedback.where(tv_show_id: @tv_show.id, status: "Superlike").count == 0 %>
-          <%= "Superlikes" %>
-        <% elsif @feedbacks_superlike_number = Feedback.where(tv_show_id: @tv_show.id, status: "Superlike").count == 1 %>
-          <%= "Superlike" %>
-        <% else %>
-          <%= "Superlikes" %>
-        <% end %>
-      </span>
-      <span>
-        <% if @feedbacks_like_number == 0 %>
-          <%= "Likes" %>
-        <% elsif @feedbacks_like_number == 1 %>
-          <%= "Like" %>
-        <% else %>
-          <%= "Likes" %>
-        <% end %>
-      </span>
-      <span>
-        <% if @feedbacks_dilike_number == 0 %>
-          <%= "Dislikes" %>
-        <% elsif @feedbacks_dilike_number == 1 %>
-          <%= "Dislike" %>
-        <% else %>
-          <%= "Dislikes" %>
-        <% end %>
-      </span>
-    </div>
-    <div class="bottom-border-div"></div>
-  </div>
-  <div class="tv-show-infos-container">
-    <div class="description">
-      <%= @tv_show.description %>
-    </div>
-    <div class="platforms-infos-container">
-        <span>Available on</span>
-        <div class="platform-logos">
-          <% if @tv_show.netflix == true %>
-            <%= image_tag("https://logos-marques.com/wp-content/uploads/2021/03/Netflix-logo.png", class:"platform-logo") %>
-          <% elsif @tv_show.amazon == true %>
-            <%= image_tag("https://logodownload.org/wp-content/uploads/2018/07/prime-video-1.png", class:"platform-logo") %>
-          <% elsif @tv_show.disney == true %>
-            <%= image_tag("https://logodownload.org/wp-content/uploads/2020/11/disney-plus-logo-1.png", class:"platform-logo") %>
-          <% elsif @tv_show.ocs == true %>
-            <%= image_tag("https://upload.wikimedia.org/wikipedia/commons/3/31/OCS_logo.png", class:"platform-logo") %>
-          <% else %>
-            <%= image_tag("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Canal%2B.svg/2560px-Canal%2B.svg.png", class:"platform-logo") %>
+<div class="stimulus-controller-container" data-controller="votes">
+  <div class="index-global-container-true">
+    <div class="tv-show-top-container" style="background-image: linear-gradient(rgba(15, 18, 22, 0), rgba(39, 42, 48, 0.9)),url('<%= @tv_show.poster_url %>');">
+      <div class="tv-show-main-infos-container">
+        <div class="back-button" id="back-show">
+          <%= link_to :back do %>
+            <i class="fa fa-arrow-left"></i>
           <% end %>
         </div>
-    </div>
-    <div class="bottom-border-div"></div>
-  </div>
-  <div class="main-reviews-container">
-    <span class="title-show-page"><%= pluralize(@feedbacks_full_number, 'Feedback') %></span>
-    <div class="add-feedback-container">
-      <form>
-        <input name="add-feedback" placeholder="Add a feedback" class="form-input">
-      </form>
-    </div>
-    <div class="community-reviews-container">
-      <% @feedbacks_full.each do |feedback| %>
-        <div class="review-card">
-          <div class="review-card top-container">
-            <div class="avatar-picture">
-              <% if User.find(feedback.user_id).facebook_picture_url %>
-                <%= image_tag(User.find(feedback.user_id).facebook_picture_url, class: "avatar") %>
-              <% else %>
-                <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar") %>
-              <% end %>
-            </div>
-            <div class="username"><%= User.where(id: feedback.user_id)[0].first_name + " " + User.where(id: feedback.user_id)[0].last_name %></div>
-            <div class="user-rating"><%= feedback.rating %>/10</div>
-          </div>
-          <div class="review-card content-container">
-            <div class="review-comment"><%= feedback.comment %></div>
-          </div>
+        <div class="title-show-page">
+          <%= @tv_show.title %>
         </div>
-      <% end %>
+        <div class="infos">
+          <%= @tv_show.language %> |
+          <%= @tv_show.genre %> |
+          <%= pluralize(@tv_show.seasons_count, "season") %> |
+          Directed by <%= @tv_show.director %>
+        </div>
+      </div>
+      <div class="like-interactions-container">
+        <%= render 'shared/buttons-verification' %>
+      </div>
+    </div>
+    <div class="community-infos-container">
+      <div class="watched-by-users">
+      </div>
+      <div class="scores-number">
+        <span><%= @tv_show.imdb_rating %></span>
+        <span><%= @feedbacks_superlike_number = Feedback.where(tv_show_id: @tv_show.id, status: "Superlike").count %></span>
+        <span>
+          <% if @feedbacks_like_number.nil? %>
+            <%= 0 %>
+          <% else %>
+            <%= @feedbacks_like_number%>
+          <% end %>
+        </span>
+        <span>
+          <% if @feedbacks_dislike_number.nil? %>
+            <%= 0 %>
+          <% else %>
+            <%= @feedbacks_dislike_number %>
+          <% end %>
+        </span>
+      </div>
+      <div class="scores-text">
+        <span>Rating</span>
+        <span>
+          <% if @feedbacks_superlike_number = Feedback.where(tv_show_id: @tv_show.id, status: "Superlike").count == 0 %>
+            <%= "Superlikes" %>
+          <% elsif @feedbacks_superlike_number = Feedback.where(tv_show_id: @tv_show.id, status: "Superlike").count == 1 %>
+            <%= "Superlike" %>
+          <% else %>
+            <%= "Superlikes" %>
+          <% end %>
+        </span>
+        <span>
+          <% if @feedbacks_like_number == 0 %>
+            <%= "Likes" %>
+          <% elsif @feedbacks_like_number == 1 %>
+            <%= "Like" %>
+          <% else %>
+            <%= "Likes" %>
+          <% end %>
+        </span>
+        <span>
+          <% if @feedbacks_dilike_number == 0 %>
+            <%= "Dislikes" %>
+          <% elsif @feedbacks_dilike_number == 1 %>
+            <%= "Dislike" %>
+          <% else %>
+            <%= "Dislikes" %>
+          <% end %>
+        </span>
+      </div>
+      <div class="bottom-border-div"></div>
+    </div>
+    <div class="tv-show-infos-container">
+      <div class="description">
+        <%= @tv_show.description %>
+      </div>
+      <div class="platforms-infos-container">
+          <span>Available on</span>
+          <div class="platform-logos">
+            <% if @tv_show.netflix == true %>
+              <%= image_tag("https://logos-marques.com/wp-content/uploads/2021/03/Netflix-logo.png", class:"platform-logo") %>
+            <% elsif @tv_show.amazon == true %>
+              <%= image_tag("https://logodownload.org/wp-content/uploads/2018/07/prime-video-1.png", class:"platform-logo") %>
+            <% elsif @tv_show.disney == true %>
+              <%= image_tag("https://logodownload.org/wp-content/uploads/2020/11/disney-plus-logo-1.png", class:"platform-logo") %>
+            <% elsif @tv_show.ocs == true %>
+              <%= image_tag("https://upload.wikimedia.org/wikipedia/commons/3/31/OCS_logo.png", class:"platform-logo") %>
+            <% else %>
+              <%= image_tag("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Canal%2B.svg/2560px-Canal%2B.svg.png", class:"platform-logo") %>
+            <% end %>
+          </div>
+      </div>
+      <div class="bottom-border-div"></div>
+    </div>
+    <div class="main-reviews-container">
+      <span class="title-show-page"><%= pluralize(@feedbacks_full_number, 'Feedback') %></span>
+      <div class="add-feedback-container">
+        <form>
+          <input name="add-feedback" placeholder="Add a feedback" class="form-input">
+        </form>
+      </div>
+      <div class="community-reviews-container">
+        <% @feedbacks_full.each do |feedback| %>
+          <div class="review-card">
+            <div class="review-card top-container">
+              <div class="avatar-picture">
+                <% if User.find(feedback.user_id).facebook_picture_url %>
+                  <%= image_tag(User.find(feedback.user_id).facebook_picture_url, class: "avatar") %>
+                <% else %>
+                  <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar") %>
+                <% end %>
+              </div>
+              <div class="username"><%= User.where(id: feedback.user_id)[0].first_name + " " + User.where(id: feedback.user_id)[0].last_name %></div>
+              <div class="user-rating"><%= feedback.rating %>/10</div>
+            </div>
+            <div class="review-card content-container">
+              <div class="review-comment"><%= feedback.comment %></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
