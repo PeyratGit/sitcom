@@ -58,42 +58,37 @@ end
 puts "TV shows creation done !"
 
 puts "Creating users..."
-# urls = ["https://avatars.githubusercontent.com/u/52168643?v=4", "https://avatars.githubusercontent.com/u/95384661?v=4", "https://avatars.githubusercontent.com/u/96342482?v=4", "https://avatars.githubusercontent.com/u/78359730?v=4"]
-emails = ["peyrat.clement@gmail.com", "reynal.julie@gmail.com", "ouarzazi.sidney@gmail.com", "deguitre.canelle@gmail.com"]
-passwords = ["adminp", "adminr", "admino", "admind"]
-first_names = ["Clément", "Julie", "Sidney", "Canelle"]
-last_names = ["Peyrat", "Reynal", "Ouarzazi", "Deguitre"]
-usernames = ["cpeyrat", "jreynal", "souarzazi", "cdeguitre"]
+urls = ["https://avatars.githubusercontent.com/u/52168643?v=4", "https://avatars.githubusercontent.com/u/95384661?v=4", "https://avatars.githubusercontent.com/u/96342482?v=4", "https://avatars.githubusercontent.com/u/78359730?v=4","https://avatars.githubusercontent.com/u/93845046?v=4", "https://avatars.githubusercontent.com/u/93552707?v=4", "https://avatars.githubusercontent.com/u/93259262?v=4", "https://avatars.githubusercontent.com/u/95241063?v=4"]
+emails = ["peyrat.clement@gmail.com", "reynal.julie@gmail.com", "ouarzazi.sidney@gmail.com", "deguitre.canelle@gmail.com","teddy@gmail.com", "thomas@gmail.com", "gala@gmail.com", "lucien@gmail.com"]
+passwords = ["adminp", "adminr", "admino", "admind", "admint", "admint", "adming", "adminkl"]
+first_names = ["Clément", "Julie", "Sidney", "Canelle", "Teddy", "Thomas", "Gala", "Lucien"]
+last_names = ["Peyrat", "Reynal", "Ouarzazi", "Deguitre", "Bandama", "Loubet", "Thevenet", "Lagorce"]
+usernames = ["cpeyrat", "jreynal", "souarzazi", "cdeguitre", "tbandama", "tloubet", "gthevenet", "llagorce"]
 
 user_index = 0
-4.times do
+8.times do
   User.create!(
     email: emails[user_index],
     password: passwords[user_index],
     first_name: first_names[user_index],
     last_name: last_names[user_index],
-    username: usernames[user_index]
+    username: usernames[user_index],
+    facebook_picture_url: urls[user_index]
   )
-  # file_url = urls[i]
-  # users_models = User.all
-  # users_models[i].photo.attach(
-  #   io: URI.open(file_url),
-  #   filename: "file#{i}.jpg"
-  # )
   user_index += 1
 end
 puts "Users creation done !"
 
 puts "Creating feedbacks..."
 statuses = ['Unwatched', 'Dislike', 'Like', 'Superlike']
-comments = ['Nice tv show', 'Story is great', 'I liked the first season']
+comments = ["The beginning of the tv show is very great. Unfortunately the final season is not as exciting as the first ones but still worth binge watching it !", "Actors are marvellous and story is great. You wont get bored if you decide to watch it", "I liked it from beginning to end. You should definitely wathc it !", "I think this is the best tv show ever", "A bit disappointing even if actors are good.", "THAT'S THE BEST SHOW EVER!!!!", "Characters are very well defined. Synopsis is intelligently done.But still at the end, I was annoyed when I watched it..."]
 ratings = [3, 4, 5]
 users = User.all
 user_index = 0
 
-4.times do
+8.times do
   tv_shows = TvShow.all
-  3.times do
+  5.times do
     tv_show = tv_shows.sample
     Feedback.create!(
       status: statuses.sample,
@@ -102,7 +97,7 @@ user_index = 0
     )
     tv_shows.reject { |show| show.id == tv_show.id }
   end
-  2.times do
+  5.times do
     tv_show = tv_shows.sample
     Feedback.create!(
       status: ['Like', 'Superlike'].sample,
@@ -121,52 +116,19 @@ puts "Feedbacks creation done !"
 puts "Creating follows..."
 users = User.all
 
-Follow.create!(
-  follower_id: users[0].id,
-  following_id: users[1].id
-)
-Follow.create!(
-  follower_id: users[0].id,
-  following_id: users[2].id
-)
-Follow.create!(
-  follower_id: users[0].id,
-  following_id: users[3].id
-)
-Follow.create!(
-  follower_id: users[1].id,
-  following_id: users[0].id
-)
-Follow.create!(
-  follower_id: users[1].id,
-  following_id: users[2].id
-)
-Follow.create!(
-  follower_id: users[1].id,
-  following_id: users[3].id
-)
-Follow.create!(
-  follower_id: users[2].id,
-  following_id: users[0].id
-)
-Follow.create!(
-  follower_id: users[2].id,
-  following_id: users[1].id
-)
-Follow.create!(
-  follower_id: users[2].id,
-  following_id: users[3].id
-)
-Follow.create!(
-  follower_id: users[3].id,
-  following_id: users[0].id
-)
-Follow.create!(
-  follower_id: users[3].id,
-  following_id: users[1].id
-)
-Follow.create!(
-  follower_id: users[3].id,
-  following_id: users[2].id
-)
+follower_index = 0
+8.times do
+  following_index = 0
+  8.times do
+    if follower_index != following_index
+      Follow.create!(
+        follower_id: users[follower_index].id,
+        following_id: users[following_index].id
+      )
+    end
+    following_index += 1
+  end
+  follower_index += 1
+end
+
 puts "Follows creation done !"
