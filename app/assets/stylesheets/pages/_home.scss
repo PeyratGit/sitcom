@@ -62,11 +62,11 @@
   border-radius: 1rem;
 }
 
-.container, h1{
+.container h1{
   color: $textcolor;
 }
 
-.card-product-infos, h2 {
+.card-product-infos h2 {
   text-align: center;
   display: flex;
   flex-direction: column;
