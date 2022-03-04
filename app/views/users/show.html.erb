@@ -3,18 +3,18 @@
 
     <div class="user-header d-flex d-inline justify-content-between align-items-center my-2">
       <div class='mx-2'>
-        <%= image_tag(@user.facebook_picture_url, :class => "avatar-xlarge") %>
+        <%= image_tag(@user.facebook_picture_url, class: "avatar-xlarge") %>
       </div>
-      <div class='mx-2 align-items-center'>
-        <div><%= @user.feedbacks.count %></div>
+      <div class=' mx-2 align-items-center'>
+        <div class="user-header-info text-center"><%= @user.feedbacks.count %></div>
         <p class = "mb-0">watched</p>
       </div>
       <div class='mx-2 align-items-center'>
-        <div><%= @following.count %></div>
+        <div class="user-header-info text-center"><%= @following.count %></div>
         <p class = "mb-0">followings</p>
       </div>
       <div class='mx-2 align-items-center'>
-        <div><%= @followers.count %></div>
+        <div class="user-header-info text-center"><%= @followers.count %></div>
         <p class = "mb-0">followers</p>
       </div>
     </div>
@@ -24,7 +24,7 @@
       <p class="user-description">description</p>
     </div>
 
-    <%= link_to "Follow", "/ruby-book" %>
+    <%= link_to "Follow", "/ruby-book", class: "follow-button my-3" %>
 
     <div>
       <h5><%= @user.first_name %>'s Superlikes list</h5>
@@ -75,27 +75,27 @@
       <h4>Activity</h4>
 
       <% @feedbacks.each do |feedback| %>
-        <div class = "review-card">
+        <div class = "review-card px-3 d-flex align-items-center">
           <% if feedback.status == "Dislike" %>
-            <p><%=  @user.first_name %> <i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <%= feedback.tv_show.title%> <span class="feedback-time"><%= time_ago_in_words(feedback.updated_at) %></span></p>
+            <p class="mb-0 py-2"><%=  @user.first_name %> <i class="fa fa-thumbs-o-down px-2" aria-hidden="true"></i> <%= feedback.tv_show.title%> <span class="feedback-time px-2"><%= time_ago_in_words(feedback.updated_at) %></span></p>
           <% elsif feedback.status == "Like" %>
-            <p><%=  @user.first_name %>  <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <%= feedback.tv_show.title%> <span class="feedback-time"><%= time_ago_in_words(feedback.created_at) %></span></p>
+            <p class="mb-0 py-2"><%=  @user.first_name %>  <i class="fa fa-thumbs-o-up px-2" aria-hidden="true"></i> <%= feedback.tv_show.title%> <span class="feedback-time px-2"><%= time_ago_in_words(feedback.created_at) %></span></p>
           <% elsif feedback.status == "Superlike" %>
-            <p><%=  @user.first_name %>  <i class="fa fa-heart" aria-hidden="true"></i> <%= feedback.tv_show.title%> <span class="feedback-time"><%= time_ago_in_words(feedback.created_at) %></span></p>
+            <p class="mb-0 py-2"><%=  @user.first_name %>  <i class="fa fa-heart px-2" aria-hidden="true"></i> <%= feedback.tv_show.title%> <span class="feedback-time px-2"><%= time_ago_in_words(feedback.created_at) %></span></p>
           <% end %>
         </div>
         <% if feedback.comment %>
-          <div class = "review-card">
-            <p><%=  @user.first_name %> gave feedback on <%= feedback.tv_show.title%></p>
+          <div class = "review-card px-3">
+            <p class="my-2"><%=  @user.first_name %> gave feedback on <%= feedback.tv_show.title%></p>
             <div class = "card-mini-tvshow d-flex d-inline">
               <%= image_tag(feedback.tv_show.poster_url, style: 'height:100%; width:20%') %>
-              <div>
-                <p><%= feedback.tv_show.title%></p>
-                <p>directed by <%= feedback.tv_show.director %></p>
-                <p><%= feedback.rating %></p>
-                <p><%= feedback.comment %></p>
+              <div class = "px-3">
+                <p class = "mb-0"><%= feedback.tv_show.title%></p>
+                <p class = "mb-0">directed by <%= feedback.tv_show.director %></p>
+                <p class = "mb-0"><%= feedback.rating %></p>
               </div>
             </div>
+            <p class="mt-3 mb-0"><%= feedback.comment %></p>
             <p class="feedback-time"><%= time_ago_in_words(feedback.created_at) %></p>
           </div>
         <% end %>
