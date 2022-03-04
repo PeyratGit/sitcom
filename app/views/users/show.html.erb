@@ -77,7 +77,7 @@
       <% @feedbacks.each do |feedback| %>
         <div class = "review-card">
           <% if feedback.status == "Dislike" %>
-            <p><%=  @user.first_name %> <i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <%= feedback.tv_show.title%> <span class="feedback-time"><%= time_ago_in_words(feedback.updated_at) %></span></p>
+            <p><%=  @user.first_name %><i class="fa fa-thumbs-o-down" aria-hidden="true"></i><%= feedback.tv_show.title%> <span class="feedback-time"><%= time_ago_in_words(feedback.updated_at) %></span></p>
           <% elsif feedback.status == "Like" %>
             <p><%=  @user.first_name %>  <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <%= feedback.tv_show.title%> <span class="feedback-time"><%= time_ago_in_words(feedback.created_at) %></span></p>
           <% elsif feedback.status == "Superlike" %>
