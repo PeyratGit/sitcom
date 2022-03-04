@@ -1,0 +1,18 @@
+<div class="scores-number" data-controller="votes-scores">
+  <span><%= @tv_show.imdb_rating %></span>
+  <span data-votes-scores-target="superlikescore"><%= @feedbacks_superlike_number = Feedback.where(tv_show_id: @tv_show.id, status: "Superlike").count %></span>
+  <span data-votes-scores-target="likescore">
+    <% if @feedbacks_like_number.nil? %>
+      <%= 0 %>
+    <% else %>
+      <%= @feedbacks_like_number %>
+    <% end %>
+  </span>
+  <span data-votes-scores-target="dislikescore">
+    <% if @feedbacks_dislike_number.nil? %>
+      <%= 0 %>
+    <% else %>
+      <%= @feedbacks_dislike_number %>
+    <% end %>
+  </span>
+</div>
