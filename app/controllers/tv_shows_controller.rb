@@ -1,6 +1,7 @@
 class TvShowsController < ApplicationController
   def index
     @tv_shows = TvShow.all
+    @follows = current_user.followings
   end
 
   def show

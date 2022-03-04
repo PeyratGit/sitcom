@@ -19,6 +19,7 @@
           </div>
         <% end %>
     </div>
+    <%# Community rating row %>
     <div class="recommendation-title">
       Recommendations from the community
     </div>
@@ -54,8 +55,9 @@
         <% end %>
       <% end %>
     </div>
+    <%# Top rated on imdb row %>
     <div class="recommendation-title">
-      Top rated
+      Top rated on IMDb
     </div>
     <div class="index-cards-container">
       <% @tv_shows.order(imdb_rating: :desc).each do |tv_show| %>
@@ -79,13 +81,16 @@
         <% end %>
       <% end %>
     </div>
-    <div class="recommendation-title">
-      <% random_user = User.order('RANDOM()').first %>
-      <%= "Liked by #{random_user.first_name} #{random_user.last_name}" %>
+    <%# Random user liked this row %>
+    <div class="recommendation-title" id="follow-like-this">
+      <% random_followed_user = current_user.followings.order('RANDOM()').first %>
+      <%= link_to user_path(random_followed_user.id) do %>
+        <%= "Liked by #{random_followed_user.first_name}" %>
+      <% end %>
     </div>
     <div class="index-cards-container">
       <% @tv_shows.order(imdb_rating: :desc).each do |tv_show| %>
-        <% if tv_show.feedbacks.where(user_id: random_user.id).empty? == false %>
+        <% if tv_show.feedbacks.where(user_id: random_followed_user.id).empty? == false %>
           <%= link_to tv_show_path(tv_show) do %>
             <div class="card-tv-show-small">
               <div class="tv-show-poster">
@@ -104,6 +109,28 @@
               </div>
             </div>
           <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    <%# Follows row %>
+    <div class="recommendation-title">
+      You are following these people
+    </div>
+    <div class="index-follows-container">
+      <% @follows.each do |follow| %>
+        <%= link_to user_path(follow.id) do %>
+          <div class="follow-user-container">
+            <div class="follow-avatar-container">
+              <% if follow.facebook_picture_url.nil? %>
+                <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar") %>
+              <% else %>
+                <%= image_tag(follow.facebook_picture_url, class: "avatar") %>
+              <% end %>
+            </div>
+            <div class="follow-names-container">
+              <%= "#{follow.first_name}" %>
+            </div>
+          </div>
         <% end %>
       <% end %>
     </div>
