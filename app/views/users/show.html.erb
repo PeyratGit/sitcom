@@ -3,7 +3,11 @@
 
     <div class="user-header d-flex d-inline justify-content-between align-items-center my-2">
       <div class='mx-2'>
-        <%= image_tag(@user.facebook_picture_url, :class => "avatar-xlarge") %>
+        <% if @user.facebook_picture_url.nil? %>
+          <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", :class => "avatar-xlarge") %>
+        <% else %>
+          <%= image_tag(@user.facebook_picture_url, :class => "avatar-xlarge") %>
+        <% end %>
       </div>
       <div class='mx-2 align-items-center'>
         <div><%= @user.feedbacks.count %></div>
