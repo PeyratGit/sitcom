@@ -1,23 +1,30 @@
 // Specific CSS for your home-page
-.chanels, .love2{
+.chanels, .play{
   width: 100%;
   background-size: cover;
   background-image: -o-linear-gradient(rgb(15, 18, 22) 0%, rgb(39, 42, 48) 100%);
+  padding: 3%
 }
 
-.love2 {
+.play {
   width: 100%;
   background-size: cover;
+  margin-top: -14%;
+  margin-bottom: -15%;
 }
 .heart {
-  width: 50%;
+  width: 100%;
   background-size: cover;
+  margin-top: -11%;
+  margin-bottom: -15%;
   background-image: -o-linear-gradient(rgb(15, 18, 22) 0%, rgb(39, 42, 48) 100%);
-  margin-top: 1%;
 }
 
-.title {
-  margin-top: -15%;
+.title-home {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10%;
 }
 
 .title2 {
@@ -27,46 +34,53 @@
 
 .title3 {
   margin-top: 10%;
-}
-.content {
-  display: flex;
+
 }
 
 .container_two {
   margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+.container_one {
+  border-color: #32E0C4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .container, h1{
   color: $textcolor;
 }
 
 .card-product-infos, h2 {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $textcolor;
 }
 
 .btn-ghost {
-  width: 100%;
-  color: #139aa0;
-  border: 2px solid #139aa0;
   padding: 8px 24px;
   border-radius: 50px;
   font-weight: bold;
-  opacity: 0.5;
-  transition: opacity 0.3s ;
+  transition: opacity 0.3s;
   margin-top: 2%;
+  display: flex;
+  border: 3px solid #7CE7EC;
+  width: 45%;
+  flex-direction: column;
 }
 
 .btn-ghost:hover {
   opacity: 0.7;
+  background-color: $color2;
+  border-color: $color1;
+  color: $color1;
 }
 
 .container_one, .container_two, .all_platform {
   border-color: $color1;
-}
-
-.index-global-container {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  padding: 5px;
 }

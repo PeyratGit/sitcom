@@ -13,13 +13,13 @@
       </div>
     <% end %>
   </div>
-  <div class="cards">
+  <div class="cards-friends">
     <% @users.each do |user| %>
     <div class="card-friends">
       <% if user.facebook_picture_url.nil? %>
-      <%= image_tag "avatar"%>
-      <% else %>
-        <%= image_tag(user.facebook_picture_url) %>
+      <%= image_tag "avatar3.png"%>
+      <% else %> 
+        <%= image_tag(user.facebook_picture_url)%>
       <% end %>
         <div class="card-friends-infos">
           <h2><%= user.first_name %> <%= user.last_name %></h2>
