@@ -16,27 +16,28 @@
   <div class="tab-container">
   <ul class="list-inline tabs-underlined">
     <li>
-      <a href="/search/tv_shows" class="tab-underlined activated">TV shows</a>
+      <a href="/search/tv_shows" class="tab-underlined">TV shows</a>
     </li>
     <li>
-      <a href="/search/users" class="tab-underlined">Users</a>
+      <a href="/search/users" class="tab-underlined activated">Users</a>
     </li>
   </ul>
   </div>
-  <% @tv_shows.each do |tv_show| %>
-  <%= link_to tv_show_path(tv_show), class: "list-link" do %>
-    <div class="card-purchase mb-2">
-      <img src=<%= tv_show.poster_url %>>
-      <div class="card-purchase-infos">
-        <div class="card-purchase-details">
-          <h2><%= tv_show.title %></h2>
-        </div>
-        <div class="card-purchase-score">
-          <p class="px-2"><%= tv_show.imdb_rating %></p>
-          <i class="fa fa-users"></i>
+  <div class="cards-friends">
+    <% @users.each do |user| %>
+    <%= link_to user_path(user), class: "list-link" do %>
+    <div class="card-friends">
+      <% if user.facebook_picture_url.nil? %>
+      <%= image_tag "avatar3.png"%>
+      <% else %>
+        <%= image_tag(user.facebook_picture_url)%>
+      <% end %>
+        <div class="card-friends-infos">
+          <h2><%= user.first_name %> <%= user.last_name %></h2>
+          <p><button id="follow-button">Follow</button></p>
         </div>
       </div>
-    </div>
-  <% end %>
-  <% end %>
+    <% end %>
+    <% end %>
+  </div>
 </div>

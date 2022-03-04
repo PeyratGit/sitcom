@@ -1,39 +1,65 @@
 // Specific CSS for your home-page
-.chanels, .love2{
+.chanels, .play{
   width: 100%;
   background-size: cover;
   background-image: -o-linear-gradient(rgb(15, 18, 22) 0%, rgb(39, 42, 48) 100%);
+  padding: 3%
 }
 
-.love2 {
+.play {
   width: 100%;
   background-size: cover;
+  margin-top: -14%;
+  margin-bottom: -15%;
 }
 .heart {
-  width: 50%;
+  width: 100%;
   background-size: cover;
+  margin-top: -11%;
+  margin-bottom: -15%;
   background-image: -o-linear-gradient(rgb(15, 18, 22) 0%, rgb(39, 42, 48) 100%);
-  margin-top: 1%;
 }
 
-.title {
-  margin-top: -15%;
+.title-home {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10%;
 }
 
 .title2 {
   margin-top: 10%;
   margin-right: 3%;
 }
-
-.title3 {
-  margin-top: 10%;
-}
-.content {
+.container_one {
+  margin-top: 5%;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: solid;
+  box-shadow: 0 0 2px 0px #dee2e699;
+  border-radius: 1rem;
 }
+
 
 .container_two {
   margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: solid;
+  box-shadow: 0 0 2px 0px #dee2e699;
+  border-radius: 1rem;
+}
+
+.container_three {
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: solid;
+  box-shadow: 0 0 2px 0px #dee2e699;
+  border-radius: 1rem;
 }
 
 .container, h1{
@@ -42,31 +68,31 @@
 
 .card-product-infos, h2 {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $textcolor;
+  border-bottom: solid;
+  margin-right: 5%;
+  margin-left: 5%;
 }
 
 .btn-ghost {
-  width: 100%;
-  color: #139aa0;
-  border: 2px solid #139aa0;
   padding: 8px 24px;
   border-radius: 50px;
   font-weight: bold;
-  opacity: 0.5;
-  transition: opacity 0.3s ;
+  transition: opacity 0.3s;
   margin-top: 2%;
+  display: flex;
+  border: 3px solid #7CE7EC;
+  width: 45%;
+  flex-direction: column;
+  margin-bottom: 3%;
 }
 
 .btn-ghost:hover {
   opacity: 0.7;
-}
-
-.container_one, .container_two, .all_platform {
+  background-color: $color2;
   border-color: $color1;
-}
-
-.index-global-container {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  padding: 5px;
+  color: $color1;
 }

@@ -1,7 +1,8 @@
 class Search::TvShowsController < ApplicationController
   def index
     if params[:query].present?
-      @tv_shows = TvShow.where("title ILIKE ?", "%#{params[:query]}%")
+      sql_query = "title ILIKE :query OR genre ILIKE :query"
+      @tv_shows = TvShow.where(sql_query, query: "%#{params[:query]}%")
     else
       @tv_shows = TvShow.all
     end
