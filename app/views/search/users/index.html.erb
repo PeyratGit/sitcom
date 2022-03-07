@@ -1,43 +1,36 @@
 <div class="index-global-container-true">
   <div class="search-bar">
-      <%= form_tag search_tv_shows_path,class:"simple_form search", autocomplete:"off", method: :get do %>
-        <div class="search-form-control form-group">
-          <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Search"
-          %>
-          <button name="button" type="submit" class="btn btn-flat" id="search-btn">
-            <i class="fa fa-search" id="search-icon"></i>
-          </button>
-        </div>
-      <% end %>
-  </div>
-  <div class="tab-container">
-  <ul class="list-inline tabs-underlined">
-    <li>
-      <a href="/search/tv_shows" class="tab-underlined">TV shows</a>
-    </li>
-    <li>
-      <a href="/search/users" class="tab-underlined activated">Users</a>
-    </li>
-  </ul>
-  </div>
-  <div class="cards-friends">
-    <% @users.each do |user| %>
-    <%= link_to user_path(user), class: "list-link" do %>
-    <div class="card-friends">
-      <% if user.facebook_picture_url.nil? %>
-      <%= image_tag "avatar3.png"%>
-      <% else %>
-        <%= image_tag(user.facebook_picture_url)%>
-      <% end %>
-        <div class="card-friends-infos">
-          <h2><%= user.first_name %> <%= user.last_name %></h2>
-          <p><button id="follow-button">Follow</button></p>
-        </div>
+    <%= form_tag search_tv_shows_path,class:"simple_form search", autocomplete:"off", method: :get do %>
+      <div class="search-form-control form-group">
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Search"
+        %>
+        <button name="button" type="submit" class="btn btn-flat" id="search-btn">
+          <i class="fa fa-search" id="search-icon"></i>
+        </button>
       </div>
     <% end %>
+  </div>
+
+  <div class="tab-container">
+    <ul class="list-inline tabs-underlined">
+      <li>
+        <a href="/search/tv_shows" class="tab-underlined">TV shows</a>
+      </li>
+      <li>
+        <a href="/search/users" class="tab-underlined activated">Users</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="cards-friends">
+    <% @users.each do |user| %>
+      <div data-user=<%= user.id %>>
+        <%= render "search/users/user", user:user %>
+      </div>
     <% end %>
   </div>
+
 </div>
