@@ -79,6 +79,12 @@
             <% end %>
           </div>
       </div>
+      <% follows_seen_it = [] %>
+      <% @follows.each do |follow| %>
+        <% if Feedback.find_by(tv_show_id: @tv_show.id, user_id: follow.id).nil? == false %>
+          <% follows_seen_it.append(follow) %>
+        <% end %>
+      <% end %>
       <div class="followers-seen-container">
         <div class="users-pile-container">
           <% @follows.each do |follow| %>
@@ -94,14 +100,9 @@
           <% end %>
         </div>
         <div class="followers-seen-info">
-          <% follows_seen_it = [] %>
-          <% @follows.each do |follow| %>
-            <% if Feedback.find_by(tv_show_id: @tv_show.id, user_id: follow.id).nil? == false %>
-              <% follows_seen_it.append(follow) %>
-            <% end %>
-          <% end %>
           <% string_follows = pluralize(follows_seen_it.length - 1, "other") %>
-          <% if follows_seen_it.length <= 1%>
+          <% if follows_seen_it.empty? %>
+          <% elsif follows_seen_it.length == 1%>
             <%= "#{follows_seen_it.last.first_name} has seen it" %>
           <% else %>
             <%= "#{follows_seen_it.last.first_name} and #{string_follows} have seen it" %>
