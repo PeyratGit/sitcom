@@ -158,7 +158,7 @@
 .card-friends {
   display: flex;
   width: 100%;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
   flex-direction: row;
   align-items: center;
 }
@@ -209,7 +209,7 @@
   flex-direction: column;
 }
 
-.unfollow-button {
+.following-button {
   color: #EEEEEE;
   background-color: green;
   border: 1px solid;
