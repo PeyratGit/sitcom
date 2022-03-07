@@ -1,6 +1,6 @@
 <div class="scores-number">
   <span><%= (((feedbacks_like_number.to_f + (feedbacks_superlike_number.to_f))/(feedbacks_like_number.to_f+feedbacks_superlike_number.to_f+feedbacks_dislike_number.to_f))*100).round %></span>
-  <span data-votes-target="superlikes"><%= feedbacks_superlike_number = Feedback.where(tv_show_id: tv_show.id, status: "Superlike").count %></span>
+  <span data-votes-target="superlikes", class="lineUp"><%= feedbacks_superlike_number = Feedback.where(tv_show_id: tv_show.id, status: "Superlike").count %></span>
   <span data-votes-target="likes">
     <% if feedbacks_like_number.nil? %>
       <%= 0 %>

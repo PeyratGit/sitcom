@@ -88,8 +88,16 @@
       <% if follows_seen_it.empty? == false %>
         <div class="followers-seen-container">
           <div class="users-pile-container">
-            <% @follows.each do |follow| %>
-              <% if Feedback.find_by(tv_show_id: @tv_show.id, user_id: follow.id).nil? == false %>
+            <% follows_seen_it.each do |follow| %>
+              <% if follows_seen_it.length == 1 %>
+                <%= link_to user_path(follow.id), style:"right:50%" do %>
+                  <% if follow.facebook_picture_url.nil? %>
+                    <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar") %>
+                  <% else %>
+                    <%= image_tag(follow.facebook_picture_url, class: "avatar") %>
+                  <% end %>
+                <% end %>
+              <% else %>
                 <%= link_to user_path(follow.id) do %>
                   <% if follow.facebook_picture_url.nil? %>
                     <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar") %>
