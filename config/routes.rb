@@ -8,9 +8,12 @@ Rails.application.routes.draw do
 
   resources :tv_shows, only: [:index, :show, :my] do
     resources :feedbacks, only: [:create, :update]
-    resources :wishes, only: [:index, :create]
+    resources :wishes, only: [:create]
   end
+
   resources :users, only: [:index, :show]
+
+  resources :wishes, only: [:index, :destroy]
 
   namespace :my do
     resources :tv_shows, only: :index

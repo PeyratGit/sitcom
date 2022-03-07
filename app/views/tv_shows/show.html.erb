@@ -2,11 +2,22 @@
   <div class="index-global-container-true">
     <div class="tv-show-top-container" style="background-image: linear-gradient(rgba(15, 18, 22, 0), rgba(39, 42, 48, 0.9)),url('<%= @tv_show.poster_url %>');">
       <div class="tv-show-main-infos-container">
+
         <div class="back-button" id="back-show">
           <%= link_to :back do %>
             <i class="fa fa-arrow-left"></i>
           <% end %>
         </div>
+
+        <div id="wishlist-button" data-controller="wish-button", data-action="click->wish-button#addOrRemoveWishlist">
+          <%= render 'shared/wishlist-button' %>
+          <%= simple_form_for([@tv_show, @wish], html: { class: "d-none" }) do |f| %>
+          <%= f.button :submit, data: { wish_button_target: 'inwishlistbtn' } %>
+          <% end %>
+          <%# 'delete', { controller: "users", action: "destroy", id: user.id } %>
+          <%= link_to wishes_path, html: { class: "d-none" }, method: :delete, data: { wish_button_target: 'outofwishlistbtn' } %>
+        </div>
+
         <div class="title-show-page">
           <%= @tv_show.title %>
         </div>
