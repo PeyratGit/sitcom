@@ -54,6 +54,8 @@ const initTinder = () => {
 
         var moveOutWidth = document.body.clientWidth;
         var keep = Math.abs(event.deltaX) < 80 || Math.abs(event.velocityX) < 0.5;
+        var lovebtn = document.querySelector('.tinder--card:not(.removed) .love-btn');
+        var nopebtn = document.querySelector('.tinder--card:not(.removed) .nope-btn');
 
         event.target.classList.toggle('removed', !keep);
 
@@ -67,8 +69,6 @@ const initTinder = () => {
           var xMulti = event.deltaX * 0.03;
           var yMulti = event.deltaY / 80;
           var rotate = xMulti * yMulti;
-          var lovebtn = document.querySelector('.tinder--card:not(.removed) .love-btn');
-          var nopebtn = document.querySelector('.tinder--card:not(.removed) .nope-btn');
           if (event.deltaX > 0) {
             lovebtn.click();
           } else {
