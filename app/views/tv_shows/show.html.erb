@@ -24,7 +24,9 @@
     <div class="community-infos-container">
       <div class="watched-by-users">
       </div>
-      <%= render 'shared/likes-votes-scores' %>
+      <div data-votes-target="scores" class="partial-scores-container">
+        <%= render 'shared/likes-votes-scores', tv_show: @tv_show, feedbacks_superlike_number: @feedbacks_superlike_number, feedbacks_like_number: @feedbacks_like_number, feedbacks_dislike_number: @feedbacks_dislike_number %>
+      </div>
       <div class="scores-text">
         <span>Rating</span>
         <span>
