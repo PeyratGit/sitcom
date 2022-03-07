@@ -81,18 +81,27 @@
       </div>
       <div class="followers-seen-container">
         <div class="users-pile-container">
-          <% @follows.first(3).each do |follow| %>
-            <%= link_to user_path(follow.id) do %>
-              <% if follow.facebook_picture_url.nil? %>
-                <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar") %>
-              <% else %>
-                <%= image_tag(follow.facebook_picture_url, class: "avatar") %>
+          <% @follows.each do |follow| %>
+            <% if Feedback.find_by(tv_show_id: @tv_show.id, user_id: follow.id).nil? == false %>
+              <%= link_to user_path(follow.id) do %>
+                <% if follow.facebook_picture_url.nil? %>
+                  <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar") %>
+                <% else %>
+                  <%= image_tag(follow.facebook_picture_url, class: "avatar") %>
+                <% end %>
               <% end %>
             <% end %>
           <% end %>
         </div>
         <div class="followers-seen-info">
-          <%= "#{@follows.first(3).last.first_name} and #{@follows.count - 1} others have seen it" %>
+          <% follows_seen_it = [] %>
+          <% @follows.each do |follow| %>
+            <% if Feedback.find_by(tv_show_id: @tv_show.id, user_id: follow.id).nil? == false %>
+              <% follows_seen_it.append(follow) %>
+            <% end %>
+          <% end %>
+          <% string_follows = pluralize(follows_seen_it.length - 1, "other") %>
+          <%= "#{follows_seen_it.last.first_name} and #{string_follows} have seen it" %>
         </div>
       </div>
       <div class="bottom-border-div">
