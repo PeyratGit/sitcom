@@ -6,6 +6,7 @@ class TvShowsController < ApplicationController
 
   def show
     @tv_show = TvShow.find(params[:id])
+    @follows = current_user.followings
     @feedbacks_empty = Feedback.where(tv_show_id: @tv_show.id, comment: nil)
     @feedbacks_full = Feedback.where(tv_show_id: @tv_show.id).where.not(comment: nil)
     @feedbacks_like_number = Feedback.where(tv_show_id: @tv_show.id, status: "Like").count

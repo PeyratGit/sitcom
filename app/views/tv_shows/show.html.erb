@@ -79,7 +79,24 @@
             <% end %>
           </div>
       </div>
-      <div class="bottom-border-div"></div>
+      <div class="followers-seen-container">
+        <div class="users-pile-container">
+          <% @follows.first(3).each do |follow| %>
+            <%= link_to user_path(follow.id) do %>
+              <% if follow.facebook_picture_url.nil? %>
+                <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar") %>
+              <% else %>
+                <%= image_tag(follow.facebook_picture_url, class: "avatar") %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="followers-seen-info">
+          <%= "#{@follows.first.first_name} and #{@follows.count} others have seen it" %>
+        </div>
+      </div>
+      <div class="bottom-border-div">
+      </div>
     </div>
     <div class="main-reviews-container">
       <span class="title-show-page"><%= pluralize(@feedbacks_full_number, 'Feedback') %></span>
