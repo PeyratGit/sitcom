@@ -14,7 +14,7 @@
         <p class = "mb-0">watched</p>
       </div>
       <div class='mx-2 align-items-center'>
-        <div class="user-header-info text-center"><%= @following.count %></div>
+        <div class="user-header-info text-center"><%= @followings.count %></div>
         <p class = "mb-0">followings</p>
       </div>
       <div class='mx-2 align-items-center'>
@@ -28,7 +28,10 @@
       <p class="user-description">description</p>
     </div>
 
-    <%= link_to "Follow", "/ruby-book", class: "follow-button my-3" %>
+    <div class="btn-follow" id="user-follow">
+    <%= render "users/btnfollow"%>
+    </div>
+
     <div>
       <h5><%= @user.first_name %>'s Superlikes list</h5>
        <div class="index-cards-container">

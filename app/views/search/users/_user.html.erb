@@ -12,9 +12,9 @@
       <h2><%= user.first_name %> <%= user.last_name %></h2>
     </div>
       <% if current_user.is_following?(user.id) %>
-        <%= link_to "Unfollow", unfollow_search_user_path(user.id), method: :post, remote: true, class: "unfollow-button"%>
+        <%= link_to "Follow", unfollow_search_user_path(user.id), method: :post, remote: true, class: "follow-button"%>
       <% else %>
-        <%= link_to "Follow", follow_search_user_path(user.id), method: :post, remote: true, class: "follow-button" %>
+        <%= link_to "Following", follow_search_user_path(user.id), method: :post, remote: true, class: "following-button" %>
       <% end %>
     </div>
   <%end %>
