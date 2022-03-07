@@ -2,6 +2,11 @@
   color: $color1;
 }
 
+.play-btn {
+  background-color: #7CE7EC;
+  color: #212529;
+}
+
 .btn-interaction {
   position: relative;
   height: 62px;
@@ -142,9 +147,4 @@
   position: absolute;
   left: 10px;
   top: 79px;
-}
-
-.btn-signin-fb {
-  background-color: #3b5998;
-  border-radius: 4px;
 }
