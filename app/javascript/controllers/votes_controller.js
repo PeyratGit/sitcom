@@ -12,11 +12,11 @@ export default class extends Controller {
     }
   }
   changescores(event) {
-    console.log(event)
+    this.scoresTarget.innerHTML = event.detail[0].response
   }
   like(event) {
     event.preventDefault();
-    
+
     // this.likesTarget.innerText = parseInt(this.likesTarget.innerText) + 1;
     // if (parseInt(this.dislikesTarget.innerText) > 0) {
     //   this.dislikesTarget.innerText = parseInt(this.dislikesTarget.innerText) - 1;
