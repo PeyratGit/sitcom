@@ -121,15 +121,15 @@
         height: 42px;
         font-size: 36px;
         font-weight: bold;
-        animation: scale-in-center 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	      animation: slide-in-bottom 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
       }
-      @keyframes scale-in-center {
+      @keyframes slide-in-bottom {
         0% {
-          transform: scale(0);
-          opacity: 1;
+          transform: translateY(-10px);
+          opacity: 0;
         }
         100% {
-          transform: scale(1);
+          transform: translateY(0);
           opacity: 1;
         }
       }
