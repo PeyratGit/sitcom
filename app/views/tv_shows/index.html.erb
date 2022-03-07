@@ -83,31 +83,35 @@
     </div>
     <%# Random user liked this row %>
     <div class="recommendation-title" id="follow-like-this">
-      <% random_followed_user = current_user.followings.order('RANDOM()').first %>
-      <%= link_to user_path(random_followed_user.id) do %>
-        <%= "Liked by #{random_followed_user.first_name}" %>
+      <% if current_user.followings.count != 0 %>
+        <% random_followed_user = current_user.followings.order('RANDOM()').first %>
+        <%= link_to user_path(random_followed_user.id) do %>
+          <%= "Liked by #{random_followed_user.first_name}" %>
+        <% end %>
       <% end %>
     </div>
     <div class="index-cards-container">
       <% @tv_shows.order(imdb_rating: :desc).each do |tv_show| %>
-        <% if tv_show.feedbacks.where(user_id: random_followed_user.id).empty? == false %>
-          <%= link_to tv_show_path(tv_show) do %>
-            <div class="card-tv-show-small">
-              <div class="tv-show-poster">
-                <%= image_tag(tv_show.poster_url) %>
-              </div>
-              <div class="tv-show-infos">
-                <div class="tv-show-title">
-                  <%= tv_show.title %>
+        <% if current_user.followings.count != 0 %>
+          <% if tv_show.feedbacks.where(user_id: random_followed_user.id).empty? == false %>
+            <%= link_to tv_show_path(tv_show) do %>
+              <div class="card-tv-show-small">
+                <div class="tv-show-poster">
+                  <%= image_tag(tv_show.poster_url) %>
                 </div>
-                <div class="show-score">
-                  <p>
-                    <%= tv_show.imdb_rating %>
-                  </p>
-                  <i class="fa fa-star"></i>
+                <div class="tv-show-infos">
+                  <div class="tv-show-title">
+                    <%= tv_show.title %>
+                  </div>
+                  <div class="show-score">
+                    <p>
+                      <%= tv_show.imdb_rating %>
+                    </p>
+                    <i class="fa fa-star"></i>
+                  </div>
                 </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
