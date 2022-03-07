@@ -1,14 +1,15 @@
 <div class="scores-number">
-  <span><%= tv_show.imdb_rating %></span>
-  <span><%= feedbacks_superlike_number = Feedback.where(tv_show_id: tv_show.id, status: "Superlike").count %></span>
-  <span>
+  <% raise %>
+  <span><%= ((feedbacks_like_number+feedbacks_superlike_number*2)/(feedbacks_like_number+feedbacks_superlike_number+feedbacks_dislike_number))*100 %></span>
+  <span data-votes-target="superlikes"><%= feedbacks_superlike_number = Feedback.where(tv_show_id: tv_show.id, status: "Superlike").count %></span>
+  <span data-votes-target="likes">
     <% if feedbacks_like_number.nil? %>
       <%= 0 %>
     <% else %>
       <%= feedbacks_like_number %>
     <% end %>
   </span>
-  <span>
+  <span data-votes-target="dislikes">
     <% if feedbacks_dislike_number.nil? %>
       <%= 0 %>
     <% else %>
