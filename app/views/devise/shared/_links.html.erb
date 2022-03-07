@@ -22,6 +22,7 @@
   <%- if devise_mapping.omniauthable? %>
     <%- resource_class.omniauth_providers.each do |provider| %>
       <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post, class: "btn-signin-fb form-fb mx-5"  %><br />
+      <%# <%= image_tag image_path('https://scontent-cdt1-1.xx.fbcdn.net/v/t39.2365-6/17639236_1785253958471956_282550797298827264_n.png?_nc_cat=105&ccb=1-5&_nc_sid=ad8a9d&_nc_ohc=Byi70Cw6twgAX9_069k&_nc_ht=scontent-cdt1-1.xx&oh=00_AT9BOUB8X181nJc_RypdW96PMq-OVzl5sDUOVmsBxkbrng&oe=622B4D56', style: 'height:36px; border-radius: 3px;' ) %>
     <% end %>
   <% end %>
 </div>
