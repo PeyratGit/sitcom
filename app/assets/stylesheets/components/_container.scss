@@ -242,26 +242,34 @@
 
 
 .followers-seen-container {
-  margin-bottom: 18px;
+  height: 40px;
   display: flex;
   flex-direction: row;
-  
+  margin-bottom: 5px;
+
   .users-pile-container {
     display: flex;
+    flex-direction: row-reverse;
     width: 60px;
     height: 30px;
     position: relative;
+    margin-right: 16px;
     a {
       position: absolute;
     }
     a:nth-child(1) {
-    left: 0%;
+    left: 47%;
     }
     a:nth-child(2) {
     left: 25%;
     }
     a:nth-child(3) {
-    left: 50%;
+    left: 0%;
     }
+  }
+  .followers-seen-info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
   }
 }

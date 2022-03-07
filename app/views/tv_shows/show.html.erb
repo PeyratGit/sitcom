@@ -92,7 +92,7 @@
           <% end %>
         </div>
         <div class="followers-seen-info">
-          <%= "#{@follows.first.first_name} and #{@follows.count} others have seen it" %>
+          <%= "#{@follows.first(3).last.first_name} and #{@follows.count - 1} others have seen it" %>
         </div>
       </div>
       <div class="bottom-border-div">
