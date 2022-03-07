@@ -243,9 +243,11 @@
 
 .followers-seen-container {
   height: 40px;
+  width: fit-content;
   display: flex;
   flex-direction: row;
   margin-bottom: 5px;
+  justify-content: flex-start;
 
   .users-pile-container {
     display: flex;
@@ -258,13 +260,13 @@
       position: absolute;
     }
     a:nth-child(1) {
-    left: 47%;
+    right: 0%;
     }
     a:nth-child(2) {
-    left: 25%;
+    right: 25%;
     }
     a:nth-child(3) {
-    left: 0%;
+    right: 50%;
     }
   }
   .followers-seen-info {

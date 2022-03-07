@@ -101,7 +101,11 @@
             <% end %>
           <% end %>
           <% string_follows = pluralize(follows_seen_it.length - 1, "other") %>
-          <%= "#{follows_seen_it.last.first_name} and #{string_follows} have seen it" %>
+          <% if follows_seen_it.length <= 1%>
+            <%= "#{follows_seen_it.last.first_name} has seen it" %>
+          <% else %>
+            <%= "#{follows_seen_it.last.first_name} and #{string_follows} have seen it" %>
+          <% end %>
         </div>
       </div>
       <div class="bottom-border-div">
