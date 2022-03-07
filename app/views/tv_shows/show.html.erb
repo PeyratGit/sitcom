@@ -48,9 +48,9 @@
           <% end %>
         </span>
         <span>
-          <% if @feedbacks_dilike_number == 0 %>
+          <% if @feedbacks_dislike_number == 0 %>
             <%= "Dislikes" %>
-          <% elsif @feedbacks_dilike_number == 1 %>
+          <% elsif @feedbacks_dislike_number == 1 %>
             <%= "Dislike" %>
           <% else %>
             <%= "Dislikes" %>
@@ -122,14 +122,12 @@
       <div class="bottom-border-div">
       </div>
     </div>
-    <div class="main-reviews-container">
+    <div class="main-reviews-container" data-controller="add-feedback" data-add-feedback-position-value="beforeend">
       <span class="title-show-page"><%= pluralize(@feedbacks_full_number, 'Feedback') %></span>
       <div class="add-feedback-container">
-        <form>
-          <input name="add-feedback" placeholder="Add a feedback" class="form-input">
-        </form>
+        <%= render "feedbacks/form" %>
       </div>
-      <div class="community-reviews-container">
+      <div class="community-reviews-container" data-add-feedback-target="feedbacks">
         <% @feedbacks_full.each do |feedback| %>
           <div class="review-card">
             <div class="review-card top-container">

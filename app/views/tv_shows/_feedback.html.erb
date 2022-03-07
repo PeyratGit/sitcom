@@ -1,0 +1,16 @@
+<div class="review-card">
+  <div class="review-card top-container">
+    <div class="avatar-picture">
+      <% if User.find(feedback.user_id).facebook_picture_url %>
+        <%= image_tag(User.find(feedback.user_id).facebook_picture_url, class: "avatar") %>
+      <% else %>
+        <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar") %>
+      <% end %>
+    </div>
+    <div class="username"><%= User.where(id: feedback.user_id)[0].first_name + " " + User.where(id: feedback.user_id)[0].last_name %></div>
+    <div class="user-rating"><%= feedback.rating %>/10</div>
+  </div>
+  <div class="review-card content-container">
+    <div class="review-comment"><%= feedback.comment %></div>
+  </div>
+</div>
