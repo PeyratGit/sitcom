@@ -15,13 +15,15 @@ export default class extends Controller {
     console.log(event)
   }
   like(event) {
-    this.likesTarget.innerText = parseInt(this.likesTarget.innerText) + 1;
-    if (parseInt(this.dislikesTarget.innerText) > 0) {
-      this.dislikesTarget.innerText = parseInt(this.dislikesTarget.innerText) - 1;
-    };
-    if (parseInt(this.superlikesTarget.innerText) > 0) {
-      this.superlikesTarget.innerText = parseInt(this.superlikesTarget.innerText) - 1;
-    };
+    event.preventDefault();
+    
+    // this.likesTarget.innerText = parseInt(this.likesTarget.innerText) + 1;
+    // if (parseInt(this.dislikesTarget.innerText) > 0) {
+    //   this.dislikesTarget.innerText = parseInt(this.dislikesTarget.innerText) - 1;
+    // };
+    // if (parseInt(this.superlikesTarget.innerText) > 0) {
+    //   this.superlikesTarget.innerText = parseInt(this.superlikesTarget.innerText) - 1;
+    // };
   }
   dislike(event) {
     console.log("salut")

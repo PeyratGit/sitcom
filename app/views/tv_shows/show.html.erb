@@ -28,7 +28,7 @@
         <%= render 'shared/likes-votes-scores', tv_show: @tv_show, feedbacks_superlike_number: @feedbacks_superlike_number, feedbacks_like_number: @feedbacks_like_number, feedbacks_dislike_number: @feedbacks_dislike_number %>
       </div>
       <div class="scores-text">
-        <span>Rating</span>
+        <span>% likes</span>
         <span>
           <% if @feedbacks_superlike_number = Feedback.where(tv_show_id: @tv_show.id, status: "Superlike").count == 0 %>
             <%= "Superlikes" %>
