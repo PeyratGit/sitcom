@@ -13,6 +13,16 @@ class UsersController < ApplicationController
     @feedbacks = @user.feedbacks.order(created_at: :desc)
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to user_path(current_user)
+  end
+
   def follow
     if current_user.follow(@user.id)
       respond_to do |format|
@@ -32,6 +42,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :description)
+  end
 
   def set_user
     @user = User.find(params[:id])

@@ -9,6 +9,7 @@
           <%= image_tag(@user.facebook_picture_url, :class => "avatar-xlarge") %>
         <% end %>
       </div>
+
       <div class=' mx-2 align-items-center'>
         <div class="user-header-info text-center"><%= @user.feedbacks.count %></div>
         <p class = "mb-0">watched</p>
@@ -25,7 +26,7 @@
 
     <div>
       <h2 class="user-description"><%= @user.first_name %> <%= @user.last_name %></h2>
-      <p class="user-description">description</p>
+      <p><%= @user.description %></p>
     </div>
 
     <div class="btn-follow" id="user-follow">
