@@ -1,3 +1,8 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 .footer {
   background: transparent;
   display: flex;
@@ -8,14 +13,16 @@
   color: $textcolor;
   border-top: solid;
   border-bottom: solid;
-  position: relative;
+  position: absolute;
   width: 100%;
   margin-top: 2%;
 }
+
 .footer-links {
   display: flex;
   align-items: center;
 }
+
 .footer-links a {
   color: $textcolor;
   text-decoration: none;
