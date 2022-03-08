@@ -1,9 +1,10 @@
-<%= simple_form_for([ @tv_show, @feedback],
+<%= simple_form_for([ @tv_show, @feedback_of_user],
                     data: {
                       add_feedback_target: "form",
-                      action: "submit->add-feedback#send"
+                      action: "submit->add-feedback#patch"
                     }) do |f| %>
   <%= f.input :comment, as: :text %>
   <%= f.input :rating, collection: 0..5 %>
+  <%= f.input :status, collection: ["Like", "Dislike", "Superlike"] %>
   <%= f.button :submit %>
 <% end %>

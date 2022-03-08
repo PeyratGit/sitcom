@@ -2,13 +2,10 @@ import { Controller } from "stimulus"
 import { csrfToken } from "@rails/ujs"
 
 export default class extends Controller {
-  static targets = ["feedbacks", "form"];
+  static targets = ["feedbacks", "form", "rating", "comment", "formEdit", "user_feedback_partial"];
   static values = { position: String }
 
   connect() {
-    console.log(this.element)
-    console.log(this.feedbacksTarget)
-    console.log(this.formTarget)
   }
   send(event) {
     event.preventDefault()
@@ -23,6 +20,24 @@ export default class extends Controller {
           this.feedbacksTarget.insertAdjacentHTML(this.positionValue, data.inserted_item)
         }
         this.formTarget.outerHTML = data.form
+        this.formTarget.classList.add("d-none")
+    })
+    
+  }
+  displayForm() {
+    this.formEditTarget.classList.toggle("d-none")
+  }
+  update(event) {
+    event.preventDefault()
+    const url = this.formEditTarget.action
+    fetch(url, {
+      method: "PATCH",
+      headers: { "Accept": "text/plain", "X-CSRF-Token": csrfToken() },
+      body: new FormData(this.formEditTarget)
+    })
+      .then(response => response.text())
+      .then((data) => {
+        this.user_feedback_partialTarget.innerHTML = data
       })
   }
 }

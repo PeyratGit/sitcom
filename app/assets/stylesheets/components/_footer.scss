@@ -1,3 +1,8 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 .footer {
   background: transparent;
   display: flex;
@@ -13,10 +18,12 @@
   height: 50px;
   margin-top: 2%;
 }
+
 .footer-links {
   display: flex;
   align-items: center;
 }
+
 .footer-links a {
   color: $textcolor;
   text-decoration: none;

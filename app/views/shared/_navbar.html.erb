@@ -14,8 +14,9 @@
         <%= link_to "Login", new_user_session_path, class:"dropdown-item" %>
         <%= link_to "Register", new_user_registration_path, class:"dropdown-item" %>
       <% else %>
-        <p><i class="fa fa-user"></i><%= link_to "My profil", user_path(current_user), class:"dropdown-item" %></p>
-        <p><i class="fa fa-star"></i><%= link_to "WishList", "", class:"dropdown-item" %></p>
+        <p><i class="fa fa-play"></i><%= link_to "Swipe", swipe_tv_shows_path, class:"dropdown-item" %></p>
+        <p><i class="fa fa-user"></i><%= link_to "My profile", user_path(current_user), class:"dropdown-item" %></p>
+        <p><i class="fa fa-star"></i><%= link_to "WishList", wishes_path, class:"dropdown-item" %></p>
         <p><i class="fa fa-users"></i><%= link_to "Users", search_users_path, class:"dropdown-item" %></p>
         <p><i class="fa fa-sign-out"></i><%= link_to "Log out", destroy_user_session_path, method: :delete, class:"dropdown-item"%></p>
       <% end %>

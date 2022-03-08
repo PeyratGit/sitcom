@@ -36,3 +36,19 @@
   background-color: $background;
   color: $textcolor;
 }
+
+.calque {
+  min-height: calc(100vh - 50px);
+}
+
+.feedback_comment {
+  color: white;
+}
+
+.feedback_rating {
+  color: white;
+}
+
+.feedback_status {
+  color: white;
+}
