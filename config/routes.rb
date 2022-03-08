@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :wishes, only: [:index, :create]
   end
 
-  resources :users, only: [:index, :show] do
+  resources :users, only: [:index, :show, :edit, :update] do
     member do
       post :follow
       post :unfollow

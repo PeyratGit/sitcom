@@ -11,11 +11,13 @@
     <div class="card-friends-description">
       <h2><%= user.first_name %> <%= user.last_name %></h2>
     </div>
-      <% if current_user.is_following?(user.id) %>
-        <%= link_to "Following", unfollow_search_user_path(user.id), method: :post, remote: true, class: "following-button"%>
-      <% else %>
-        <%= link_to "Follow", follow_search_user_path(user.id), method: :post, remote: true, class: "follow-button" %>
-      <% end %>
+    <div class="user">
+    <% if user == current_user %>
+    <% elsif current_user.is_following?(user.id) %>
+      <%= link_to "Following", unfollow_search_user_path(user.id), method: :post, remote: true, class: "following-button"%>
+    <% else %>
+      <%= link_to "Follow", follow_user_path(user.id), method: :post, remote: true, class: "follow-button" %>
+    <% end %>
     </div>
   <%end %>
   </div>

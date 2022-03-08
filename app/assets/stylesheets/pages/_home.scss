@@ -85,14 +85,15 @@
   margin-top: 2%;
   display: flex;
   border: 3px solid #7CE7EC;
-  width: 45%;
+  width: 46%;
   flex-direction: column;
   margin-bottom: 3%;
 }
 
 .btn-ghost:hover {
   opacity: 0.7;
-  background-color: $color2;
-  border-color: $color1;
-  color: $color1;
+  background-color: #7CE7EC;
+  border-color: #7CE7EC;
+  color: $textcolor;
+  border: 3px solid #7CE7EC;
 }
