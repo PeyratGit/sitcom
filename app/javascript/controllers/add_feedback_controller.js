@@ -17,10 +17,10 @@ export default class extends Controller {
       .then(response => response.json())
       .then((data) => {
         if (data.inserted_item) {
-          console.log(data)
           this.feedbacksTarget.insertAdjacentHTML(this.positionValue, data.inserted_item)
         }
         this.formTarget.outerHTML = data.form
+        this.formTarget.classList.add("d-none")
     })
   }
   displayForm() {
