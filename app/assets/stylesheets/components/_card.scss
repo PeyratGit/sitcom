@@ -230,4 +230,14 @@
 
 .card-suggestion {
   min-height: calc(100vh - 50px);
+
+  .card-suggestion-tvshow {
+
+    color: white;
+
+    img {
+      height: 300px;
+    }
+  }
+
 }
