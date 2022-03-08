@@ -1,55 +1,72 @@
 <div class="container">
+
   <div class="container_one">
     <div class="title-home">
       <h1>Welcome to Sitcom <i class="fa fa-film"></i></h1>
     </div>
     <%= image_tag "play.png", class:"play"%>
-    <%= link_to 'Start', swipe_tv_shows_path, class: "btn btn-ghost"%>
+    <% if current_user %>
+      <%= link_to 'Start', swipe_tv_shows_path, class: "btn btn-ghost play-btn"%>
+    <% else %>
+      <button type="button" class="btn btn-ghost play-btn my-4" data-bs-toggle="modal" data-bs-target="#facebookModal">
+        Start
+      </button>
+      <%= render "shared/modal-facebook" %>
+    <% end %>
   </div>
+
+
   <div class="container_two">
     <div class="title2">
-      <h1>Discover all tv shows <i class="fa fa-eye" ></i></h1>
+      <h1>Discover all TV shows <i class="fa fa-eye" ></i></h1>
     </div>
       <%= image_tag "discover.png", class:"heart" %>
-      <%= link_to 'Discover', tv_shows_path, class: "btn btn-ghost"%>
+      <%= link_to 'Discover', tv_shows_path, class: "btn btn-ghost my-4"%>
   </div>
+
+
   <div class="container_three">
     <div class="title3" style= "text-align: center; margin-top: 10%">
       <h1>Your favourite platforms combined <i class="fa fa-television" aria-hidden="true"></i></h1>
     </div>
+
     <div class="card-platform">
     <%= image_tag "netflix.png", class:"chanels"%>
       <div class="card-product-infos">
-        <h2> Netflix Tv Shows</h2>
-        <%= link_to 'Netflix', tv_shows_path, class: "btn btn-ghost"%>
+        <h2> Netflix TV Shows</h2>
+        <%= link_to 'Netflix', tv_shows_path, class: "btn btn-ghost my-4"%>
       </div>
     </div>
+
     <div class="card-platform2">
     <%= image_tag "prime.png", class:"chanels"%>
       <div class="card-product-infos">
-        <h2> Prime Video Tv Shows</h2>
-        <%= link_to 'Prime Video', tv_shows_path, class: "btn btn-ghost"%>
+        <h2> Prime Video TV Shows</h2>
+        <%= link_to 'Prime Video', tv_shows_path, class: "btn btn-ghost my-4"%>
       </div>
     </div>
+
     <div class="card-platform3">
     <%= image_tag "canal.png", class:"chanels"%>
       <div class="card-product-infos">
-        <h2> Canal+ Tv Shows</h2>
-        <%= link_to 'Canal+', tv_shows_path, class: "btn btn-ghost"%>
+        <h2> Canal+ TV Shows</h2>
+        <%= link_to 'Canal+', tv_shows_path, class: "btn btn-ghost my-4"%>
       </div>
     </div>
+
     <div class="card-platform4">
     <%= image_tag "disney.png", class:"chanels"%>
       <div class="card-product-infos">
-        <h2> Disney Tv Shows</h2>
-        <%= link_to 'Disney', tv_shows_path, class: "btn btn-ghost"%>
+        <h2> Disney TV Shows</h2>
+        <%= link_to 'Disney', tv_shows_path, class: "btn btn-ghost my-4"%>
       </div>
     </div>
+
     <div class="card-platform5">
     <%= image_tag "ocs.png", class:"chanels"%>
-      <div class="card-product-infos">
-        <h2> OCS Tv Shows</h2>
-        <%= link_to 'OCS', tv_shows_path, class: "btn btn-ghost"%>
+      <div class="ocs-platform">
+        <h2> OCS TV Shows</h2>
+        <%= link_to 'OCS', tv_shows_path, class: "btn btn-ghost my-4"%>
       </div>
     </div>
   </div>

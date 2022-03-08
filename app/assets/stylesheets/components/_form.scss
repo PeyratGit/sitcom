@@ -15,9 +15,21 @@
   text-align: left;
 }
 
-.form-fb {
-  color: white;
-  opacity: 0.85;
+
+.modal-content {
+  background-color: #22252a;
+  width: 100%;
+  border-radius: 8px;
+
+  .form-sign-in {
+    color: white;
+    opacity: 0.85;
+  }
+
+  .form-sign-in-info {
+    padding-top: 5%;
+    padding-bottom: 5%;
+  }
 }
 
 .form-container-edit {

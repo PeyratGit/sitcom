@@ -11,6 +11,9 @@ class UsersController < ApplicationController
     @followings = Follow.where(follower: @user)
     @followers = Follow.where(following: @user)
     @feedbacks = @user.feedbacks.order(created_at: :desc)
+    @superlikes = @user.feedbacks.where(status: "Superlike")
+    @likes = @user.feedbacks.where(status: "Like")
+    @dislikes = @user.feedbacks.where(status: "Dislike")
   end
 
   def edit

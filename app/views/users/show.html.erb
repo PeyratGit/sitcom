@@ -32,24 +32,31 @@
     <div class="btn-follow" id="user-follow">
     <%= render "users/btnfollow"%>
     </div>
-
     <div>
-      <h5><%= @user.first_name %>'s Superlikes list</h5>
+      <% if @superlikes.count != 0 %>
+        <div>
+          <h5><%= @user.first_name %>'s Superlikes list</h5>
+        </div>
+      <% end %>
        <div class="index-cards-container">
-        <% @feedbacks.each do |feedback| %>
-          <% if feedback.status == "Superlike" %>
-            <div class="card-tv-show-poster">
-              <div class="tv-show-poster">
-                <%= image_tag(feedback.tv_show.poster_url) %>
+          <% @feedbacks.each do |feedback| %>
+            <% if feedback.status == "Superlike" %>
+              <div class="card-tv-show-poster">
+                <div class="tv-show-poster">
+                  <%= image_tag(feedback.tv_show.poster_url) %>
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
-        <% end %>
       </div>
     </div>
 
     <div>
-      <h5><%= @user.first_name %>'s Likes list</h5>
+      <% if  @likes.count != 0  %>
+        <div>
+          <h5><%= @user.first_name %>'s Likes list</h5>
+        </div>
+      <% end %>
       <div class="index-cards-container">
         <% @feedbacks.each do |feedback| %>
           <% if feedback.status == "Like" %>
@@ -64,8 +71,12 @@
     </div>
 
     <div>
-      <h5><%= @user.first_name %>'s Dislikes list</h5>
       <div class="index-cards-container">
+        <% if @dislikes.count != 0  %>
+          <div>
+            <h5><%= @user.first_name %>'s Dislikes list</h5>
+          </div>
+        <% end %>
         <% @feedbacks.each do |feedback| %>
           <% if feedback.status == "Dislike" %>
             <div class="card-tv-show-poster">
