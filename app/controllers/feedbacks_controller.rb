@@ -20,17 +20,29 @@ class FeedbacksController < ApplicationController
   end
 
   def update
-    raise
     @tv_show = TvShow.find(params[:tv_show_id])
 
     @feedback = Feedback.find(params[:id])
-    @feedback.update({status: params[:status]})
 
+    if params[:feedback].blank?
+      @feedback.update(status: params[:status])
+    else
+      @feedback.update(feedback_params)
+    end
     @feedbacks_like_number = Feedback.where(tv_show_id: @tv_show.id, status: "Like").count
     @feedbacks_dislike_number = Feedback.where(tv_show_id: @tv_show.id, status: "Dislike").count
     @feedbacks_superlike_number = Feedback.where(tv_show_id: @tv_show.id, status: "Superlike").count
 
-    render partial:"shared/likes-votes-scores", locals: {tv_show: @tv_show, feedbacks_superlike_number: @feedbacks_superlike_number, feedbacks_like_number: @feedbacks_like_number, feedbacks_dislike_number: @feedbacks_dislike_number}
+    @feedback_of_user = Feedback.where(tv_show_id: @tv_show.id, user_id: current_user).where.not(comment: nil)[0]
+
+
+    # render partial:"shared/likes-votes-scores", locals: {tv_show: @tv_show, feedbacks_superlike_number: @feedbacks_superlike_number, feedbacks_like_number: @feedbacks_like_number, feedbacks_dislike_number: @feedbacks_dislike_number}
+
+    respond_to do |format|
+      format.html { redirect_to tv_show_path(params[:tv_show_id]) }
+      format.text { render partial: "feedbacks/user_feedback", locals: { tv_show: @tv_show, feedback_of_user: @feedback_of_user,  }, formats: [:html] }
+      format.json  { render json: @feedback }
+    end
   end
 
   private

@@ -1,0 +1,21 @@
+<div class="review-card" data-action="click->add-feedback#displayForm">
+  <div class="review-card top-container">
+    <div class="avatar-picture">
+      <% if User.find(@feedback_of_user.user_id).facebook_picture_url %>
+        <%= image_tag(User.find(@feedback_of_user.user_id).facebook_picture_url, class: "avatar") %>
+      <% else %>
+        <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar") %>
+      <% end %>
+    </div>
+    <div class="username"><%= User.where(id: @feedback_of_user.user_id)[0].first_name + " " + User.where(id: @feedback_of_user.user_id)[0].last_name %></div>
+    <div class="user-rating" data-add-feedback-target="rating"><%= @feedback_of_user.rating %>/5</div>
+  </div>
+  <div class="review-card content-container">
+    <div class="review-comment" data-add-feedback-target="comment"><%= @feedback_of_user.comment %></div>
+  </div>
+  <%= simple_form_for @feedback_of_user, url: "/tv_shows/#{@tv_show.id}/feedbacks/#{@feedback_of_user.id}", method: :patch, html: { class: "d-none", data: { add_feedback_target: "formEdit", action: "submit->add-feedback#update" } } do |f| %>
+    <%= f.input :comment, as: :text %>
+    <%= f.input :rating, collection: 0..5 %>
+    <%= f.button :submit %>
+  <% end %>
+</div>

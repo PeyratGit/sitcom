@@ -2,13 +2,14 @@ import { Controller } from "stimulus"
 import { csrfToken } from "@rails/ujs"
 
 export default class extends Controller {
-  static targets = ["feedbacks", "form"];
+  static targets = ["feedbacks", "form", "rating", "comment", "formEdit", "user_feedback_partial"];
   static values = { position: String }
 
   connect() {
   }
   send(event) {
     event.preventDefault()
+    console.log(this.formTarget)
     fetch(this.formTarget.action, {
       method: "POST",
       headers: { "Accept": "application/json", "X-CSRF-Token": csrfToken() },
@@ -16,25 +17,30 @@ export default class extends Controller {
     })
       .then(response => response.json())
       .then((data) => {
+        console.log(data)
         if (data.inserted_item) {
           this.feedbacksTarget.insertAdjacentHTML(this.positionValue, data.inserted_item)
         }
         this.formTarget.outerHTML = data.form
-      })
-  }
-  patch(event) {
-    event.preventDefault()
-    fetch(this.formTarget.action, {
-      method: "PATCH",
-      headers: { "Accept": "application/json", "X-CSRF-Token": csrfToken() },
-      body: new FormData(this.formTarget)
     })
-      .then(response => response.json())
+  }
+  displayForm() {
+    this.formEditTarget.classList.remove("d-none")
+  }
+  hideForm() {
+    this.formEditTarget.classList.add("d-none")
+  }
+  update(event) {
+    event.preventDefault()
+    const url = this.formEditTarget.action
+    fetch(url, {
+      method: "PATCH",
+      headers: { "Accept": "text/plain", "X-CSRF-Token": csrfToken() },
+      body: new FormData(this.formEditTarget)
+    })
+      .then(response => response.text())
       .then((data) => {
-        if (data.inserted_item) {
-          this.feedbacksTarget.insertAdjacentHTML(this.positionValue, data.inserted_item)
-        }
-        this.formTarget.outerHTML = data.form
+        this.user_feedback_partialTarget.innerHTML = data
       })
   }
 }
