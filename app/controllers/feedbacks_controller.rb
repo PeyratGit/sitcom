@@ -20,6 +20,7 @@ class FeedbacksController < ApplicationController
   end
 
   def update
+    raise
     @tv_show = TvShow.find(params[:tv_show_id])
 
     @feedback = Feedback.find(params[:id])

@@ -8,7 +8,7 @@
       <% end %>
     </div>
     <div class="username"><%= User.where(id: feedback.user_id)[0].first_name + " " + User.where(id: feedback.user_id)[0].last_name %></div>
-    <div class="user-rating"><%= feedback.rating %>/10</div>
+    <div class="user-rating"><%= feedback.rating %>/5</div>
   </div>
   <div class="review-card content-container">
     <div class="review-comment"><%= feedback.comment %></div>
