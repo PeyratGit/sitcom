@@ -5,7 +5,7 @@ class WishesController < ApplicationController
   end
 
   def create
-    @tv_show=TvShow.find(params[:tv_show_id])
+    @tv_show = TvShow.find(params[:tv_show_id])
     Wish.create!(
       user: current_user,
       tv_show: @tv_show
@@ -15,7 +15,8 @@ class WishesController < ApplicationController
 
   def destroy
     @wish = Wish.find(params[:id])
+    @tv_show = TvShow.find(@wish.tv_show_id)
     @wish.destroy
-    render '/'
+    redirect_to tv_show_path(@tv_show)
   end
 end
