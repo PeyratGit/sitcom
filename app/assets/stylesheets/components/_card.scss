@@ -222,3 +222,9 @@
   display: flex;
   flex-direction: column;
 }
+
+// SUGGESTION-CARD
+
+.card-suggestion {
+  min-height: calc(100vh - 50px);
+}
