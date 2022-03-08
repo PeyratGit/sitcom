@@ -41,11 +41,13 @@
         <div class="index-cards-container">
           <% @feedbacks.each do |feedback| %>
             <% if feedback.status == "Superlike" %>
-              <div class="card-tv-show-poster">
-                <div class="tv-show-poster">
-                  <%= image_tag(feedback.tv_show.poster_url) %>
+              <%= link_to tv_show_path(feedback.tv_show) do %>
+                <div class="card-tv-show-poster">
+                  <div class="tv-show-poster">
+                    <%= image_tag(feedback.tv_show.poster_url) %>
+                  </div>
                 </div>
-              </div>
+              <% end %>
             <% end %>
           <% end %>
       </div>
@@ -60,30 +62,34 @@
       <div class="index-cards-container">
         <% @feedbacks.each do |feedback| %>
           <% if feedback.status == "Like" %>
-            <div class="card-tv-show-poster">
-              <div class="tv-show-poster">
-                <%= image_tag(feedback.tv_show.poster_url) %>
+            <%= link_to tv_show_path(feedback.tv_show) do %>
+              <div class="card-tv-show-poster">
+                <div class="tv-show-poster">
+                  <%= image_tag(feedback.tv_show.poster_url) %>
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
         <% end %>
       </div>
     </div>
 
     <div>
+      <% if @dislikes.count != 0  %>
+        <div>
+          <h5><%= @user.first_name %>'s Dislikes list</h5>
+        </div>
+      <% end %>
       <div class="index-cards-container">
-        <% if @dislikes.count != 0  %>
-          <div>
-            <h5><%= @user.first_name %>'s Dislikes list</h5>
-          </div>
-        <% end %>
         <% @feedbacks.each do |feedback| %>
           <% if feedback.status == "Dislike" %>
-            <div class="card-tv-show-poster">
-              <div class="tv-show-poster">
-                <%= image_tag(feedback.tv_show.poster_url) %>
+            <%= link_to tv_show_path(feedback.tv_show) do %>
+              <div class="card-tv-show-poster">
+                <div class="tv-show-poster">
+                  <%= image_tag(feedback.tv_show.poster_url) %>
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
         <% end %>
       </div>
