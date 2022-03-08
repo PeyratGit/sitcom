@@ -10,7 +10,13 @@ Rails.application.routes.draw do
     resources :feedbacks, only: [:create, :update]
     resources :wishes, only: [:index, :create]
   end
-  resources :users, only: [:index, :show]
+
+  resources :users, only: [:index, :show, :edit, :update] do
+    member do
+      post :follow
+      post :unfollow
+    end
+  end
 
   namespace :my do
     resources :tv_shows, only: :index
@@ -25,7 +31,12 @@ Rails.application.routes.draw do
   end
 
   namespace :search do
-    resources :users, only: :index
+    resources :users, only: :index do
+      member do
+        post :follow
+        post :unfollow
+      end
+    end
   end
 
   resources :watch_nows, only: [:index]
