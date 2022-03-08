@@ -201,7 +201,7 @@
   border: 1px solid;
   border-color: #32E0C4;
   border-radius: 3px;
-  width: 85px;
+  width: 98px;
   height: 30px;
   align-items: center;
   display: flex;
@@ -209,12 +209,12 @@
 }
 
 .following-button {
-  color: #EEEEEE;
-  background-color: green;
+  color: $textcolor;
+  background-color: $color1;
   border: 1px solid;
-  border-color: green;
+  border-color: $color1;
   border-radius: 3px;
-  width: 102px;
+  width: 98px;
   height: 30px;
   align-items: center;
   display: flex;
