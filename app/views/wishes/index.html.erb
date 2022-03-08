@@ -1,0 +1,19 @@
+<div class="wishlist-container">
+  <div class="wishlist-title">
+  <h1>My wishlist</h1>
+  </div>
+  <div class="index-cards-container">
+  <div class="wishlist-card-tv-show-grid">
+    <% @tv_shows.each do |tv_show| %>
+    <%= link_to tv_show_path(tv_show) do %>
+    <div class="wishlist-card-tv-show-poster">
+      <div class="wishlist-tv-show-poster">
+        <%= image_tag(tv_show.poster_url) %>
+        <i class="fa fa-heart wishlist-heart"></i>
+      </div>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+  </div>
+</div>
