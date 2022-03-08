@@ -75,7 +75,17 @@
   flex-direction: column;
   align-items: center;
   color: $textcolor;
-  border-bottom: solid;
+  border-bottom: solid rgba($color: white, $alpha: 0.2);
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.ocs-platform {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $textcolor;
   margin-right: 5%;
   margin-left: 5%;
 }
@@ -98,4 +108,9 @@
   background-color: $color2;
   border-color: $color1;
   color: $color1;
+}
+
+.watch-now {
+  color: white;
+  height: 150px;
 }
