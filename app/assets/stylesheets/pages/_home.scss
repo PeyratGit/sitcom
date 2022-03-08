@@ -3,7 +3,10 @@
   width: 100%;
   background-size: cover;
   background-image: -o-linear-gradient(rgb(15, 18, 22) 0%, rgb(39, 42, 48) 100%);
-  padding: 3%
+  padding-top: 10%;
+  padding-bottom: 5%;
+  padding-left: 15%;
+  padding-right: 15%;
 }
 
 .play {
@@ -72,7 +75,17 @@
   flex-direction: column;
   align-items: center;
   color: $textcolor;
-  border-bottom: solid;
+  border-bottom: solid rgba($color: white, $alpha: 0.2);
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.ocs-platform {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $textcolor;
   margin-right: 5%;
   margin-left: 5%;
 }
@@ -85,14 +98,20 @@
   margin-top: 2%;
   display: flex;
   border: 3px solid #7CE7EC;
-  width: 45%;
+  width: 46%;
   flex-direction: column;
   margin-bottom: 3%;
 }
 
 .btn-ghost:hover {
   opacity: 0.7;
-  background-color: $color2;
-  border-color: $color1;
-  color: $color1;
+  background-color: #7CE7EC;
+  border-color: #7CE7EC;
+  color: $textcolor;
+  border: 3px solid #7CE7EC;
+}
+
+.watch-now {
+  color: white;
+  height: 150px;
 }

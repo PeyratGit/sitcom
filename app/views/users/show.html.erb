@@ -9,12 +9,13 @@
           <%= image_tag(@user.facebook_picture_url, :class => "avatar-xlarge") %>
         <% end %>
       </div>
+
       <div class=' mx-2 align-items-center'>
         <div class="user-header-info text-center"><%= @user.feedbacks.count %></div>
         <p class = "mb-0">watched</p>
       </div>
       <div class='mx-2 align-items-center'>
-        <div class="user-header-info text-center"><%= @following.count %></div>
+        <div class="user-header-info text-center"><%= @followings.count %></div>
         <p class = "mb-0">followings</p>
       </div>
       <div class='mx-2 align-items-center'>
@@ -25,27 +26,37 @@
 
     <div>
       <h2 class="user-description"><%= @user.first_name %> <%= @user.last_name %></h2>
-      <p class="user-description">description</p>
+      <p><%= @user.description %></p>
     </div>
 
-    <%= link_to "Follow", "/ruby-book", class: "follow-button my-3" %>
+    <div class="btn-follow" id="user-follow">
+    <%= render "users/btnfollow"%>
+    </div>
     <div>
-      <h5><%= @user.first_name %>'s Superlikes list</h5>
+      <% if @superlikes.count != 0 %>
+        <div>
+          <h5><%= @user.first_name %>'s Superlikes list</h5>
+        </div>
+      <% end %>
        <div class="index-cards-container">
-        <% @feedbacks.each do |feedback| %>
-          <% if feedback.status == "Superlike" %>
-            <div class="card-tv-show-poster">
-              <div class="tv-show-poster">
-                <%= image_tag(feedback.tv_show.poster_url) %>
+          <% @feedbacks.each do |feedback| %>
+            <% if feedback.status == "Superlike" %>
+              <div class="card-tv-show-poster">
+                <div class="tv-show-poster">
+                  <%= image_tag(feedback.tv_show.poster_url) %>
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
-        <% end %>
       </div>
     </div>
 
     <div>
-      <h5><%= @user.first_name %>'s Likes list</h5>
+      <% if  @likes.count != 0  %>
+        <div>
+          <h5><%= @user.first_name %>'s Likes list</h5>
+        </div>
+      <% end %>
       <div class="index-cards-container">
         <% @feedbacks.each do |feedback| %>
           <% if feedback.status == "Like" %>
@@ -60,8 +71,12 @@
     </div>
 
     <div>
-      <h5><%= @user.first_name %>'s Dislikes list</h5>
       <div class="index-cards-container">
+        <% if @dislikes.count != 0  %>
+          <div>
+            <h5><%= @user.first_name %>'s Dislikes list</h5>
+          </div>
+        <% end %>
         <% @feedbacks.each do |feedback| %>
           <% if feedback.status == "Dislike" %>
             <div class="card-tv-show-poster">

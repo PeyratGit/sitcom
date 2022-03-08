@@ -2,6 +2,12 @@
   color: $color1;
 }
 
+.play-btn {
+  background-color: #7CE7EC;
+  color: #212529;
+  text-align: center !important;
+}
+
 .btn-interaction {
   position: relative;
   height: 62px;
@@ -144,7 +150,28 @@
   top: 79px;
 }
 
+
 .btn-signin-fb {
   background-color: #3b5998;
   border-radius: 4px;
 }
+
+.btn-edit {
+  color: $textcolor;
+  border-color: #7CE7EC;
+  border-radius: 3px;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+
+.btn-edit:hover {
+  opacity: 0.7;
+  background-color: #7CE7EC;
+  border-color:#7CE7EC;
+  color: $textcolor;
+}
+

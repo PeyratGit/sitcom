@@ -1,4 +1,4 @@
-<div class="stimulus-controller-container" data-controller="votes" data-action="ajax:success->votes#changescores">
+<div class="stimulus-controller-container" data-controller="votes" data-action="ajax:complete->votes#changescores">
   <div class="index-global-container-true">
     <div class="tv-show-top-container" style="background-image: linear-gradient(rgba(15, 18, 22, 0), rgba(39, 42, 48, 0.9)),url('<%= @tv_show.poster_url %>');">
       <div class="tv-show-main-infos-container">
@@ -42,7 +42,7 @@
         <%= render 'shared/likes-votes-scores', tv_show: @tv_show, feedbacks_superlike_number: @feedbacks_superlike_number, feedbacks_like_number: @feedbacks_like_number, feedbacks_dislike_number: @feedbacks_dislike_number %>
       </div>
       <div class="scores-text">
-        <span>Rating</span>
+        <span>% likes</span>
         <span>
           <% if @feedbacks_superlike_number = Feedback.where(tv_show_id: @tv_show.id, status: "Superlike").count == 0 %>
             <%= "Superlikes" %>
@@ -62,9 +62,9 @@
           <% end %>
         </span>
         <span>
-          <% if @feedbacks_dilike_number == 0 %>
+          <% if @feedbacks_dislike_number == 0 %>
             <%= "Dislikes" %>
-          <% elsif @feedbacks_dilike_number == 1 %>
+          <% elsif @feedbacks_dislike_number == 1 %>
             <%= "Dislike" %>
           <% else %>
             <%= "Dislikes" %>
@@ -93,16 +93,55 @@
             <% end %>
           </div>
       </div>
-      <div class="bottom-border-div"></div>
+      <% follows_seen_it = [] %>
+      <% @follows.each do |follow| %>
+        <% if Feedback.find_by(tv_show_id: @tv_show.id, user_id: follow.id).nil? == false %>
+          <% follows_seen_it.append(follow) %>
+        <% end %>
+      <% end %>
+      <% if follows_seen_it.empty? == false %>
+        <div class="followers-seen-container">
+          <div class="users-pile-container">
+            <% follows_seen_it.each do |follow| %>
+              <% if follows_seen_it.length == 1 %>
+                <%= link_to user_path(follow.id), style:"right:50%" do %>
+                  <% if follow.facebook_picture_url.nil? %>
+                    <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar") %>
+                  <% else %>
+                    <%= image_tag(follow.facebook_picture_url, class: "avatar") %>
+                  <% end %>
+                <% end %>
+              <% else %>
+                <%= link_to user_path(follow.id) do %>
+                  <% if follow.facebook_picture_url.nil? %>
+                    <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar") %>
+                  <% else %>
+                    <%= image_tag(follow.facebook_picture_url, class: "avatar") %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="followers-seen-info">
+            <% string_follows = pluralize(follows_seen_it.length - 1, "other") %>
+            <% if follows_seen_it.empty? %>
+            <% elsif follows_seen_it.length == 1%>
+              <%= "#{follows_seen_it.last.first_name} has seen it" %>
+            <% else %>
+              <%= "#{follows_seen_it.last.first_name} and #{string_follows} have seen it" %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <div class="bottom-border-div">
+      </div>
     </div>
-    <div class="main-reviews-container">
+    <div class="main-reviews-container" data-controller="add-feedback" data-add-feedback-position-value="beforeend">
       <span class="title-show-page"><%= pluralize(@feedbacks_full_number, 'Feedback') %></span>
       <div class="add-feedback-container">
-        <form>
-          <input name="add-feedback" placeholder="Add a feedback" class="form-input">
-        </form>
+        <%= render "feedbacks/form" %>
       </div>
-      <div class="community-reviews-container">
+      <div class="community-reviews-container" data-add-feedback-target="feedbacks">
         <% @feedbacks_full.each do |feedback| %>
           <div class="review-card">
             <div class="review-card top-container">

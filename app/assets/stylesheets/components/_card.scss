@@ -64,8 +64,8 @@
   .tv-show-poster {
     text-align: center;
     overflow: hidden;
-    height: 150px;
-    width: 110px;
+    height: 100%;
+    width: 100%;
     img {
       height: 100%;
       width: 100%;
@@ -148,7 +148,7 @@
 }
 
 // Index cards friends
-.friends_title h1{
+.friends_title {
   color: #32E0C4;
   align-items: center;
   display: flex;
@@ -157,44 +157,42 @@
 
 .card-friends {
   display: flex;
-  overflow: hidden;
-  width: 90%;
-  box-shadow: 0 0 2px 0px #dee2e699;
+  width: 100%;
+  margin-bottom: 10px;
   flex-direction: row;
-  margin-top: 11px;
-  border-radius: 2rem;
   align-items: center;
-  border: solid;
-  margin: 0 auto;
-  margin-bottom: 6px;
 }
 
-.card-friends img{
-  height: 100%;
-  width: 120px;
-  object-fit: cover;
-}
-
-.card-friends-infos h2 {
-  font-size: 18px;
-  font-weight: bold;
+.card-friends-description {
   color: $textcolor;
 }
 
+.card-friends img{
+  height: 30%;
+  width: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.card-friends-infos {
+  font-size: 18px;
+  font-weight: bold;
+  justify-content: center;
+  color: #EEEEEE;
+  width: 100%;
+}
+
 .card-friends >.card-friends-infos {
-  align-items: center;
-  justify-content: space-between;
-  width: 69%;
+  width: 79%;
   display: flex;
-  align-items: center;
   flex-direction: column;
 }
 
 .cards-friends {
-  width: 95%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .follow-button {
@@ -204,6 +202,20 @@
   border-color: #32E0C4;
   border-radius: 3px;
   width: 85px;
+  height: 30px;
+  cursor: hand;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.following-button {
+  color: #EEEEEE;
+  background-color: green;
+  border: 1px solid;
+  border-color: green;
+  border-radius: 3px;
+  width: 102px;
   height: 30px;
   cursor: hand;
   align-items: center;

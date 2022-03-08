@@ -14,7 +14,7 @@ Devise.setup do |config|
     ENV["FB_SECRET"],
     scope: 'email',
     info_fields: 'email, first_name, last_name',
-    image_size: 'square',  # 50x50, guaranteed ratio
+    image_size: 'large',  # 50x50, guaranteed ratio
     secure_image_url: true
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
