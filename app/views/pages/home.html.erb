@@ -8,10 +8,10 @@
     <% if current_user %>
       <%= link_to 'Start', swipe_tv_shows_path, class: "btn btn-ghost play-btn"%>
     <% else %>
-      <button type="button" class="btn btn-ghost play-btn my-4" data-toggle="shared/modal-facebook" data-target="#facebookModal">
+      <button type="button" class="btn btn-ghost play-btn my-4" data-bs-toggle="modal" data-bs-target="#facebookModal">
         Start
       </button>
-      <%# render %>
+      <%= render "shared/modal-facebook" %>
     <% end %>
 
   </div>
