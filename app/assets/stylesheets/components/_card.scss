@@ -225,3 +225,9 @@
   display: flex;
   align-items: center;
 }
+
+// SUGGESTION-CARD
+
+.card-suggestion {
+  min-height: calc(100vh - 50px);
+}

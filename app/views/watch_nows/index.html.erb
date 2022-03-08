@@ -1,31 +1,3 @@
-<div>
-  <div>
-    <div class="col-sm-6">
-      <div class="button-wrap">
-        <button type="button" class="btn btn-default btn-lg btn-block" id="load_me_baby">
-        Get API response<br>
-        <small>(open modal containing loading animation -> submit ajax post -> receive response -> hide loading modal)</small>
-        </button>
-      </div>
-
-      <div id="output" class="text-center">
-        <p class="subtle">Ajax response will load here...</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal -->
-  <div class="modal fade" id="loadMe" tabindex="-1" role="dialog" aria-labelledby="loadMeLabel">
-    <div class="modal-dialog modal-sm" role="document">
-      <div class="modal-content">
-        <div class="modal-body text-center">
-          <div class="loader"></div>
-            <div clas="loader-txt">
-              <p>Check out this slick bootstrap spinner modal. <br><br><small>We are addicted to Bootstrap... #love</small></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="card-suggestion">
+  <%= @suggestion.title %>
 </div>
