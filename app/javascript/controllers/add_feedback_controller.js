@@ -17,7 +17,6 @@ export default class extends Controller {
     })
       .then(response => response.json())
       .then((data) => {
-        console.log(data)
         if (data.inserted_item) {
           this.feedbacksTarget.insertAdjacentHTML(this.positionValue, data.inserted_item)
         }
@@ -25,10 +24,7 @@ export default class extends Controller {
     })
   }
   displayForm() {
-    this.formEditTarget.classList.remove("d-none")
-  }
-  hideForm() {
-    this.formEditTarget.classList.add("d-none")
+    this.formEditTarget.classList.toggle("d-none")
   }
   update(event) {
     event.preventDefault()

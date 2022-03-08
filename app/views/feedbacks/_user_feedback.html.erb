@@ -1,5 +1,5 @@
-<div class="review-card" data-action="click->add-feedback#displayForm">
-  <div class="review-card top-container">
+<div class="review-card">
+  <div class="review-card top-container" data-action="click->add-feedback#displayForm">
     <div class="avatar-picture">
       <% if User.find(@feedback_of_user.user_id).facebook_picture_url %>
         <%= image_tag(User.find(@feedback_of_user.user_id).facebook_picture_url, class: "avatar") %>

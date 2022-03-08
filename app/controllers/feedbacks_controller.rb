@@ -33,7 +33,7 @@ class FeedbacksController < ApplicationController
     @feedbacks_dislike_number = Feedback.where(tv_show_id: @tv_show.id, status: "Dislike").count
     @feedbacks_superlike_number = Feedback.where(tv_show_id: @tv_show.id, status: "Superlike").count
 
-    @feedback_of_user = Feedback.where(tv_show_id: @tv_show.id, user_id: current_user).where.not(comment: nil)[0]
+    @feedback_of_user = Feedback.where(tv_show_id: @tv_show.id, user_id: current_user).where.not(comment: nil).last
 
 
     # render partial:"shared/likes-votes-scores", locals: {tv_show: @tv_show, feedbacks_superlike_number: @feedbacks_superlike_number, feedbacks_like_number: @feedbacks_like_number, feedbacks_dislike_number: @feedbacks_dislike_number}
