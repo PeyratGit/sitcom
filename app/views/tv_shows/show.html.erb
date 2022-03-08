@@ -11,11 +11,15 @@
 
         <div id="wishlist-button" data-controller="wish-button", data-action="click->wish-button#addOrRemoveWishlist">
           <%= render 'shared/wishlist-button' %>
-          <%= simple_form_for([@tv_show, @wish], html: { class: "d-none" }) do |f| %>
-          <%= f.button :submit, data: { wish_button_target: 'inwishlistbtn' } %>
+          <% if Wish.where(tv_show_id: @tv_show).map(&:user_id).include?(current_user.id)%>
+            <% @wish = Wish.where(user: current_user, tv_show: @tv_show)[0] %>
+            <%= link_to "Unwish", wish_path(@wish), remote: true, method: :delete, class: "d-none", data: { wish_button_target: 'outofwishlistbtn' } %>
+          <% else %>
+            <%= simple_form_for([@tv_show, @wish], html: { class: "d-none" }) do |f| %>
+            <%= f.button :submit, data: { wish_button_target: 'inwishlistbtn' } %>
+            <% end %>
           <% end %>
           <%# 'delete', { controller: "users", action: "destroy", id: user.id } %>
-          <%= link_to wishes_path, html: { class: "d-none" }, method: :delete, data: { wish_button_target: 'outofwishlistbtn' } %>
         </div>
 
         <div class="title-show-page">

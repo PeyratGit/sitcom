@@ -14,6 +14,8 @@ class WishesController < ApplicationController
   end
 
   def destroy
-    byebug
+    @wish = Wish.find(params[:id])
+    @wish.destroy
+    render '/'
   end
 end

@@ -20,7 +20,7 @@ export default class extends Controller {
     // } else {
     //   this.inwishlistbtnTarget.click()
     // }
-
+    this.outofwishlistbtnTarget.click();
   }
 
   // addToWishlistChangeIcon() {
