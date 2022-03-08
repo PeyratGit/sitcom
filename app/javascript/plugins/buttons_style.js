@@ -24,7 +24,7 @@ const illuminate = () => {
         };
 
         fetch('/tv_shows/' + button.dataset.id +'/feedbacks', myInit)
-        .then(res => console.log(res)) */
+        .then(res => */
         /* buttons.forEach(btn => {
           btn.focus()
         }) */

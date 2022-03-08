@@ -5,6 +5,5 @@
                     }) do |f| %>
   <%= f.input :comment, as: :text %>
   <%= f.input :rating, collection: 0..5 %>
-  <%= f.input :status, collection: ["Like", "Dislike", "Superlike"] %>
   <%= f.button :submit %>
 <% end %>

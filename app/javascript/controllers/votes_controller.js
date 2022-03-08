@@ -6,6 +6,6 @@ export default class extends Controller {
   connect() {
   }
   changescores(event) {
-    this.scoresTarget.innerHTML = event.detail[0].response
+
   }
 }

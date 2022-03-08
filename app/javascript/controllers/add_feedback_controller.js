@@ -22,6 +22,7 @@ export default class extends Controller {
         this.formTarget.outerHTML = data.form
         this.formTarget.classList.add("d-none")
     })
+    
   }
   displayForm() {
     this.formEditTarget.classList.toggle("d-none")
