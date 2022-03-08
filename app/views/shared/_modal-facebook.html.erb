@@ -1,10 +1,14 @@
 <div class="modal fade" id="facebookModal" tabindex="-1" aria-labelledby="facebookModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <div class="form-sign-in d-flex flex-column justify-content-center px-5">
-        <h2>Log in</h2>
-        <div>
-          <%= render "devise/shared/links" %>
+      <div class="form-sign-in px-5">
+        <div class="form-sign-in-info d-flex flex-column justify-content-center text-center">
+          <div>
+            <h2 class="py-2">Log in</h2>
+          </div>
+          <div class="py-2">
+            <%= render "devise/shared/links" %>
+          </div>
         </div>
       </div>
     </div>
