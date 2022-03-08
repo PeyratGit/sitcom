@@ -8,8 +8,9 @@ Rails.application.routes.draw do
 
   resources :tv_shows, only: [:index, :show, :my] do
     resources :feedbacks, only: [:create, :update]
-    resources :wishes, only: [:index, :create]
+    resources :wishes, only: [:create]
   end
+
 
   resources :users, only: [:index, :show, :edit, :update] do
     member do
@@ -17,6 +18,8 @@ Rails.application.routes.draw do
       post :unfollow
     end
   end
+
+  resources :wishes, only: [:index, :destroy]
 
   namespace :my do
     resources :tv_shows, only: :index

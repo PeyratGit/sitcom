@@ -5,6 +5,7 @@ class TvShowsController < ApplicationController
   end
 
   def show
+    @wish = Wish.new
     @tv_show = TvShow.find(params[:id])
     @follows = current_user.followings
     @feedback = Feedback.new

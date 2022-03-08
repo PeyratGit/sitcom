@@ -1,0 +1,5 @@
+<% if Wish.where(tv_show_id: @tv_show).map(&:user_id).include?(current_user.id)%>
+  <i class="fa fa-heart" style="text-shadow: 0 0 8px #FFF;"></i>
+<% else %>
+  <i class="fa fa-heart-o" style="text-shadow: 0 0 8px #FFF;" ></i>
+<% end %>

@@ -28,9 +28,8 @@
   <div class="cards-friends">
     <% @users.each do |user| %>
       <div data-user=<%= user.id %>>
-        <%= render "search/users/user", user:user %>
+        <%= render "search/users/user", user: user %>
       </div>
     <% end %>
   </div>
-
 </div>
