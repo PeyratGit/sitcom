@@ -59,6 +59,7 @@
     border-radius: 5px;
     background-color: #1F2228;
     color: #C0C0C0;
+    border: 1px rgba(196, 196, 196, 0.5) solid;
     &:focus {
       background-color: #1F2228;
       color: #C0C0C0;
@@ -68,6 +69,31 @@
     border-radius: 5px;
     background-color: #1F2228;
     color: #C0C0C0;
+    border: 1px rgba(196, 196, 196, 0.5) solid;
+    &:focus {
+      color: #C0C0C0;
+      background-color: #1F2228;
+    }
+  }
+}
+
+.new_feedback {
+  padding: 5px;
+  select {
+    border-radius: 5px;
+    background-color: #1F2228;
+    color: #C0C0C0;
+    border: 1px rgba(196, 196, 196, 0.5) solid;
+    &:focus {
+      background-color: #1F2228;
+      color: #C0C0C0;
+    }
+  }
+  textarea {
+    border-radius: 5px;
+    background-color: #1F2228;
+    color: #C0C0C0;
+    border: 1px rgba(196, 196, 196, 0.5) solid;
     &:focus {
       color: #C0C0C0;
       background-color: #1F2228;
