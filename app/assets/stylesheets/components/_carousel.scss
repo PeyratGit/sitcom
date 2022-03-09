@@ -1,0 +1,33 @@
+.carousel {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  width: 100%;
+}
+
+.carousel-card {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  margin-right: 20px;
+  border-radius: 8px;
+  width: 300px;
+  height: 100px;
+  padding: 7px;
+  background-color: #454545;
+  justify-content:flex-start;
+  .top-container {
+    height: 35%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 9px;
+    justify-content: left;
+    .username {
+      margin-left: 5px;
+    }
+    .user-rating {
+      margin-left: auto;
+    }
+  }
+}

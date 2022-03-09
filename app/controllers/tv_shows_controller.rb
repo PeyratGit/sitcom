@@ -2,6 +2,15 @@ class TvShowsController < ApplicationController
   def index
     @tv_shows = TvShow.all
     @follows = current_user.followings
+
+    @last_feedbacks = []
+    @last_feedbacks_user = []
+    @last_feedbacks_shows = []
+    @follows.each do |follow|
+      @last_feedbacks << follow.feedbacks.last
+      @last_feedbacks_user << User.find(follow.id)
+      @last_feedbacks_shows << TvShow.find(follow.feedbacks.last.tv_show_id)
+    end
   end
 
   def show
@@ -17,4 +26,5 @@ class TvShowsController < ApplicationController
     @feedbacks_superlike_number = Feedback.where(tv_show_id: @tv_show.id, status: "Superlike").count
     @feedbacks_full_number = Feedback.where(tv_show_id: @tv_show.id).where.not(comment: nil).count
   end
+
 end
