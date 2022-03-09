@@ -1,3 +1,12 @@
+<% content_for :meta_title, "#{DEFAULT_META["meta_product_name"]} | #{@user.first_name} #{@user.last_name}" %>
+<% content_for :meta_description, "#{@user.first_name} #{@user.last_name} is on Sitcom" %>
+<% if @user.facebook_picture_url.nil? %>
+  <% content_for :meta_image, cl_image_path("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg") %>
+<% else %>
+  <% content_for :meta_image, cl_image_path(@user.facebook_picture_url) %>
+<% end %>
+
+
 <div>
   <div class="card-user px-3 my-3">
 
