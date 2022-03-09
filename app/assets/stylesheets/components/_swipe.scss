@@ -71,7 +71,7 @@
 
 .tinder--cards {
   flex-grow: 1;
-  padding-top: 40px;
+  padding-top: 30px;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -82,9 +82,7 @@
 
 .tinder--card {
   display: inline-block;
-  width: 90vw;
-  max-width: 400px;
-  height: 63vh;
+  width: 280px;
   background: #FFFFFF;
   padding-bottom: 0px;
   border-radius: 8px;
@@ -129,7 +127,7 @@
 .tinder--buttons {
   flex: 0 0 100px;
   text-align: center;
-  padding-top: 0px;
+  padding-top: 16px;
 }
 
 .tinder--buttons button {
