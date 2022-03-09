@@ -43,7 +43,7 @@
                 <div class="username"><%= @last_feedbacks_user[i].first_name + " " + @last_feedbacks_user[i].last_name + " added a feedback to " + @last_feedbacks_shows[i].title %></div>
               </div>
               <div class="content-container">
-                <div class="carousel-comment">“ <%= @last_feedbacks[i][0].comment %> ”</div>
+                <div class="carousel-comment">“ <%= @last_feedbacks[i].comment %> ”</div>
               </div>
             </div>
           <% end %>
@@ -60,7 +60,7 @@
                 <div class="username"><%= @last_feedbacks_user[o].first_name + " " + @last_feedbacks_user[o].last_name + " added a feedback to " + @last_feedbacks_shows[o].title %></div>
               </div>
               <div class="content-container">
-                <div class="carousel-comment">“ <%= @last_feedbacks[o][0].comment %> ”</div>
+                <div class="carousel-comment">“ <%= @last_feedbacks[o].comment %> ”</div>
               </div>
             </div>
           <% end %>
@@ -77,7 +77,7 @@
                 <div class="username"><%= @last_feedbacks_user[o].first_name + " " + @last_feedbacks_user[o].last_name + " added a feedback to " + @last_feedbacks_shows[o].title %></div>
               </div>
               <div class="content-container">
-                <div class="carousel-comment">“ <%= @last_feedbacks[o][0].comment %> ”</div>
+                <div class="carousel-comment">“ <%= @last_feedbacks[o].comment %> ”</div>
               </div>
             </div>
           <% end %>
