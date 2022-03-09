@@ -16,33 +16,25 @@
   <div class="tab-container">
   <ul class="list-inline tabs-underlined">
     <li>
-      <a href="/search/tv_shows" class="tab-underlined activated">TV shows</a>
+      <a href="/search/tv_shows" class="tab-underlined">TV shows</a>
     </li>
     <li>
       <a href="/search/users" class="tab-underlined">Users</a>
     </li>
-    <li>
+        <li>
       <a href="/search/followings" class="tab-underlined">Followings</a>
     </li>
     <li>
-      <a href="/search/followers" class="tab-underlined">Followers</a>
+      <a href="/search/followers" class="tab-underlined activated">Followers</a>
     </li>
   </ul>
   </div>
-  <% @tv_shows.each do |tv_show| %>
-  <%= link_to tv_show_path(tv_show), class: "list-link" do %>
-    <div class="card-purchase mb-2">
-      <img src=<%= tv_show.poster_url %>>
-      <div class="card-purchase-infos">
-        <div class="card-purchase-details">
-          <h2><%= tv_show.title %></h2>
-        </div>
-        <div class="card-purchase-score">
-          <p class="px-2"><%= tv_show.imdb_rating %></p>
-          <i class="fa fa-users"></i>
-        </div>
+
+  <div class="cards-follows">
+    <% @followers.each do |follower| %>
+      <div data-user=<%= follower.id %>>
+        <%= render "search/followers/follower", follower: follower%>
       </div>
-    </div>
-  <% end %>
-  <% end %>
+    <% end %>
+  </div>
 </div>
