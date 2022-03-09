@@ -39,12 +39,19 @@ class User < ApplicationRecord
     following_relationships.create(following_id: user_id)
   end
 
-  def suggestion
+  def suggestion(count=0)
     watched_ids = feedbacks.where.not(status: "unwatched").map(&:tv_show_id)
     superlike_follow_ids = followings.map { |user| user.feedbacks.where(status: "Superlike").map(&:tv_show_id) }.flatten
     result = superlike_follow_ids - watched_ids
-    id = result.tally.sort_by(&:last).reverse.first.first ## [0] ou [1] ou [2]...
+    id = result.tally.sort_by(&:last).reverse[count].first
     TvShow.find(id)
+  end
+
+  def suggestions_count
+    watched_ids = feedbacks.where.not(status: "unwatched").map(&:tv_show_id)
+    superlike_follow_ids = followings.map { |user| user.feedbacks.where(status: "Superlike").map(&:tv_show_id) }.flatten
+    result = superlike_follow_ids - watched_ids
+    result.tally.sort_by(&:last).reverse.size
   end
 
   def unfollow(user_id)

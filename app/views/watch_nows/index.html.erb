@@ -11,8 +11,8 @@
     <% end %>
 
     <div class="btn-again" style="text-align:center;">
-      <%= link_to watch_nows_path do %>
-        <p class="btn btn-ghost play-btn" style="width:50%;"><i class="fa fa-repeat mx-2" aria-hidden="true"></i>Again</p>
+      <%= link_to watch_nows_path(count: @next_movie) do %>
+        <p class="btn btn-ghost play-btn my-5" style="width:50%;"><i class="fa fa-repeat mx-2" aria-hidden="true"></i>Again</p>
       <% end %>
     </div>
   </div>
