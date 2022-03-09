@@ -231,13 +231,24 @@
 // SUGGESTION-CARD
 
 .card-suggestion {
-  min-height: calc(100vh - 50px);
+
+  min-height: 87vh;
+
+  h2 {
+    font-weight: 400;
+    font-size: 20px;
+    color: white;
+  }
+
+  h4 {
+    font-weight: 400;
+    font-size: 20px;
+    color: white;
+  }
 
   .card-suggestion-tvshow {
 
-    h2 {
-      color: white;
-    }
+
 
 
     img {
