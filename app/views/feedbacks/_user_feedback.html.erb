@@ -13,7 +13,7 @@
   <div class="review-card content-container">
     <div class="review-comment" data-add-feedback-target="comment"><%= @feedback_of_user.comment %></div>
   </div>
-  <%= simple_form_for @feedback_of_user, url: "/tv_shows/#{@tv_show.id}/feedbacks/#{@feedback_of_user.id}", method: :patch, html: { class: "d-none", data: { add_feedback_target: "formEdit", action: "submit->add-feedback#update" } } do |f| %>
+  <%= simple_form_for @feedback_of_user, url: "/tv_shows/#{@tv_show.id}/feedbacks/#{@feedback_of_user.id}", method: :patch, html: { class: "d-none edit_form_show", data: { add_feedback_target: "formEdit", action: "submit->add-feedback#update" } } do |f| %>
     <%= f.input :comment, as: :text %>
     <%= f.input :rating, collection: 0..5 %>
     <%= f.button :submit %>

@@ -52,3 +52,25 @@
 .feedback_status {
   color: white;
 }
+
+.edit_form_show {
+  padding: 5px;
+  select {
+    border-radius: 5px;
+    background-color: #1F2228;
+    color: #C0C0C0;
+    &:focus {
+      background-color: #1F2228;
+      color: #C0C0C0;
+    }
+  }
+  textarea {
+    border-radius: 5px;
+    background-color: #1F2228;
+    color: #C0C0C0;
+    &:focus {
+      color: #C0C0C0;
+      background-color: #1F2228;
+    }
+  }
+}
