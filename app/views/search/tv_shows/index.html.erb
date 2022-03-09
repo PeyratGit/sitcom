@@ -25,7 +25,46 @@
     <li>
       <a href="/search/users" class="tab-underlined">Users</a>
     </li>
+    <li>
+      <a href="/search/followings" class="tab-underlined">Followings</a>
+    </li>
+    <li>
+      <a href="/search/followers" class="tab-underlined">Followers</a>
+    </li>
   </ul>
+  </div>
+  <!--
+  -->
+  <div class="tag-container" data-controller = "tag-selection">
+    <%= simple_form_for :filter, method: :get, data: { action: "change->tag-selection#filter" } do |f| %>
+      <% if params[:filter].present?
+        netflix_checked = params[:filter]['netflix'] == '1'
+        amazon_checked = params[:filter]['amazon'] == '1'
+        disney_checked = params[:filter]['disney'] == '1'
+        ocs_checked = params[:filter]['ocs'] == '1'
+        canal_checked = params[:filter]['canal'] == '1'
+      else
+        false
+      end %>
+      <%= f.input :netflix, as: :boolean,
+                  input_html: { class: "tag-selector", checked: netflix_checked },
+                  wrapper_html: { class: "tag-item" } %>
+      <%= f.input :amazon, as: :boolean,
+                  input_html: { class: "tag-selector", checked: amazon_checked },
+                  wrapper_html: { class: "tag-item" } %>
+      <%= f.input :disney, as: :boolean,
+                  input_html: { class: "tag-selector", checked: disney_checked },
+                  wrapper_html: { class: "tag-item" } %>
+      <%= f.input :ocs, as: :boolean,
+                  input_html: { class: "tag-selector", checked: ocs_checked },
+                  wrapper_html: { class: "tag-item" } %>
+      <%= f.input :canal, as: :boolean,
+                  input_html: { class: "tag-selector", checked: canal_checked },
+                  wrapper_html: { class: "tag-item" } %>
+      <%= hidden_field_tag :query, params[:query],
+                  wrapper_html: { class: "tag-item" } %>
+      <%= f.button :submit, class: "d-none" ,data: { tag_selection_target: 'tagbutton' } %>
+    <% end %>
   </div>
   <% @tv_shows.each do |tv_show| %>
   <%= link_to tv_show_path(tv_show), class: "list-link" do %>

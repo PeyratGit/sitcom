@@ -7,6 +7,9 @@ class Search::UsersController < ApplicationController
       @users = User.where(sql_query, query: "%#{params[:query]}%")
     else
       @users = User.where.not(id: current_user)
+
+      ##@followings_ids = current_user.followings.pluck(:id)
+      ##@users = current_user.followings.concat(User.where.not(id: @followings_ids))
     end
   end
 
