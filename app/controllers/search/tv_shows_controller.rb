@@ -6,5 +6,6 @@ class Search::TvShowsController < ApplicationController
     else
       @tv_shows = TvShow.all
     end
+    # binding.pry
   end
 end
