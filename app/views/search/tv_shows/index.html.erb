@@ -25,8 +25,8 @@
   </div>
   <!--
   -->
-  <div class="tag-container">
-    <%= simple_form_for :filter, method: :get do |f| %>
+  <div class="tag-container" data-controller = "tag-selection">
+    <%= simple_form_for :filter, method: :get, data: { action: "change->tag-selection#filter" } do |f| %>
       <% if params[:filter].present?
         netflix_checked = params[:filter]['netflix'] == '1'
         amazon_checked = params[:filter]['amazon'] == '1'
@@ -53,7 +53,7 @@
                   wrapper_html: { class: "tag-item" } %>
       <%= hidden_field_tag :query, params[:query],
                   wrapper_html: { class: "tag-item" } %>
-      <%= f.button :submit %>
+      <%= f.button :submit, class: "d-none" ,data: { tag_selection_target: 'tagbutton' } %>
     <% end %>
   </div>
   <% @tv_shows.each do |tv_show| %>
