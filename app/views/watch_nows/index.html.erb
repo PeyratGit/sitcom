@@ -1,12 +1,19 @@
-<div class="card-suggestion d-flex justify-content-center align-content-center
- flex-column">
-  <h2 class="text-center">Bla Bla</h2>
-  <%= link_to tv_show_path(@suggestion) do %>
-    <div class="card-suggestion-tvshow">
-      <div class="tv-show-poster d-flex justify-content-center">
-        <%= image_tag(@suggestion.poster_url) %>
+<div class="card-suggestion">
+  <h2 class="text-center title-suggest">Here is our suggestion!</h2>
+
+  <div class="card-suggestion-info d-flex flex-column justify-content-center">
+    <%= link_to tv_show_path(@suggestion) do %>
+      <div class="card-suggestion-tvshow" style="text-align:center;">
+        <div class="tv-show-poster">
+          <%= image_tag(@suggestion.poster_url) %>
+        </div>
       </div>
+    <% end %>
+
+    <div class="btn-again" style="text-align:center;">
+      <%= link_to watch_nows_path do %>
+        <p class="btn btn-ghost play-btn" style="width:50%;"><i class="fa fa-repeat mx-2" aria-hidden="true"></i>Again</p>
+      <% end %>
     </div>
-  <% end %>
-  <h4 class="text-center">Again</h4>
+  </div>
 </div>
