@@ -216,6 +216,11 @@
   }
 }
 
+#show-page-container {
+  position: relative;
+  top: -60px;
+}
+
 .index-follows-container {
   display: flex;
   flex-direction: row;
