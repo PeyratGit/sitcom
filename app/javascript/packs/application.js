@@ -21,5 +21,3 @@ document.addEventListener('turbolinks:load', () => {
   illuminate();
   initTinder();
 })
-
-

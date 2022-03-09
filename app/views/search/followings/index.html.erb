@@ -1,0 +1,40 @@
+<div class="index-global-container-true">
+  <div class="search-bar">
+      <%= form_tag search_tv_shows_path,class:"simple_form search", autocomplete:"off", method: :get do %>
+        <div class="search-form-control form-group">
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Search"
+          %>
+          <button name="button" type="submit" class="btn btn-flat" id="search-btn">
+            <i class="fa fa-search" id="search-icon"></i>
+          </button>
+        </div>
+      <% end %>
+  </div>
+  <div class="tab-container">
+  <ul class="list-inline tabs-underlined">
+    <li>
+      <a href="/search/tv_shows" class="tab-underlined">TV shows</a>
+    </li>
+    <li>
+      <a href="/search/users" class="tab-underlined">Users</a>
+    </li>
+        <li>
+      <a href="/search/follows" class="tab-underlined activated">Followings</a>
+    </li>
+    <li>
+      <a href="/search/followers" class="tab-underlined">Followers</a>
+    </li>
+  </ul>
+  </div>
+
+  <div class="cards-follows">
+    <% @followings.each do |following| %>
+      <div data-user=<%= following.id %>>
+        <%= render "search/followings/following", following: following%>
+      </div>
+    <% end %>
+  </div>
+</div>

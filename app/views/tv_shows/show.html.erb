@@ -1,10 +1,14 @@
+<% content_for :meta_title, "#{DEFAULT_META["meta_product_name"]} | #{@tv_show.title}" %>
+<% content_for :meta_description, @tv_show.description %>
+<% content_for :meta_image, cl_image_path(@tv_show.poster_url) %>
+
 <div class="stimulus-controller-container" data-controller="votes" data-action="ajax:complete->votes#changescores">
   <div class="index-global-container-true" id="show-page-container">
     <div class="tv-show-top-container" style="background-image: linear-gradient(rgba(15, 18, 22, 0), rgba(39, 42, 48, 0.9)),url('<%= @tv_show.poster_url %>');">
       <div class="tv-show-main-infos-container">
 
         <div class="back-button" id="back-show">
-          <%= link_to :back do %>
+          <%= link_to tv_shows_path do %>
             <i class="fa fa-arrow-left"></i>
           <% end %>
         </div>
@@ -39,7 +43,7 @@
       <div class="watched-by-users">
       </div>
       <div data-votes-target="scores" class="partial-scores-container">
-        <%= render 'shared/likes-votes-scores', tv_show: @tv_show, feedbacks_superlike_number: @feedbacks_superlike_number, feedbacks_like_number: @feedbacks_like_number, feedbacks_dislike_number: @feedbacks_dislike_number %>
+        <%= render 'shared/votes_scores', tv_show: @tv_show, feedbacks_superlike_number: @feedbacks_superlike_number, feedbacks_like_number: @feedbacks_like_number, feedbacks_dislike_number: @feedbacks_dislike_number %>
       </div>
       <div class="scores-text">
         <span>% likes</span>

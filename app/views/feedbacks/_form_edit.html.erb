@@ -2,7 +2,7 @@
                     data: {
                       add_feedback_target: "form",
                       action: "submit->add-feedback#patch"
-                    }) do |f| %>
+                    }), html: {class: "edit_form_show"} do |f| %>
   <%= f.input :comment, as: :text %>
   <%= f.input :rating, collection: 0..5 %>
   <%= f.input :status, collection: ["Like", "Dislike", "Superlike"] %>

@@ -1,6 +1,15 @@
+<% content_for :meta_title, "#{DEFAULT_META["meta_product_name"]} | #{@user.first_name} #{@user.last_name}" %>
+<% content_for :meta_description, "#{@user.first_name} #{@user.last_name} is on Sitcom" %>
+<% if @user.facebook_picture_url.nil? %>
+  <% content_for :meta_image, cl_image_path("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg") %>
+<% else %>
+  <% content_for :meta_image, cl_image_path(@user.facebook_picture_url) %>
+<% end %>
+
+
 <div>
   <div class="card-user px-3 my-3">
-
+​
     <div class="user-header d-flex d-inline justify-content-between align-items-center my-2">
       <div class='mx-2'>
         <% if @user.facebook_picture_url.nil? %>
@@ -9,26 +18,27 @@
           <%= image_tag(@user.facebook_picture_url, :class => "avatar-xlarge") %>
         <% end %>
       </div>
-
+​
       <div class=' mx-2 align-items-center'>
         <div class="user-header-info text-center"><%= @user.feedbacks.count %></div>
         <p class = "mb-0">watched</p>
       </div>
-      <div class='mx-2 align-items-center'>
+
+      <%= link_to search_followings_path , class: "mx-2 align-items-center" do %>
         <div class="user-header-info text-center"><%= @followings.count %></div>
         <p class = "mb-0">followings</p>
-      </div>
-      <div class='mx-2 align-items-center'>
-        <div class="user-header-info text-center"><%= @followers.count %></div>
-        <p class = "mb-0">followers</p>
-      </div>
-    </div>
+      <% end %>
 
+      <%= link_to search_followers_path, class:"mx-2 align-items-center" do %>
+          <div class="user-header-info text-center"><%= @followers.count %></div>
+          <p class = "mb-0">followers</p>
+        </div>
+      <% end %>
     <div>
       <h2 class="user-description"><%= @user.first_name %> <%= @user.last_name %></h2>
       <p><%= @user.description %></p>
     </div>
-
+​
     <div class="btn-follow" id="user-follow">
     <%= render "users/btnfollow"%>
     </div>
@@ -52,7 +62,7 @@
           <% end %>
       </div>
     </div>
-
+​
     <div>
       <% if  @likes.count != 0  %>
         <div>
@@ -73,7 +83,7 @@
         <% end %>
       </div>
     </div>
-
+​
     <div>
       <% if @dislikes.count != 0  %>
         <div>
@@ -94,10 +104,10 @@
         <% end %>
       </div>
     </div>
-
+​
     <div>
       <h4>Activity</h4>
-
+​
       <% @feedbacks.each do |feedback| %>
         <div class = "review-card px-3 d-flex align-items-center">
           <% if feedback.status == "Dislike" %>

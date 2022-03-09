@@ -1,5 +1,5 @@
 <% if Feedback.where(user_id: current_user, tv_show_id: @tv_show.id).empty? %>
-  <div class="js-interact btn-interaction", data-votes-target="dislikebtn">
+  <div class="js-interact btn-interaction dislike", data-votes-target="dislikebtn">
     <%= link_to tv_show_feedbacks_path(feedback: {status: "Dislike"}, tv_show_id: @tv_show.id), remote: true, method: :post do %>
       <i class="fa fa-thumbs-down" id="thumb-down"></i>
     <% end %>
@@ -18,7 +18,7 @@
   <% feedback = Feedback.where(user_id: current_user, tv_show_id: @tv_show.id).last %>
   <% status = Feedback.where(user_id: current_user, tv_show_id: @tv_show.id).last[:status] %>
   <% if status == "Like" %>
-    <div class="js-interact btn-interaction", data-votes-target="dislikebtn">
+    <div class="js-interact btn-interaction dislike", data-votes-target="dislikebtn">
       <%= link_to tv_show_feedback_path(id: feedback.id, status: "Dislike", tv_show_id: @tv_show.id), remote: true, method: :patch do %>
         <i class="fa fa-thumbs-down" id="thumb-down"></i>
       <% end %>
@@ -34,7 +34,7 @@
       <% end %>
     </div>
   <% elsif status == "Dislike" %>
-    <div class="js-interact btn-interaction active", data-votes-target="dislikebtn">
+    <div class="js-interact btn-interaction dislike active", data-votes-target="dislikebtn">
       <%= link_to tv_show_feedback_path(id: feedback.id, status: "Dislike", tv_show_id: @tv_show.id), remote: true, method: :patch do %>
         <i class="fa fa-thumbs-down" id="thumb-down"></i>
       <% end %>
@@ -50,7 +50,7 @@
       <% end %>
    </div>
   <% else %>
-    <div class="js-interact btn-interaction", data-votes-target="dislikebtn">
+    <div class="js-interact btn-interaction dislike", data-votes-target="dislikebtn">
       <%= link_to tv_show_feedback_path(id: feedback.id, status: "Dislike", tv_show_id: @tv_show.id), remote: true, method: :post do %>
         <i class="fa fa-thumbs-down" id="thumb-down"></i>
       <% end %>

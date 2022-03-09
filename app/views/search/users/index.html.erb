@@ -1,3 +1,7 @@
+<% content_for :meta_title, "#{DEFAULT_META["meta_product_name"]} | Users" %>
+<% content_for :meta_description, "#{@users.length} users on Sitcom" %>
+<% content_for :meta_image, cl_image_path("logo.png") %>
+
 <div class="index-global-container-true">
   <div class="search-bar">
     <%= form_tag search_tv_shows_path,class:"simple_form search", autocomplete:"off", method: :get do %>
@@ -22,13 +26,19 @@
       <li>
         <a href="/search/users" class="tab-underlined activated">Users</a>
       </li>
+      <li>
+        <a href="/search/followings" class="tab-underlined">Followings</a>
+      </li>
+      <li>
+        <a href="/search/followers" class="tab-underlined">Followers</a>
+      </li>
     </ul>
   </div>
 
   <div class="cards-friends">
     <% @users.each do |user| %>
       <div data-user=<%= user.id %>>
-        <%= render "search/users/user", user: user %>
+        <%= render "search/users/user", user: user%>
       </div>
     <% end %>
   </div>

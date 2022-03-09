@@ -42,6 +42,14 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :search do
+    resources :followings, only: :index
+  end
+
+  namespace :search do
+    resources :followers, only: :index
+  end
+
   resources :watch_nows, only: [:index]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
