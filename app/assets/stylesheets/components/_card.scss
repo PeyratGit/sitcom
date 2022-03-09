@@ -101,8 +101,11 @@
 // CARD-USER
 
 .card-user {
-  color: white;
+  color: $textcolor;
   opacity: 0.85;
+    p{
+      color: $textcolor;
+    }
 }
 
 .user-description {
@@ -111,6 +114,11 @@
 
 .user-header-info {
   font-weight: bolder;
+  color: $textcolor;
+}
+
+.user-header {
+  color: $textcolor;
 }
 
 // REVIEW-CARD
@@ -155,7 +163,7 @@
   flex-direction: column-reverse;
 }
 
-.card-friends {
+.card-friends, .card-follows {
   display: flex;
   width: 100%;
   margin-bottom: 10px;
@@ -163,22 +171,22 @@
   align-items: center;
 }
 
-.card-friends-description {
+.card-friends-description, .card-follows-description{
   color: $textcolor;
 }
 
-.card-friends img{
+.card-friends img, .card-follows img{
   height: 30%;
   width: 100px;
   object-fit: cover;
   border-radius: 50%;
 }
 
-.card-friends-infos {
+.card-friends-infos, .card-follows-infos {
   font-size: 18px;
   font-weight: bold;
   justify-content: center;
-  color: #EEEEEE;
+  color: $textcolor;
   width: 100%;
 }
 
@@ -188,7 +196,7 @@
   flex-direction: column;
 }
 
-.cards-friends {
+.cards-friends, .cards-follows {
   width: 100%;
   display: flex;
   flex-direction: column;

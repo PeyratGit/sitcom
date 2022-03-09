@@ -1,6 +1,6 @@
 <div>
   <div class="card-user px-3 my-3">
-
+​
     <div class="user-header d-flex d-inline justify-content-between align-items-center my-2">
       <div class='mx-2'>
         <% if @user.facebook_picture_url.nil? %>
@@ -9,26 +9,27 @@
           <%= image_tag(@user.facebook_picture_url, :class => "avatar-xlarge") %>
         <% end %>
       </div>
-
+​
       <div class=' mx-2 align-items-center'>
         <div class="user-header-info text-center"><%= @user.feedbacks.count %></div>
         <p class = "mb-0">watched</p>
       </div>
-      <div class='mx-2 align-items-center'>
+
+      <%= link_to search_followings_path , class: "mx-2 align-items-center" do %>
         <div class="user-header-info text-center"><%= @followings.count %></div>
         <p class = "mb-0">followings</p>
-      </div>
-      <div class='mx-2 align-items-center'>
-        <div class="user-header-info text-center"><%= @followers.count %></div>
-        <p class = "mb-0">followers</p>
-      </div>
-    </div>
+      <% end %>
 
+      <%= link_to search_followers_path, class:"mx-2 align-items-center" do %>
+          <div class="user-header-info text-center"><%= @followers.count %></div>
+          <p class = "mb-0">followers</p>
+        </div>
+      <% end %>
     <div>
       <h2 class="user-description"><%= @user.first_name %> <%= @user.last_name %></h2>
       <p><%= @user.description %></p>
     </div>
-
+​
     <div class="btn-follow" id="user-follow">
     <%= render "users/btnfollow"%>
     </div>
@@ -41,16 +42,18 @@
         <div class="index-cards-container">
           <% @feedbacks.each do |feedback| %>
             <% if feedback.status == "Superlike" %>
-              <div class="card-tv-show-poster">
-                <div class="tv-show-poster">
-                  <%= image_tag(feedback.tv_show.poster_url) %>
+              <%= link_to tv_show_path(feedback.tv_show) do %>
+                <div class="card-tv-show-poster">
+                  <div class="tv-show-poster">
+                    <%= image_tag(feedback.tv_show.poster_url) %>
+                  </div>
                 </div>
-              </div>
+              <% end %>
             <% end %>
           <% end %>
       </div>
     </div>
-
+​
     <div>
       <% if  @likes.count != 0  %>
         <div>
@@ -60,38 +63,42 @@
       <div class="index-cards-container">
         <% @feedbacks.each do |feedback| %>
           <% if feedback.status == "Like" %>
-            <div class="card-tv-show-poster">
-              <div class="tv-show-poster">
-                <%= image_tag(feedback.tv_show.poster_url) %>
+            <%= link_to tv_show_path(feedback.tv_show) do %>
+              <div class="card-tv-show-poster">
+                <div class="tv-show-poster">
+                  <%= image_tag(feedback.tv_show.poster_url) %>
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
         <% end %>
       </div>
     </div>
-
+​
     <div>
+      <% if @dislikes.count != 0  %>
+        <div>
+          <h5><%= @user.first_name %>'s Dislikes list</h5>
+        </div>
+      <% end %>
       <div class="index-cards-container">
-        <% if @dislikes.count != 0  %>
-          <div>
-            <h5><%= @user.first_name %>'s Dislikes list</h5>
-          </div>
-        <% end %>
         <% @feedbacks.each do |feedback| %>
           <% if feedback.status == "Dislike" %>
-            <div class="card-tv-show-poster">
-              <div class="tv-show-poster">
-                <%= image_tag(feedback.tv_show.poster_url) %>
+            <%= link_to tv_show_path(feedback.tv_show) do %>
+              <div class="card-tv-show-poster">
+                <div class="tv-show-poster">
+                  <%= image_tag(feedback.tv_show.poster_url) %>
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
         <% end %>
       </div>
     </div>
-
+​
     <div>
       <h4>Activity</h4>
-
+​
       <% @feedbacks.each do |feedback| %>
         <div class = "review-card px-3 d-flex align-items-center">
           <% if feedback.status == "Dislike" %>

@@ -33,8 +33,10 @@
 }
 
 .form-container-edit {
-  background-color: $background;
-  color: $textcolor;
+  color: #EEEEEE;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
 }
 
 .calque {

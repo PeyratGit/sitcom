@@ -1,0 +1,26 @@
+<div>
+  <div class="card-follows">
+    <%=link_to user_path(follower) do %>
+      <% if follower.facebook_picture_url.nil? %>
+        <%= image_tag "avatar3.png"%>
+      <% else %>
+        <%= image_tag(follower.facebook_picture_url)%>
+      <% end %>
+  <div class="card-follows">
+      <div class="card-follows-infos">
+        <div class="card-follows-description">
+          <h2><%= follower.first_name %> <%= follower.last_name %></h2>
+        </div>
+
+        <div class="follow">
+          <% if follower == current_user %>
+          <% elsif current_user.is_following?(follower.id) %>
+            <%= link_to "Following", unfollow_search_user_path(follower.id), method: :post, remote: true, class: "following-button"%>
+          <% else %>
+            <%= link_to "Follow", follow_search_user_path(follower.id), method: :post, remote: true, class: "follow-button" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
