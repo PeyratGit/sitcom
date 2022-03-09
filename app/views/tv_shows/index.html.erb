@@ -23,6 +23,7 @@
           </div>
         <% end %>
     </div>
+    <%# Last feedbacks from follows %>
     <% if current_user.followings.nil? == false %>
       <div class="recommendation-title">Last feedbacks</div>
       <div class="carousel slider">
@@ -154,6 +155,34 @@
         <% end %>
       <% end %>
     </div>
+    <%# My wishlist %>
+    <% if Wish.where(user_id: current_user).nil? == false %>
+      <div class="recommendation-title">
+        Your wishlist
+      </div>
+      <div class="index-cards-container">
+        <% @tv_shows_wishlist.order(imdb_rating: :desc).each do |tv_show| %>
+          <%= link_to tv_show_path(tv_show) do %>
+            <div class="card-tv-show-small">
+              <div class="tv-show-poster">
+                <%= image_tag(tv_show.poster_url) %>
+              </div>
+              <div class="tv-show-infos">
+                <div class="tv-show-title">
+                  <%= tv_show.title %>
+                </div>
+                <div class="show-score">
+                  <p>
+                    <%= tv_show.imdb_rating %>
+                  </p>
+                  <i class="fa fa-star"></i>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
     <%# Top rated on imdb row %>
     <div class="recommendation-title">
       Top rated on IMDb

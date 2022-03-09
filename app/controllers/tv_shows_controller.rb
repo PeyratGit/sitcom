@@ -3,6 +3,9 @@ class TvShowsController < ApplicationController
     @tv_shows = TvShow.all
     @follows = current_user.followings
 
+    tv_show_ids = Wish.where(user_id: current_user).map(&:tv_show_id)
+    @tv_shows_wishlist = TvShow.where(id: tv_show_ids)
+
     @last_feedbacks = []
     @last_feedbacks_user = []
     @last_feedbacks_shows = []
