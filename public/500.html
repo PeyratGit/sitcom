@@ -157,6 +157,12 @@
     top: 1px;
   }
 
+  a {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+  }
+
   </style>
   </head>
 
@@ -171,7 +177,8 @@
       <div class="text-nice">
         Here's a button to help you out
       </div>
-      <button onclick="history.back()" class="button">Here</button>
+      <a href="/tv_shows" class="button">Here</a>
+      <!-- <button onclick="history.back()" class="button">Here</button> -->
       <div class="text-nice" style="margin-top:40px; font-size: 12px;">
         We will fix them don't worry
       </div>
