@@ -6,7 +6,7 @@ class Search::UsersController < ApplicationController
       sql_query = "last_name ILIKE :query OR first_name ILIKE :query"
       @users = User.where(sql_query, query: "%#{params[:query]}%")
     else
-      @users = User.all
+      @users = User.where.not(id: current_user)
     end
   end
 
