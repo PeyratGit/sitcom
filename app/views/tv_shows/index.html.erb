@@ -24,26 +24,46 @@
         <% end %>
     </div>
     <% if current_user.followings.nil? == false %>
-      <div class="carousel">
-      <%# @last_feedbacks.count %>
-        <% 3.times do |i| %>
-          <div class="carousel-card">
-            <div class="top-container">
-              <div class="avatar-picture">
-                <% if @last_feedbacks_user[i].facebook_picture_url %>
-                  <%= image_tag(@last_feedbacks_user[i].facebook_picture_url, class: "avatar") %>
-                <% else %>
-                  <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar") %>
-                <% end %>
+      <div class="recommendation-title">Follows activity</div>
+      <div class="carousel slider">
+      <%#  style="width: calc(356px * <%= @last_feedbacks.first(7).count%>
+        <div class="slide-track">
+        <%# @last_feedbacks.count %>
+          <% @last_feedbacks.first(7).count.times do |i| %>
+            <div class="carousel-card slide">
+              <div class="top-container">
+                <div class="avatar-picture">
+                  <% if @last_feedbacks_user[i].facebook_picture_url %>
+                    <%= image_tag(@last_feedbacks_user[i].facebook_picture_url, class: "avatar") %>
+                  <% else %>
+                    <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar") %>
+                  <% end %>
+                </div>
+                <div class="username"><%= @last_feedbacks_user[i].first_name + " " + @last_feedbacks_user[i].last_name + " added a feedback to " + @last_feedbacks_shows[i].title %></div>
               </div>
-              <div class="username"><%= @last_feedbacks_user[i].first_name + " " + @last_feedbacks_user[i].last_name + " added a feedback to " + @last_feedbacks_shows[i].title %></div>
-              <!-- <div class="user-rating"><%= @last_feedbacks[i].rating %>/5</div> -->
+              <div class="content-container">
+                <div class="carousel-comment">“ <%= @last_feedbacks[i][0].comment %> ”</div>
+              </div>
             </div>
-            <div class="content-container">
-              <div class="carousel-comment">“ <%= @last_feedbacks[i].comment %> ”</div>
+          <% end %>
+          <% @last_feedbacks.first(7).count.times do |o| %>
+            <div class="carousel-card slide">
+              <div class="top-container">
+                <div class="avatar-picture">
+                  <% if @last_feedbacks_user[o].facebook_picture_url %>
+                    <%= image_tag(@last_feedbacks_user[o].facebook_picture_url, class: "avatar") %>
+                  <% else %>
+                    <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar") %>
+                  <% end %>
+                </div>
+                <div class="username"><%= @last_feedbacks_user[o].first_name + " " + @last_feedbacks_user[o].last_name + " added a feedback to " + @last_feedbacks_shows[o].title %></div>
+              </div>
+              <div class="content-container">
+                <div class="carousel-comment">“ <%= @last_feedbacks[o][0].comment %> ”</div>
+              </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     <% end %>
     <%# Community rating row %>

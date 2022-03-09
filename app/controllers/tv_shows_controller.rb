@@ -7,7 +7,7 @@ class TvShowsController < ApplicationController
     @last_feedbacks_user = []
     @last_feedbacks_shows = []
     @follows.each do |follow|
-      @last_feedbacks << follow.feedbacks.where.not(comment: nil).last
+      @last_feedbacks << follow.feedbacks.where.not(comment: nil).last(5)
       @last_feedbacks_user << User.find(follow.id)
       @last_feedbacks_shows << TvShow.find(follow.feedbacks.where.not(comment: nil).last.tv_show_id)
     end

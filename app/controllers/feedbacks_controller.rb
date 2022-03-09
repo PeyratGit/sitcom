@@ -36,10 +36,11 @@ class FeedbacksController < ApplicationController
     @feedback_of_user = Feedback.where(tv_show_id: @tv_show.id, user_id: current_user).where.not(comment: nil).last
 
 
-    # render partial:"shared/likes-votes-scores", locals: {tv_show: @tv_show, feedbacks_superlike_number: @feedbacks_superlike_number, feedbacks_like_number: @feedbacks_like_number, feedbacks_dislike_number: @feedbacks_dislike_number}
+
 
     respond_to do |format|
       format.html { redirect_to tv_show_path(params[:tv_show_id]) }
+      format.js { render partial:"shared/votes_scores", locals: {tv_show: @tv_show, feedbacks_superlike_number: @feedbacks_superlike_number, feedbacks_like_number: @feedbacks_like_number, feedbacks_dislike_number: @feedbacks_dislike_number} }
       format.text { render partial: "feedbacks/user_feedback", locals: { tv_show: @tv_show, feedback_of_user: @feedback_of_user,  }, formats: [:html] }
       format.json  { render json: @feedback }
     end
