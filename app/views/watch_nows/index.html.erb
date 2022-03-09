@@ -1,7 +1,11 @@
 <div class="card-suggestion ">
   <h2>Bla Bla</h2>
-  <div class="card-suggestion-tvshow">
-    <%= image_tag(@suggestion.poster_url) %>
-  </div>
+  <%= link_to tv_show_path(@suggestion) do %>
+    <div class="card-suggestion-tvshow">
+      <div class="tv-show-poster">
+        <%= image_tag(@suggestion.poster_url) %>
+      </div>
+    </div>
+  <% end %>
   <h4>Again</h4>
 </div>

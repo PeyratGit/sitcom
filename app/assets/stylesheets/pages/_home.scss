@@ -3,8 +3,6 @@
   width: 100%;
   background-size: cover;
   background-image: -o-linear-gradient(rgb(15, 18, 22) 0%, rgb(39, 42, 48) 100%);
-  padding-top: 10%;
-  padding-bottom: 5%;
   padding-left: 15%;
   padding-right: 15%;
 }
@@ -12,8 +10,8 @@
 .play {
   width: 100%;
   background-size: cover;
-  margin-top: -14%;
-  margin-bottom: -15%;
+  margin-top: -10%;
+  margin-bottom: -10%;
 }
 .heart {
   width: 100%;
@@ -67,6 +65,7 @@
 
 .container {
   color: $textcolor;
+  padding-bottom: 20px;
 }
 
 .card-product-infos {
@@ -88,6 +87,8 @@
   color: $textcolor;
   margin-right: 5%;
   margin-left: 5%;
+  padding-bottom: 10%;
+  padding-top: 10%;
 }
 
 .btn-ghost {

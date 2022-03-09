@@ -130,7 +130,9 @@
     font-weight: normal;
   }
   .review-comment {
-    color:#C0C0C0
+    color:#C0C0C0;
+    padding-left: 5px;
+    padding-right: 5px;
   }
   .user-rating {
     margin-left: auto;
@@ -233,7 +235,10 @@
 
   .card-suggestion-tvshow {
 
-    color: white;
+    h2 {
+      color: white;
+    }
+
 
     img {
       height: 300px;

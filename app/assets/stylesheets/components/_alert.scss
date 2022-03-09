@@ -4,3 +4,15 @@
   right: 16px;
   z-index: 1000;
 }
+
+.alert-info-sitcom {
+  background-color: #434850;
+  color: white;
+  border-radius: 8px;
+  border-color: #7CE7EC;
+
+
+  .btn-close {
+    color: white;
+  }
+}
