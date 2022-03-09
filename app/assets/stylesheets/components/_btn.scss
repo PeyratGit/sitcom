@@ -98,7 +98,7 @@
   text-align: center;
   &:after {
     content: "";
-    background: #1abc9c;
+    background: purple;
     display: block;
     position: absolute;
     padding-top: 300%;
@@ -120,7 +120,21 @@
       color:purple;
     }
   }
+}
+
+.btn-interaction-superlike.active {
+  box-shadow: 0px 2px 10px 5px purple;
+}
+
+.btn-interaction.dislike.active {
+    box-shadow: 0px 2px 10px 5px red;
+}
+
+.btn-interaction.dislike {
+  &:after {
+    background: red;
   }
+}
 
 .back-button {
   position: absolute;
