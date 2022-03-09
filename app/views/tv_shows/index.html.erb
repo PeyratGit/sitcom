@@ -24,7 +24,8 @@
       Recommendations from the community
     </div>
     <div class="index-cards-container">
-      <% @tv_shows.each do |tv_show| %>
+      <% shows = @tv_shows.sort_by { |tv_show| tv_show.popularity_score(current_user)*-1 } %>
+      <% shows.each do |tv_show| %>
         <% if tv_show.feedbacks.where.not(comment: nil).empty? == false %>
           <%= link_to tv_show_path(tv_show) do %>
             <div class="card-tv-show-small">
@@ -36,18 +37,13 @@
                   <%= tv_show.title %>
                 </div>
                 <div class="show-score">
-                  <p>
-                    <% if Feedback.where(tv_show_id: tv_show.id).where.not(comment: nil).empty? %>
-                      <%= "?/10" %>
-                    <% else %>
-                      <% somme = 0 %>
-                      <% Feedback.where(tv_show_id: tv_show.id).where.not(comment: nil).each do |feedback| %>
-                        <% somme += feedback.rating%>
-                      <% end %>
-                      <%= "#{somme/Feedback.where(tv_show_id: tv_show.id).where.not(comment: nil).count}/10" %>
-                    <% end %>
+                  <% if tv_show.popularity_score(current_user) == 0 %>
+                  <% else %>
+                    <p>
+                    <%=tv_show.popularity_score(current_user)%>
                     </p>
-                  <i class="fa fa-users"></i>
+                    <i class="fa fa-users"></i>
+                  <% end %>
                 </div>
               </div>
             </div>
