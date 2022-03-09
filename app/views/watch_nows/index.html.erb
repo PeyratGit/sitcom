@@ -1,7 +1,19 @@
-<div class="card-suggestion ">
-  <h2>Bla Bla</h2>
-  <div class="card-suggestion-tvshow">
-    <%= image_tag(@suggestion.poster_url) %>
+<div class="card-suggestion">
+  <h2 class="text-center title-suggest">Here is our suggestion!</h2>
+
+  <div class="card-suggestion-info d-flex flex-column justify-content-center">
+    <%= link_to tv_show_path(@suggestion) do %>
+      <div class="card-suggestion-tvshow" style="text-align:center;">
+        <div class="tv-show-poster">
+          <%= image_tag(@suggestion.poster_url) %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="btn-again" style="text-align:center;">
+      <%= link_to watch_nows_path(count: @next_movie) do %>
+        <p class="btn btn-ghost play-btn my-5" style="width:50%;"><i class="fa fa-repeat mx-2" aria-hidden="true"></i>Again</p>
+      <% end %>
+    </div>
   </div>
-  <h4>Again</h4>
 </div>

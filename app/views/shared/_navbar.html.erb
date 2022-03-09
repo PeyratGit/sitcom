@@ -1,4 +1,5 @@
-<div class="navbar navbar-expand-sm navbar-dark navbar-lewagon">
+
+<div class="navbar <%= "navbar-fixed" if params[:action] == "show" %> navbar-expand-sm navbar-dark navbar-lewagon">
   <div class="container-fluid">
     <div id="home-logo">
       <%= link_to tv_shows_path, class:"navbar-brand" do %>

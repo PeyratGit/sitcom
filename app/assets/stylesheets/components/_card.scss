@@ -138,7 +138,9 @@
     font-weight: normal;
   }
   .review-comment {
-    color:#C0C0C0
+    color:#C0C0C0;
+    padding-left: 5px;
+    padding-right: 5px;
   }
   .user-rating {
     margin-left: auto;
@@ -237,11 +239,25 @@
 // SUGGESTION-CARD
 
 .card-suggestion {
-  min-height: calc(100vh - 50px);
-  
-.card-suggestion-tvshow {
-  img {
-    height: 300px;
+  min-height: 87vh;
+
+  .title-suggest {
+    color: white;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+
+  h4 {
+    font-weight: 400;
+    font-size: 20px;
+    color: white;
+  }
+
+  .card-suggestion-tvshow {
+    img {
+      height: 300px;
+    }
   }
  }
 }
