@@ -10,7 +10,7 @@ class WishesController < ApplicationController
       user: current_user,
       tv_show: @tv_show
     )
-    redirect_to tv_show_path(@tv_show)
+    redirect_to @tv_show
   end
 
   def destroy
