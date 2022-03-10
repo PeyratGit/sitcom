@@ -240,10 +240,12 @@
           <div class="carousel-card">
             <div class="top-container">
               <div class="avatar-picture">
-                <% if @last_feedbacks_array[i][:user].facebook_picture_url %>
-                  <%= image_tag(@last_feedbacks_array[i][:user].facebook_picture_url, class: "avatar") %>
-                <% else %>
-                  <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar") %>
+                <%= link_to user_path(@last_feedbacks_array[i][:user].id) do %>
+                  <% if @last_feedbacks_array[i][:user].facebook_picture_url %>
+                    <%= image_tag(@last_feedbacks_array[i][:user].facebook_picture_url, class: "avatar") %>
+                  <% else %>
+                    <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar") %>
+                  <% end %>
                 <% end %>
               </div>
               <div class="username"><%= @last_feedbacks_array[i][:user].first_name + " " + @last_feedbacks_array[i][:user].last_name + " added a feedback to " + @last_feedbacks_array[i][:tv_show].title %></div>
