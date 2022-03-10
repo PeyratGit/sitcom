@@ -1,6 +1,6 @@
 .tab-container {
-  width: 75%;
-  margin: 2% auto;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .tabs-underlined {
@@ -11,11 +11,12 @@
 .tabs-underlined .tab-underlined {
   color: white;
   padding: 8px 4px;
-  margin: 8px;
+  margin: 4px;
   opacity: .4;
   cursor: pointer;
   text-decoration: none;
   border-bottom: 4px solid transparent;
+  font-size: 16px;
 }
 
 .tabs-underlined .tab-underlined.activated {

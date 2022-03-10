@@ -2,7 +2,8 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 5px;
+  padding-right: 8px;
+  padding-left: 8px;
   .wishlist-title {
     h1 {
       color: white;
@@ -47,7 +48,7 @@
 .wishlist-card-tv-show-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 8px;
+  grid-gap: 4px;
   margin: 0 auto;
 }
 
@@ -60,4 +61,11 @@
 
 .calque {
   min-height: 87vh;
+}
+
+.wishlist-card-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ECEAFF;
 }
