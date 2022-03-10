@@ -82,32 +82,34 @@ puts "Users creation done !"
 puts "Creating feedbacks..."
 statuses = ['Unwatched', 'Dislike', 'Like', 'Superlike']
 comments = ["The beginning of the tv show is very great. Unfortunately the final season is not as exciting as the first ones but still worth binge watching it !", "Actors are marvellous and story is great. You wont get bored if you decide to watch it", "I liked it from beginning to end. You should definitely wathc it !", "I think this is the best tv show ever", "A bit disappointing even if actors are good.", "THAT'S THE BEST SHOW EVER!!!!", "Characters are very well defined. Synopsis is intelligently done.But still at the end, I was annoyed when I watched it...", "Overall I am disappointed. I thought I would enjoy much more given all the buzz around it", "I hate the main character but aside from that, it is an awesome show...", "You won't believe how it ends. I could not sleep for days after watching it!"]
-ratings = [3, 4, 5]
+ratings = [1, 2, 3, 4, 5]
 users = User.all
 user_index = 0
 
 12.times do
   tv_shows = TvShow.all
-  10.times do
+  15.times do
     tv_show = tv_shows.sample
     Feedback.create!(
       status: statuses.sample,
       user_id: users[user_index].id,
-      tv_show_id: tv_show.id
-    )
-    tv_shows.reject { |show| show.id == tv_show.id }
-  end
-  10.times do
-    tv_show = tv_shows.sample
-    Feedback.create!(
-      status: ['Like', 'Superlike'].sample,
-      user_id: users[user_index].id,
-      tv_show_id: tv_shows.sample.id,
+      tv_show_id: tv_show.id,
       comment: comments.sample,
       rating: ratings.sample
     )
-    tv_shows.reject { |show| show.id == tv_show.id }
+    tv_shows = tv_shows.reject { |show| show.id == tv_show.id }
   end
+  # 10.times do
+  #   tv_show = tv_shows.sample
+  #   Feedback.create!(
+  #     status: ['Like', 'Superlike'].sample,
+  #     user_id: users[user_index].id,
+  #     tv_show_id: tv_shows.sample.id,
+  #     comment: comments.sample,
+  #     rating: ratings.sample
+  #   )
+  #   tv_shows.reject { |show| show.id == tv_show.id }
+  # end
   user_index += 1
 end
 

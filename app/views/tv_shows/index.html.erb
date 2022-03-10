@@ -202,20 +202,20 @@
     <% if current_user.followings.nil? == false %>
       <div class="recommendation-title">Last feedbacks</div>
       <div class="carousel">
-        <% @last_feedbacks.length.times do |i| %>
+        <% @last_feedbacks_array.length.times do |i| %>
           <div class="carousel-card">
             <div class="top-container">
               <div class="avatar-picture">
-                <% if @last_feedbacks_user[i].facebook_picture_url %>
-                  <%= image_tag(@last_feedbacks_user[i].facebook_picture_url, class: "avatar") %>
+                <% if @last_feedbacks_array[i][:user].facebook_picture_url %>
+                  <%= image_tag(@last_feedbacks_array[i][:user].facebook_picture_url, class: "avatar") %>
                 <% else %>
                   <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar") %>
                 <% end %>
               </div>
-              <div class="username"><%= @last_feedbacks_user[i].first_name + " " + @last_feedbacks_user[i].last_name + " added a feedback to " + @last_feedbacks_shows[i].title %></div>
+              <div class="username"><%= @last_feedbacks_array[i][:user].first_name + " " + @last_feedbacks_array[i][:user].last_name + " added a feedback to " + @last_feedbacks_array[i][:tv_show].title %></div>
             </div>
             <div class="content-container">
-              <div class="carousel-comment">“ <%= @last_feedbacks[i].comment %> ”</div>
+              <div class="carousel-comment">" <%= @last_feedbacks_array[i][:feedback].comment %> "</div>
             </div>
           </div>
         <% end %>

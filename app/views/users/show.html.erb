@@ -38,11 +38,11 @@
     <div>
       <h2 class="user-description mb-0"><%= @user.first_name %> <%= @user.last_name %></h2>
       <% if @user.id == current_user %>
-        <p><%= @user.description %></p>
+        <p class="my-2"><%= @user.description %></p>
       <% end %>
     </div>
 
-    <div class="btn-follow" id="user-follow">
+    <div class="btn-follow my-2" id="user-follow">
       <%= render "users/btnfollow"%>
 
     </div>

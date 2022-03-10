@@ -1,21 +1,18 @@
 class TvShowsController < ApplicationController
   def index
     @tv_shows = TvShow.all
-    @follows = current_user.followings
+    @follows = current_user.followings.uniq
 
     tv_show_ids = Wish.where(user_id: current_user).map(&:tv_show_id)
     @tv_shows_wishlist = TvShow.where(id: tv_show_ids)
 
-    @last_feedbacks = []
-    @last_feedbacks_user = []
-    @last_feedbacks_shows = []
+    @last_feedbacks_array = []
     @follows.each do |follow|
       follow.feedbacks.where.not(comment: nil).each do |feedback|
-        @last_feedbacks << feedback
-        @last_feedbacks_shows << TvShow.find(feedback.tv_show_id)
-        @last_feedbacks_user << User.find(feedback.user_id)
+        @last_feedbacks_array << {feedback: feedback, tv_show: TvShow.find(feedback.tv_show_id), user: User.find(feedback.user_id)}
       end
     end
+    @last_feedbacks_array = @last_feedbacks_array.shuffle
   end
 
   def show
