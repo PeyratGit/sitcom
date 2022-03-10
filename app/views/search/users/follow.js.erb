@@ -1,6 +1,5 @@
 function renderUsers(usersHTML) {
-  const user = document.querySelector(".cards-follows");
-  user.innerHTML = usersHTML;
+  const usersContainer = document.querySelector(".cards-follows");
+  usersContainer.innerHTML = usersHTML;
 }
-
-renderUsers('<%= j render 'search/users/list', users: @users%>');
+renderUsers('<%= j render 'search/users/list', users: @users, origin: @origin %>');
