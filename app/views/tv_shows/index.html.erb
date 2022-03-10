@@ -125,8 +125,18 @@
         <% end %>
         <% if random_followed_user.feedbacks.empty? == false %>
           <div class="recommendation-title" id="follow-like-this">
-            <%= link_to user_path(random_followed_user.id) do %>
-              <%= "Liked by #{random_followed_user.first_name}" %>
+            <% if random_followed_user.facebook_picture_url.nil? == false %>
+              <%= link_to user_path(random_followed_user.id) do %>
+                <%= "Liked by " %>
+                <%= image_tag(random_followed_user.facebook_picture_url, class: "avatar-xsmall", style: "object-fit: cover")   %>
+                <%= random_followed_user.first_name %>
+              <% end %>
+            <% else %>
+              <%= link_to user_path(random_followed_user.id) do %>
+                <%= "Liked by " %>
+                <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar-xsmall", style: "object-fit: cover") %>
+                <%= random_followed_user.first_name %>
+              <% end %>
             <% end %>
           </div>
           <div class="index-cards-container">

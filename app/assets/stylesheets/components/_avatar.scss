@@ -53,6 +53,16 @@
   }
 }
 
+.avatar-xsmall {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-left: 5px;
+  img {
+    object-fit: cover;
+  }
+}
+
 .avatar-petit {
   width: 73px;
   height: 73px;
