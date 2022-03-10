@@ -130,9 +130,9 @@
             <% string_follows = pluralize(follows_seen_it.length - 1, "other") %>
             <% if follows_seen_it.empty? %>
             <% elsif follows_seen_it.length == 1%>
-              <%= "#{follows_seen_it.last.first_name} has seen it" %>
+              <%= "#{follows_seen_it[2].first_name} has seen it" %>
             <% else %>
-              <%= "#{follows_seen_it.last.first_name} and #{string_follows} have seen it" %>
+              <%= "#{follows_seen_it[2].first_name} and #{string_follows} have seen it" %>
             <% end %>
           </div>
         </div>

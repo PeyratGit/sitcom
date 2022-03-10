@@ -26,7 +26,7 @@
       <%# Follows row %>
     <% if current_user.followings.empty? == false %>
       <div class="recommendation-title">
-        You are following these people
+        People you follow
       </div>
       <div class="index-follows-container">
         <% @follows.each do |follow| %>
@@ -48,7 +48,7 @@
     <%# Community rating row %>
     <% if current_user.followings.empty? == false %>
       <div class="recommendation-title">
-        Recommendations from your followings
+        Recommendations from followings
       </div>
       <div class="index-cards-container">
         <% shows = @tv_shows.sort_by { |tv_show| tv_show.popularity_score(current_user)*-1 } %>
