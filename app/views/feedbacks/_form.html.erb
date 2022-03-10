@@ -3,7 +3,9 @@
                       add_feedback_target: "form",
                       action: "submit->add-feedback#send"
                     }) do |f| %>
-  <%= f.input :comment, as: :text %>
-  <%= f.input :rating, collection: 0..5 %>
+  <%= f.label :comment, 'Add your comment', class: "mb-2", style: "color: white" %>
+  <%= f.input :comment, as: :text, label: false %>
+  <%= f.label :rating, 'Add your rating', class: "mb-2", style: "color: white" %>
+  <%= f.input :rating, collection: 0..5, label: false %>
   <%= f.button :submit %>
 <% end %>

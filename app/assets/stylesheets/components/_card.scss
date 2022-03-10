@@ -179,7 +179,8 @@
 
 .card-friends img, .card-follows img{
   height: 30%;
-  width: 100px;
+  width: 80px;
+  height: 80px;
   object-fit: cover;
   border-radius: 50%;
 }
@@ -190,6 +191,7 @@
   justify-content: center;
   color: $textcolor;
   width: 100%;
+  padding-left: 16px;
 }
 
 .card-friends >.card-friends-infos {
@@ -199,7 +201,7 @@
 }
 
 .cards-friends, .cards-follows {
-  width: 100%;
+  width: 95%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

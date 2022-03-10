@@ -34,9 +34,9 @@
             <div class="follow-user-container">
               <div class="follow-avatar-container">
                 <% if follow.facebook_picture_url.nil? %>
-                  <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar-large") %>
+                  <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar-large", style: "object-fit: cover") %>
                 <% else %>
-                  <%= image_tag(follow.facebook_picture_url, class: "avatar-large") %>
+                  <%= image_tag(follow.facebook_picture_url, class: "avatar-large", style: "object-fit: cover") %>
                 <% end %>
               </div>
             </div>

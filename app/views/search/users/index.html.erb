@@ -3,7 +3,7 @@
 <% content_for :meta_image, cl_image_path("logo.png") %>
 
 <div class="index-global-container-true">
-  <div class="search-bar">
+  <div class="search-bar" id="search-bar-in-search">
     <%= form_tag search_tv_shows_path,class:"simple_form search", autocomplete:"off", method: :get do %>
       <div class="search-form-control form-group">
         <%= text_field_tag :query,
