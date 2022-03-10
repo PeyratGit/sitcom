@@ -142,11 +142,6 @@
     </div>
     <div class="main-reviews-container" data-controller="add-feedback" data-add-feedback-position-value="afterbegin">
       <span class="title-show-page"><%= pluralize(@feedbacks_full_number, 'Feedback') %></span>
-      <div class="add-feedback-container">
-        <% if @feedback_of_user.nil? == true %>
-          <%= render "feedbacks/form" %>
-        <% end %>
-      </div>
       <div class="community-reviews-container" data-add-feedback-target="feedbacks">
         <% if @feedback_of_user.nil? == false %>
           <div data-add-feedback-target="user_feedback_partial">
@@ -189,6 +184,11 @@
               </div>
             </div>
           <% end %>
+        <% end %>
+      </div>
+      <div class="add-feedback-container">
+        <% if @feedback_of_user.nil? == true %>
+          <%= render "feedbacks/form" %>
         <% end %>
       </div>
     </div>
