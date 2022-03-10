@@ -35,11 +35,7 @@
     </ul>
   </div>
 
-  <div class="cards-friends">
-    <% @users.each do |user| %>
-      <div data-user=<%= user.id %>>
-        <%= render "search/users/user", user: user%>
-      </div>
-    <% end %>
+  <div class="cards-follows">
+    <%= render 'search/users/list', users: @users %>
   </div>
 </div>

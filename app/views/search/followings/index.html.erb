@@ -14,27 +14,23 @@
       <% end %>
   </div>
   <div class="tab-container">
-  <ul class="list-inline tabs-underlined">
-    <li>
-      <a href="/search/tv_shows" class="tab-underlined">TV shows</a>
-    </li>
-    <li>
-      <a href="/search/users" class="tab-underlined">Community</a>
-    </li>
-        <li>
-      <a href="/search/follows" class="tab-underlined activated">Followings</a>
-    </li>
-    <li>
-      <a href="/search/followers" class="tab-underlined">Followers</a>
-    </li>
-  </ul>
+    <ul class="list-inline tabs-underlined">
+      <li>
+        <a href="/search/tv_shows" class="tab-underlined">TV shows</a>
+      </li>
+      <li>
+        <a href="/search/users" class="tab-underlined">Community</a>
+      </li>
+          <li>
+        <a href="/search/followings" class="tab-underlined activated">Followings</a>
+      </li>
+      <li>
+        <a href="/search/followers" class="tab-underlined">Followers</a>
+      </li>
+    </ul>
   </div>
 
   <div class="cards-follows">
-    <% @followings.each do |following| %>
-      <div data-user=<%= following.id %>>
-        <%= render "search/followings/following", following: following%>
-      </div>
-    <% end %>
+    <%= render 'search/users/list', users: @users %>
   </div>
 </div>

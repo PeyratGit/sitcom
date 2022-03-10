@@ -1,6 +1,6 @@
-function renderUser(userHTML) {
-  const user = document.querySelector("[data-user='<%= @user.id %>']");
-  user.innerHTML = userHTML;
+function renderUsers(usersHTML) {
+  const user = document.querySelector(".cards-follows");
+  user.innerHTML = usersHTML;
 }
 
-renderUser('<%= j render @user %>');
+renderUsers('<%= j render 'search/users/list', users: @users%>');

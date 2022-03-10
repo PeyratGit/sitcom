@@ -31,10 +31,6 @@
   </div>
 
   <div class="cards-follows">
-    <% @followers.each do |follower| %>
-      <div data-user=<%= follower.id %>>
-        <%= render "search/followers/follower", follower: follower%>
-      </div>
-    <% end %>
+    <%= render 'search/users/list', users: @users %>
   </div>
 </div>
