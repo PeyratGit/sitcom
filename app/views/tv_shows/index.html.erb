@@ -200,7 +200,7 @@
     <% if current_user.followings.nil? == false %>
       <div class="recommendation-title">Last feedbacks</div>
       <div class="carousel">
-        <% @last_feedbacks.first(7).count.times do |i| %>
+        <% @last_feedbacks.length.times do |i| %>
           <div class="carousel-card">
             <div class="top-container">
               <div class="avatar-picture">
