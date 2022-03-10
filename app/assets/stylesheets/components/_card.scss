@@ -240,6 +240,7 @@
 
 .card-suggestion {
   min-height: 87vh;
+  color: #C0C0C0;
 
   .title-suggest {
     color: white;
@@ -254,9 +255,27 @@
     color: white;
   }
 
-  .card-suggestion-tvshow {
+  .card-suggestion-tvshow-poster {
     img {
-      height: 300px;
+      height: 450px;
+      border-radius: 8px;
+      box-shadow: 2px 4px 15px 0px rgba(0,0,0,0.5);
     }
   }
+
+  .followers-superliked-container {
+    font-size: 14px;
+  }
+
+  .card-purchase-score-suggest {
+    position: relative;
+    top: -35px;
+    right: -45px;
+    background-color: #212529;
+    border-radius: 14px;
+    width: 70px;
+    padding-top: 2px;
+    margin-bottom: 2px;
+  }
+
 }
