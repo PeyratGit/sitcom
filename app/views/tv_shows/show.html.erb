@@ -106,7 +106,7 @@
       <% if follows_seen_it.empty? == false %>
         <div class="followers-seen-container">
           <div class="users-pile-container">
-            <% follows_seen_it.each do |follow| %>
+            <% follows_seen_it.first(3).each do |follow| %>
               <% if follows_seen_it.length == 1 %>
                 <%= link_to user_path(follow.id), style:"right:50%" do %>
                   <% if follow.facebook_picture_url.nil? %>
