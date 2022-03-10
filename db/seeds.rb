@@ -58,15 +58,15 @@ end
 puts "TV shows creation done !"
 
 puts "Creating users..."
-urls = ["https://avatars.githubusercontent.com/u/52168643?v=4", "https://avatars.githubusercontent.com/u/95384661?v=4", "https://avatars.githubusercontent.com/u/96342482?v=4", "https://avatars.githubusercontent.com/u/78359730?v=4","https://avatars.githubusercontent.com/u/93845046?v=4", "https://avatars.githubusercontent.com/u/93552707?v=4", "https://avatars.githubusercontent.com/u/93259262?v=4", "https://avatars.githubusercontent.com/u/95241063?v=4"]
-emails = ["peyrat.clement@gmail.com", "reynal.julie@gmail.com", "ouarzazi.sidney@gmail.com", "deguitre.canelle@gmail.com","teddy@gmail.com", "thomas@gmail.com", "gala@gmail.com", "lucien@gmail.com"]
-passwords = ["adminp", "adminr", "admino", "admind", "admint", "admint", "adming", "adminkl"]
-first_names = ["Clément", "Julie", "Sidney", "Canelle", "Teddy", "Thomas", "Gala", "Lucien"]
-last_names = ["Peyrat", "Reynal", "Ouarzazi", "Deguitre", "Bandama", "Loubet", "Thevenet", "Lagorce"]
-usernames = ["cpeyrat", "jreynal", "souarzazi", "cdeguitre", "tbandama", "tloubet", "gthevenet", "llagorce"]
+urls = ["https://avatars.githubusercontent.com/u/93845046?v=4", "https://avatars.githubusercontent.com/u/93552707?v=4", "https://avatars.githubusercontent.com/u/93259262?v=4", "https://avatars.githubusercontent.com/u/95241063?v=4", "https://avatars.githubusercontent.com/u/64975279?v=4", "https://avatars.githubusercontent.com/u/96726132?v=4", "https://avatars.githubusercontent.com/u/7825810?v=4", "https://avatars.githubusercontent.com/u/96440289?v=4", "https://fr.web.img5.acsta.net/c_310_420/pictures/16/01/11/12/16/539008.jpg", "https://fr.web.img4.acsta.net/c_310_420/pictures/16/07/28/09/30/060428.jpg", "https://fr.web.img6.acsta.net/c_310_420/pictures/20/02/10/10/37/1374948.jpg", "https://fr.web.img6.acsta.net/c_310_420/pictures/15/11/10/14/58/490093.jpg"]
+emails = ["teddy@gmail.com", "thomas@gmail.com", "gala@gmail.com", "lucien@gmail.com", "carole@gmail.com", "rayane@gmail.com", "ewan@gmail.com", "theo@gmail.com", "pierre@gmail.com", "florence@gmail.com", "brad@gmail.com", "angelina@gmail.com"]
+passwords = ["admint", "admint", "adming", "adminl", "adminc", "adminn", "admind", "adminf", "adminn", "adminf", "adminp", "adminj"]
+first_names = ["Teddy", "Thomas", "Gala", "Lucien", "Carole", "Rayane", "Ewan", "Theo", "Pierre", "Florence", "Brad", "Angelina"]
+last_names = ["Bandama", "Loubet", "Thevenet", "Lagorce", "Chene", "Nordine", "Delthil", "Faugere", "Niney", "Foresti", "Pitt", "Jolie"]
+usernames = ["tbandama", "tloubet", "gthevenet", "llagorce", "cchene", "rnordine", "edelthil", "tfaugere", "pniney", "fforesti", "bpitt", "ajolie"]
 
 user_index = 0
-8.times do
+12.times do
   User.create!(
     email: emails[user_index],
     password: passwords[user_index],
@@ -81,14 +81,14 @@ puts "Users creation done !"
 
 puts "Creating feedbacks..."
 statuses = ['Unwatched', 'Dislike', 'Like', 'Superlike']
-comments = ["The beginning of the tv show is very great. Unfortunately the final season is not as exciting as the first ones but still worth binge watching it !", "Actors are marvellous and story is great. You wont get bored if you decide to watch it", "I liked it from beginning to end. You should definitely wathc it !", "I think this is the best tv show ever", "A bit disappointing even if actors are good.", "THAT'S THE BEST SHOW EVER!!!!", "Characters are very well defined. Synopsis is intelligently done.But still at the end, I was annoyed when I watched it..."]
+comments = ["The beginning of the tv show is very great. Unfortunately the final season is not as exciting as the first ones but still worth binge watching it !", "Actors are marvellous and story is great. You wont get bored if you decide to watch it", "I liked it from beginning to end. You should definitely wathc it !", "I think this is the best tv show ever", "A bit disappointing even if actors are good.", "THAT'S THE BEST SHOW EVER!!!!", "Characters are very well defined. Synopsis is intelligently done.But still at the end, I was annoyed when I watched it...", "Overall I am disappointed. I thought I would enjoy much more given all the buzz around it", "I hate the main character but aside from that, it is an awesome show...", "You won't believe how it ends. I could not sleep for days after watching it!"]
 ratings = [3, 4, 5]
 users = User.all
 user_index = 0
 
-8.times do
+12.times do
   tv_shows = TvShow.all
-  5.times do
+  10.times do
     tv_show = tv_shows.sample
     Feedback.create!(
       status: statuses.sample,
@@ -97,7 +97,7 @@ user_index = 0
     )
     tv_shows.reject { |show| show.id == tv_show.id }
   end
-  5.times do
+  10.times do
     tv_show = tv_shows.sample
     Feedback.create!(
       status: ['Like', 'Superlike'].sample,
@@ -117,9 +117,9 @@ puts "Creating follows..."
 users = User.all
 
 follower_index = 0
-8.times do
+12.times do
   following_index = 0
-  8.times do
+  12.times do
     if follower_index != following_index
       Follow.create!(
         follower_id: users[follower_index].id,

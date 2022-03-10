@@ -1,37 +1,62 @@
 .avatar {
   width: 40px;
+  height: 40px;
   border-radius: 50%;
+  img {
+    object-fit: cover;
+  }
 }
 .avatar-large {
   width: 56px;
+  height: 56px;
   border-radius: 50%;
+  img {
+    object-fit: cover;
+  }
 }
 .avatar-bordered {
   width: 40px;
+  height: 40px;
   border-radius: 50%;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
+  img {
+    object-fit: cover;
+  }
 }
 .avatar-square {
   width: 40px;
+  height: 40px;
   border-radius: 0px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
+  img {
+    object-fit: cover;
+  }
 }
 
 .avatar-xlarge {
   width: 77px;
+  height: 77px;
   border-radius: 50%;
   object-fit: cover;
+  img {
+    object-fit: cover;
+  }
 }
 
 .avatar-small {
   width: 50%;
   border-radius: 50%;
-
+  img {
+    object-fit: cover;
+  }
 }
 
 .avatar-petit {
   width: 73px;
   height: 73px;
+  img {
+    object-fit: cover;
+  }
 }
