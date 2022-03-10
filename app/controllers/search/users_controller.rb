@@ -1,13 +1,13 @@
 class Search::UsersController < ApplicationController
   before_action :set_user, only: [:follow, :unfollow]
+  before_action :set_users, only: [:follow, :unfollow]
 
   def index
     if params[:query].present?
       sql_query = "last_name ILIKE :query OR first_name ILIKE :query"
       @users = User.where(sql_query, query: "%#{params[:query]}%")
     else
-      @users = User.where.not(id: current_user)
-
+      @users = User.where.not(id: current_user).order(:first_name)
       ##@followings_ids = current_user.followings.pluck(:id)
       ##@users = current_user.followings.concat(User.where.not(id: @followings_ids))
     end
@@ -35,5 +35,16 @@ class Search::UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def set_users
+    case params[:origin]
+    when "/search/users"
+      @users = User.where.not(id: current_user).order(:first_name)
+    when "/search/followings"
+      @users = current_user.followings
+    when "/search/followers"
+      @users = current_user.followers
+    end
   end
 end

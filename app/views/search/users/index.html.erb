@@ -24,7 +24,7 @@
         <a href="/search/tv_shows" class="tab-underlined">TV shows</a>
       </li>
       <li>
-        <a href="/search/users" class="tab-underlined activated">Users</a>
+        <a href="/search/users" class="tab-underlined activated">Community</a>
       </li>
       <li>
         <a href="/search/followings" class="tab-underlined">Followings</a>
@@ -35,11 +35,7 @@
     </ul>
   </div>
 
-  <div class="cards-friends">
-    <% @users.each do |user| %>
-      <div data-user=<%= user.id %>>
-        <%= render "search/users/user", user: user%>
-      </div>
-    <% end %>
+  <div class="cards-follows">
+    <%= render 'search/users/list', users: @users %>
   </div>
 </div>
