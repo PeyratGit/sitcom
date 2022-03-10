@@ -14,10 +14,12 @@
   width: 300px;
   overflow-x: auto;
   // 300px
-  height: min-content;
+  height: 95px;
   padding: 7px;
   background-color: #454545;
   justify-content:flex-start;
+  text-overflow: ellipsis;
+  overflow: hidden;
   .top-container {
     height: 48px;
     width: 100%;
@@ -25,11 +27,12 @@
     flex-direction: row;
     margin-bottom: 9px;
     justify-content: left;
-    overflow: hidden;
     .username {
       margin-left: 5px;
-      display: flex;
-      flex-direction: row;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
     .user-rating {
       margin-left: auto;
@@ -38,7 +41,9 @@
   .carousel-comment {
     color: #c0c0c0;
     width: 100%;
+    text-overflow: ellipsis;
     overflow: hidden;
+    white-space: nowrap;
   }
 }
 
