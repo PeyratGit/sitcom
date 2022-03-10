@@ -1,10 +1,8 @@
-<div class="container">
-
-  <div class="container_one">
-    <div class="title-home">
-      <h1>Welcome to Sitcom <i class="fa fa-film"></i></h1>
-    </div>
-    <%= image_tag "play.png", class:"play"%>
+<div class="banner d-flex flex-column justify-content-center" style='background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.5)), url("<%= asset_path('sitcom-background.jpg') %>"); text-align: center;'>
+  <div>
+    <h1 class="text-center mx-5 my-2">Discover your friends favorite TV show</h1>
+  </div>
+  <div>
     <% if current_user %>
       <%= link_to 'Start', swipe_tv_shows_path, class: "btn btn-ghost play-btn"%>
     <% else %>
@@ -14,39 +12,33 @@
       <%= render "shared/modal-facebook" %>
     <% end %>
   </div>
+</div>
 
 
-  <div class="container_two">
-    <div class="title2">
-      <h1>Discover all TV shows <i class="fa fa-eye" ></i></h1>
-    </div>
-      <%= image_tag "discover.png", class:"heart" %>
+<div class="container">
+
+  <div class="title3" style= "text-align: center; margin-top: 10%">
+    <h1>Your favourite platforms combined <i class="fa fa-television" aria-hidden="true"></i></h1>
   </div>
 
-
-  <div class="container_three">
-    <div class="title3" style= "text-align: center; margin-top: 10%">
-      <h1>Your favourite platforms combined <i class="fa fa-television" aria-hidden="true"></i></h1>
-    </div>
-
-    <div class="card-platform">
-    <%= image_tag "netflix.png", class:"chanels"%>
-    </div>
-
-    <div class="card-platform2">
-    <%= image_tag "prime.png", class:"chanels"%>
-    </div>
-
-    <div class="card-platform3">
-    <%= image_tag "canal.png", class:"chanels"%>
-    </div>
-
-    <div class="card-platform4">
-    <%= image_tag "disney.png", class:"chanels"%>
-    </div>
-
-    <div class="card-platform5 ocs-platform">
-    <%= image_tag "ocs.png", class:"chanels"%>
-    </div>
+  <div class="card-platform">
+  <%= image_tag "netflix.png", class:"chanels"%>
   </div>
+
+  <div class="card-platform2">
+  <%= image_tag "primevideo.png", class:"chanels"%>
+  </div>
+
+  <div class="card-platform3">
+  <%= image_tag "canal.png", class:"chanels"%>
+  </div>
+
+  <div class="card-platform4">
+  <%= image_tag "disney-plus-blanc.svg", class:"chanels"%>
+  </div>
+
+  <div class="card-platform5 ocs-platform">
+  <%= image_tag "ocs.png", class:"chanels"%>
+  </div>
+
 </div>
