@@ -1,8 +1,9 @@
 .carousel {
   display: flex;
   flex-direction: row;
-  overflow: hidden;
+  overflow-x: auto;
   width: 100%;
+  height: 106px;
 }
 
 .carousel-card {
@@ -12,13 +13,16 @@
   margin-right: 20px;
   border-radius: 8px;
   width: 300px;
+  overflow-x: auto;
   // 300px
-  height: 100px;
+  height: 95px;
   padding: 7px;
   background-color: #454545;
   justify-content:flex-start;
+  text-overflow: ellipsis;
+  box-shadow: 2px 4px 15px 0px rgba(0,0,0,0.5);
   .top-container {
-    height: 47%;
+    height: 48px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -26,8 +30,10 @@
     justify-content: left;
     .username {
       margin-left: 5px;
-      display: flex;
-      flex-direction: row;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
     .user-rating {
       margin-left: auto;
@@ -35,56 +41,64 @@
   }
   .carousel-comment {
     color: #c0c0c0;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
 }
 
-$animationSpeed: 60s;
-
-// Animation
-@keyframes scroll {
-	0% { transform: translateX(0); }
-	100% { transform: translateX(calc(-310px * 6))}
+.carousel::-webkit-scrollbar {
+  display: none;
 }
 
+// $animationSpeed: 60s;
 
-// Styling
-.slider {
-	box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);
-	height: 100px;
-	margin: auto;
-	overflow:hidden;
-	position: relative;
-	width: 960px;
+// // Animation
+// @keyframes scroll {
+// 	0% { transform: translateX(0); }
+// 	100% { transform: translateX(calc(-310px * 6))}
+// }
 
-	&::before,
-	&::after {
-		content: "";
-		height: 100px;
-		position: absolute;
-		width: 200px;
-		z-index: 2;
-	}
 
-	&::after {
-		right: 0;
-		top: 0;
-		transform: rotateZ(180deg);
-	}
+// // Styling
+// .slider {
+// 	box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);
+// 	height: 100px;
+// 	margin: auto;
+// 	overflow:hidden;
+// 	position: relative;
+// 	width: 960px;
 
-	&::before {
-		left: 0;
-		top: 0;
-	}
+// 	&::before,
+// 	&::after {
+// 		content: "";
+// 		height: 100px;
+// 		position: absolute;
+// 		width: 200px;
+// 		z-index: 2;
+// 	}
 
-	.slide-track {
-    transition-delay: 1s;
-		animation: scroll $animationSpeed linear infinite;
-		display: flex;
-		width: calc(200px * 12);
-	}
+// 	&::after {
+// 		right: 0;
+// 		top: 0;
+// 		transform: rotateZ(180deg);
+// 	}
 
-	.slide {
-		height: 100px;
-		width: 300x;
-	}
-}
+// 	&::before {
+// 		left: 0;
+// 		top: 0;
+// 	}
+
+// 	.slide-track {
+//     transition-delay: 1s;
+// 		animation: scroll $animationSpeed linear infinite;
+// 		display: flex;
+// 		width: calc(200px * 12);
+// 	}
+
+// 	.slide {
+// 		height: 100px;
+// 		width: 300x;
+// 	}
+// }
