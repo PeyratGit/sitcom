@@ -78,42 +78,50 @@
       <% end %>
     </div>
     <%# Random following liked this row %>
-    <div class="recommendation-title" id="follow-like-this">
+
       <% if current_user.followings.count != 0 %>
-        <% random_followed_user = current_user.followings.order('RANDOM()').first %>
+        <% random_order_follows = current_user.followings.order('RANDOM()') %>
+        <% random_followed_user = User.first %>
+        <% random_order_follows.each do |following| %>
+          <% if following.feedbacks.empty? == false %>
+            <% random_followed_user = following %>
+          <% end %>
+        <% end %>
         <% if random_followed_user.feedbacks.empty? == false %>
-          <%= link_to user_path(random_followed_user.id) do %>
-            <%= "Liked by #{random_followed_user.first_name}" %>
-          <% end %>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="index-cards-container">
-      <% @tv_shows.order(imdb_rating: :desc).each do |tv_show| %>
-        <% if current_user.followings.count != 0 %>
-          <% if tv_show.feedbacks.where(user_id: random_followed_user.id).empty? == false %>
-            <%= link_to tv_show_path(tv_show) do %>
-              <div class="card-tv-show-small">
-                <div class="tv-show-poster">
-                  <%= image_tag(tv_show.poster_url) %>
-                </div>
-                <div class="tv-show-infos">
-                  <div class="tv-show-title">
-                    <%= tv_show.title %>
-                  </div>
-                  <div class="show-score">
-                    <p>
-                      <%= tv_show.imdb_rating %>
-                    </p>
-                    <i class="fa fa-star"></i>
-                  </div>
-                </div>
-              </div>
+          <div class="recommendation-title" id="follow-like-this">
+            <%= link_to user_path(random_followed_user.id) do %>
+              <%= "Liked by #{random_followed_user.first_name}" %>
             <% end %>
-          <% end %>
+          </div>
+          <div class="index-cards-container">
+            <% @tv_shows.order(imdb_rating: :desc).each do |tv_show| %>
+              <% if current_user.followings.count != 0 %>
+                <% if tv_show.feedbacks.where(user_id: random_followed_user.id).empty? == false %>
+                  <%= link_to tv_show_path(tv_show) do %>
+                    <div class="card-tv-show-small">
+                      <div class="tv-show-poster">
+                        <%= image_tag(tv_show.poster_url) %>
+                      </div>
+                      <div class="tv-show-infos">
+                        <div class="tv-show-title">
+                          <%= tv_show.title %>
+                        </div>
+                        <div class="show-score">
+                          <p>
+                            <%= tv_show.imdb_rating %>
+                          </p>
+                          <i class="fa fa-star"></i>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
         <% end %>
       <% end %>
-    </div>
+
     <%# My wishlist %>
     <% if Wish.where(user_id: current_user).nil? == false %>
       <div class="recommendation-title">
