@@ -1,10 +1,8 @@
-<div class="container">
-
-  <div class="container_one">
-    <div class="title-home">
-      <h1>Welcome to Sitcom <i class="fa fa-film"></i></h1>
-    </div>
-    <%= image_tag "play.png", class:"play"%>
+<div class="banner d-flex flex-column justify-content-center" style='background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.5)), url("<%= asset_path('sitcom-background.jpg') %>"); text-align: center;'>
+  <div>
+    <h1 class="text-center mx-5 my-2">Welcome to Sitcom</h1>
+  </div>
+  <div>
     <% if current_user %>
       <%= link_to 'Start', swipe_tv_shows_path, class: "btn btn-ghost play-btn"%>
     <% else %>
@@ -14,7 +12,17 @@
       <%= render "shared/modal-facebook" %>
     <% end %>
   </div>
+</div>
 
+
+<div class="container">
+
+  <div class="container_one">
+    <div class="title2 text-center">
+      <h1>Share your favorite series<i class="fa fa-film px-2"></i></h1>
+    </div>
+    <%= image_tag "play.png", class:"play"%>
+  </div>
 
   <div class="container_two">
     <div class="title2">
@@ -34,7 +42,7 @@
     </div>
 
     <div class="card-platform2">
-    <%= image_tag "prime.png", class:"chanels"%>
+    <%= image_tag "primevideo.png", class:"chanels"%>
     </div>
 
     <div class="card-platform3">
@@ -42,7 +50,7 @@
     </div>
 
     <div class="card-platform4">
-    <%= image_tag "disney.png", class:"chanels"%>
+    <%= image_tag "disney-plus-blanc.svg", class:"chanels"%>
     </div>
 
     <div class="card-platform5 ocs-platform">
