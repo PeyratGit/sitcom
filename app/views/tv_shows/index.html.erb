@@ -52,27 +52,29 @@
     <div class="index-cards-container">
       <% shows = @tv_shows.sort_by { |tv_show| tv_show.popularity_score(current_user)*-1 } %>
       <% shows.each do |tv_show| %>
-        <% if tv_show.feedbacks.where.not(comment: nil).empty? == false %>
-          <%= link_to tv_show_path(tv_show) do %>
-            <div class="card-tv-show-small">
-              <div class="tv-show-poster">
-                <%= image_tag(tv_show.poster_url) %>
-              </div>
-              <div class="tv-show-infos">
-                <div class="tv-show-title">
-                  <%= tv_show.title %>
+        <% if tv_show.popularity_score(current_user) > 0 %>
+          <% if tv_show.feedbacks.where.not(comment: nil).empty? == false %>
+            <%= link_to tv_show_path(tv_show) do %>
+              <div class="card-tv-show-small">
+                <div class="tv-show-poster">
+                  <%= image_tag(tv_show.poster_url) %>
                 </div>
-                <div class="show-score">
-                  <% if tv_show.popularity_score(current_user) == 0 %>
-                  <% else %>
-                    <p>
-                    <%=tv_show.popularity_score(current_user)%>
-                    </p>
-                    <i class="fa fa-users"></i>
-                  <% end %>
+                <div class="tv-show-infos">
+                  <div class="tv-show-title">
+                    <%= tv_show.title %>
+                  </div>
+                  <div class="show-score">
+                    <% if tv_show.popularity_score(current_user) == 0 %>
+                    <% else %>
+                      <p>
+                      <%=tv_show.popularity_score(current_user)%>
+                      </p>
+                      <i class="fa fa-users"></i>
+                    <% end %>
+                  </div>
                 </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
