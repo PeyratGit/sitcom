@@ -96,7 +96,27 @@
           <div class="index-cards-container">
             <% @tv_shows.order(imdb_rating: :desc).each do |tv_show| %>
               <% if current_user.followings.count != 0 %>
-                <% if tv_show.feedbacks.where(user_id: random_followed_user.id).empty? == false %>
+                <% if tv_show.feedbacks.where(user_id: random_followed_user.id, status: "Like").empty? == false %>
+                  <%= link_to tv_show_path(tv_show) do %>
+                    <div class="card-tv-show-small">
+                      <div class="tv-show-poster">
+                        <%= image_tag(tv_show.poster_url) %>
+                      </div>
+                      <div class="tv-show-infos">
+                        <div class="tv-show-title">
+                          <%= tv_show.title %>
+                        </div>
+                        <div class="show-score">
+                          <p>
+                            <%= tv_show.imdb_rating %>
+                          </p>
+                          <i class="fa fa-star"></i>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                <% end %>
+                <% if tv_show.feedbacks.where(user_id: random_followed_user.id, status: "Superlike").empty? == false %>
                   <%= link_to tv_show_path(tv_show) do %>
                     <div class="card-tv-show-small">
                       <div class="tv-show-poster">
