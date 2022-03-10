@@ -10,37 +10,41 @@
 <div>
   <div class="card-user px-3 my-3">
 ​
-    <div class="user-header d-flex d-inline justify-content-between align-items-center my-2">
-      <div class='mx-2'>
-        <% if @user.facebook_picture_url.nil? %>
-          <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", :class => "avatar-xlarge") %>
-        <% else %>
-          <%= image_tag(@user.facebook_picture_url, :class => "avatar-xlarge") %>
-        <% end %>
-      </div>
-​
-      <div class=' mx-2 align-items-center'>
-        <div class="user-header-info text-center"><%= @user.feedbacks.count %></div>
-        <p class = "mb-0">watched</p>
-      </div>
-
-      <%= link_to search_followings_path , class: "mx-2 align-items-center" do %>
-        <div class="user-header-info text-center"><%= @followings.count %></div>
-        <p class = "mb-0">followings</p>
+  <div class="user-header d-flex d-inline justify-content-between align-items-center my-2">
+    <div class='mx-2'>
+      <% if @user.facebook_picture_url.nil? %>
+        <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", :class => "avatar-xlarge") %>
+      <% else %>
+        <%= image_tag(@user.facebook_picture_url, :class => "avatar-xlarge") %>
       <% end %>
+    </div>
+​
+    <div class=' mx-2 align-items-center'>
+      <div class="user-header-info text-center"><%= @user.feedbacks.count %></div>
+      <p class = "mb-0">watched</p>
+    </div>
 
-      <%= link_to search_followers_path, class:"mx-2 align-items-center" do %>
+    <%= link_to search_followings_path , class: "mx-2 align-items-center" do %>
+      <div class="user-header-info text-center"><%= @followings.count %></div>
+      <p class = "mb-0">followings</p>
+    <% end %>
+
+    <%= link_to search_followers_path, class:"mx-2 align-items-center" do %>
         <div class="user-header-info text-center"><%= @followers.count %></div>
         <p class = "mb-0">followers</p>
+      </div>
+    <% end %>
+
+    <div>
+      <h2 class="user-description mb-0"><%= @user.first_name %> <%= @user.last_name %></h2>
+      <% if @user.id == current_user %>
+        <p><%= @user.description %></p>
       <% end %>
     </div>
-    <div>
-      <h2 class="user-description"><%= @user.first_name %> <%= @user.last_name %></h2>
-      <p><%= @user.description %></p>
-    </div>
-​
+
     <div class="btn-follow" id="user-follow">
       <%= render "users/btnfollow"%>
+
     </div>
     <div>
       <% if @superlikes.count != 0 %>

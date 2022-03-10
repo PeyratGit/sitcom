@@ -47,6 +47,11 @@ class User < ApplicationRecord
     TvShow.find(id)
   end
 
+  def superliked_by
+    tv_show = suggestion
+    followings.select { |user| user.feedbacks.where(status: "Superlike", tv_show_id: tv_show.id) }
+  end
+
   def suggestions_count
     watched_ids = feedbacks.where.not(status: "unwatched").map(&:tv_show_id)
     superlike_follow_ids = followings.map { |user| user.feedbacks.where(status: "Superlike").map(&:tv_show_id) }.flatten

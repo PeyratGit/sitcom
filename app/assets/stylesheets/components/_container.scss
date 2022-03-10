@@ -225,16 +225,21 @@
   top: -60px;
 }
 
+@mixin white-gradient {
+	background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+}
+
 .index-follows-container {
   display: flex;
   flex-direction: row;
   overflow-x: auto;
   width: 100%;
-  justify-content: space-between;
+  justify-content: flex-start;
   .follow-user-container {
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin-right: 12px;
     .follow-avatar-container {
       display: flex;
       justify-content: center;
@@ -251,6 +256,10 @@
       color: #C0C0C0;
     }
   }
+}
+
+.index-follows-container::-webkit-scrollbar {
+  display: none;
 }
 
 #follow-like-this {

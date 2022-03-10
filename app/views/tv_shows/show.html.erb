@@ -8,7 +8,7 @@
       <div class="tv-show-main-infos-container">
 
         <div class="back-button" id="back-show">
-          <%= link_to tv_shows_path do %>
+          <%= link_to :back do %>
             <i class="fa fa-arrow-left"></i>
           <% end %>
         </div>
@@ -141,7 +141,7 @@
       </div>
     </div>
     <div class="main-reviews-container" data-controller="add-feedback" data-add-feedback-position-value="afterbegin">
-      <span class="title-show-page"><%= pluralize(@feedbacks_full_number, 'Feedback') %></span>
+      <span class="title-show-page" data-add-feedback-target="feedbacks_number"><%= pluralize(@feedbacks_full_number, 'Feedback') %></span>
       <div class="add-feedback-container">
         <% if @feedback_of_user.nil? == true %>
           <%= render "feedbacks/form" %>
