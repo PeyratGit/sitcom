@@ -4,11 +4,31 @@
   <div class="card-suggestion-info d-flex flex-column justify-content-center">
     <%= link_to tv_show_path(@suggestion) do %>
       <div class="card-suggestion-tvshow" style="text-align:center;">
-        <div class="tv-show-poster">
+        <div class="card-suggestion-tvshow-poster">
           <%= image_tag(@suggestion.poster_url) %>
         </div>
       </div>
     <% end %>
+
+    <div class="followers-superliked-container d-flex d-inline mx-5 my-3">
+      <div class="users-pile-container">
+      <div class="users-pile-avatar">
+        <% @superliked_users.each do |user| %>
+          <%= image_tag(user.facebook_picture_url, class: "avatar") %>
+        <% end %>
+      </div>
+      </div>
+      <div class="followers-seen-info px-2">
+        <% string_follows = pluralize(@superliked_users.length - 1, "other") %>
+        <% if @superliked_users.empty? %>
+        <% elsif @superliked_users.length == 1 %>
+          <%= "#{@superliked_users.last.first_name} has superliked it" %>
+        <% else %>
+          <%= "#{@superliked_users.last.first_name} and #{string_follows} have superliked it" %>
+        <% end %>
+      </div>
+    </div>
+
 
     <div class="btn-again" style="text-align:center;">
       <%= link_to watch_nows_path(count: @next_movie) do %>
