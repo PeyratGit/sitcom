@@ -44,6 +44,7 @@ class FeedbacksController < ApplicationController
       format.text { render partial: "feedbacks/user_feedback", locals: { tv_show: @tv_show, feedback_of_user: @feedback_of_user,  }, formats: [:html] }
       format.json  { render json: @feedback }
     end
+
   end
 
   private
