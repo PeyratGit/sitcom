@@ -46,13 +46,47 @@
     <% end %>
 
     <%# Community rating row %>
-    <div class="recommendation-title">
-      Recommendations from the community
-    </div>
-    <div class="index-cards-container">
-      <% shows = @tv_shows.sort_by { |tv_show| tv_show.popularity_score(current_user)*-1 } %>
-      <% shows.each do |tv_show| %>
-        <% if tv_show.popularity_score(current_user) > 0 %>
+    <% if current_user.followings.empty? == false %>
+      <div class="recommendation-title">
+        Recommendations from your followings
+      </div>
+      <div class="index-cards-container">
+        <% shows = @tv_shows.sort_by { |tv_show| tv_show.popularity_score(current_user)*-1 } %>
+        <% shows.each do |tv_show| %>
+          <% if tv_show.popularity_score(current_user) > 0 %>
+            <% if tv_show.feedbacks.where.not(comment: nil).empty? == false %>
+              <%= link_to tv_show_path(tv_show) do %>
+                <div class="card-tv-show-small">
+                  <div class="tv-show-poster">
+                    <%= image_tag(tv_show.poster_url) %>
+                  </div>
+                  <div class="tv-show-infos">
+                    <div class="tv-show-title">
+                      <%= tv_show.title %>
+                    </div>
+                    <div class="show-score">
+                      <% if tv_show.popularity_score(current_user) == 0 %>
+                      <% else %>
+                        <p>
+                        <%=tv_show.popularity_score(current_user)%>
+                        </p>
+                        <i class="fa fa-users"></i>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="recommendation-title">
+        Recommendations from the community
+      </div>
+      <div class="index-cards-container">
+        <% somme = 0 %>
+        <% @tv_shows.each do |tv_show| %>
           <% if tv_show.feedbacks.where.not(comment: nil).empty? == false %>
             <%= link_to tv_show_path(tv_show) do %>
               <div class="card-tv-show-small">
@@ -64,11 +98,11 @@
                     <%= tv_show.title %>
                   </div>
                   <div class="show-score">
-                    <% if tv_show.popularity_score(current_user) == 0 %>
-                    <% else %>
-                      <p>
-                      <%=tv_show.popularity_score(current_user)%>
-                      </p>
+                    <% if Feedback.where(tv_show_id: tv_show.id).where.not(comment: nil).empty? == false %>
+                      <% Feedback.where(tv_show_id: tv_show.id).where.not(comment: nil).each do |feedback| %>
+                        <% somme += feedback.rating%>
+                      <% end %>
+                      <%= "#{somme/Feedback.where(tv_show_id: tv_show.id).where.not(comment: nil).count}/5" %>
                       <i class="fa fa-users"></i>
                     <% end %>
                   </div>
@@ -77,8 +111,8 @@
             <% end %>
           <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
     <%# Random following liked this row %>
 
       <% if current_user.followings.count != 0 %>
@@ -145,7 +179,7 @@
       <% end %>
 
     <%# My wishlist %>
-    <% if Wish.where(user_id: current_user).nil? == false %>
+    <% if Wish.where(user_id: current_user).empty? == false %>
       <div class="recommendation-title">
         Your wishlist
       </div>
@@ -199,17 +233,19 @@
       <% end %>
     </div>
     <%# Last feedbacks from follows %>
-    <% if current_user.followings.nil? == false %>
+    <% if current_user.followings.empty? == false %>
       <div class="recommendation-title">Last feedbacks</div>
       <div class="carousel">
         <% @last_feedbacks_array.length.times do |i| %>
           <div class="carousel-card">
             <div class="top-container">
               <div class="avatar-picture">
-                <% if @last_feedbacks_array[i][:user].facebook_picture_url %>
-                  <%= image_tag(@last_feedbacks_array[i][:user].facebook_picture_url, class: "avatar") %>
-                <% else %>
-                  <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar") %>
+                <%= link_to user_path(@last_feedbacks_array[i][:user].id) do %>
+                  <% if @last_feedbacks_array[i][:user].facebook_picture_url %>
+                    <%= image_tag(@last_feedbacks_array[i][:user].facebook_picture_url, class: "avatar") %>
+                  <% else %>
+                    <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar") %>
+                  <% end %>
                 <% end %>
               </div>
               <div class="username"><%= @last_feedbacks_array[i][:user].first_name + " " + @last_feedbacks_array[i][:user].last_name + " added a feedback to " + @last_feedbacks_array[i][:tv_show].title %></div>
@@ -223,12 +259,14 @@
     <% end %>
 
     <%# Watch now suggestion %>
-    <div>
-      <div class="watch-now d-flex flex-column align-items-center my-5">
-        <h4 class="py-3 px-3 text-center">No time to find the next TV show to watch?</h4>
-        <%= link_to 'Give me a suggest', watch_nows_path, class: "btn btn-ghost play-btn"%>
+    <% if current_user.followings.nil? == false %>
+      <div>
+        <div class="watch-now d-flex flex-column align-items-center my-5">
+          <h4 class="py-3 px-3 text-center">No time to find the next TV show to watch?</h4>
+          <%= link_to 'Give me a suggest', watch_nows_path, class: "btn btn-ghost play-btn"%>
+        </div>
       </div>
-    </div>
+    <% end %>
 
   </div>
 </div>
