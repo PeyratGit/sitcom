@@ -85,8 +85,8 @@
         Recommendations from the community
       </div>
       <div class="index-cards-container">
-        <% somme = 0 %>
         <% @tv_shows.each do |tv_show| %>
+          <% somme = 0 %>
           <% if tv_show.feedbacks.where.not(comment: nil).empty? == false %>
             <%= link_to tv_show_path(tv_show) do %>
               <div class="card-tv-show-small">
@@ -100,7 +100,7 @@
                   <div class="show-score">
                     <% if Feedback.where(tv_show_id: tv_show.id).where.not(comment: nil).empty? == false %>
                       <% Feedback.where(tv_show_id: tv_show.id).where.not(comment: nil).each do |feedback| %>
-                        <% somme += feedback.rating%>
+                        <p><% somme += feedback.rating%></p>
                       <% end %>
                       <%= "#{somme/Feedback.where(tv_show_id: tv_show.id).where.not(comment: nil).count}/5" %>
                       <i class="fa fa-users"></i>
