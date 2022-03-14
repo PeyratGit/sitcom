@@ -98,44 +98,46 @@
           </div>
       </div>
       <% follows_seen_it = [] %>
-      <% @follows.each do |follow| %>
-        <% if Feedback.find_by(tv_show_id: @tv_show.id, user_id: follow.id).nil? == false %>
-          <% follows_seen_it.append(follow) %>
+      <% if @follows.empty? == false %>
+        <% @follows.each do |follow| %>
+          <% if Feedback.find_by(tv_show_id: @tv_show.id, user_id: follow.id).nil? == false %>
+            <% follows_seen_it.append(follow) %>
+          <% end %>
         <% end %>
-      <% end %>
-      <% if follows_seen_it.empty? == false %>
-        <div class="followers-seen-container">
-          <div class="users-pile-container">
-            <% follows_seen_it.first(3).each do |follow| %>
-              <% if follows_seen_it.length == 1 %>
-                <%= link_to user_path(follow.id), style:"right:50%" do %>
-                  <% if follow.facebook_picture_url.nil? %>
-                    <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar") %>
-                  <% else %>
-                    <%= image_tag(follow.facebook_picture_url, class: "avatar") %>
+        <% if follows_seen_it.empty? == false %>
+          <div class="followers-seen-container">
+            <div class="users-pile-container">
+              <% follows_seen_it.first(3).each do |follow| %>
+                <% if follows_seen_it.length == 1 %>
+                  <%= link_to user_path(follow.id), style:"right:50%" do %>
+                    <% if follow.facebook_picture_url.nil? %>
+                      <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar") %>
+                    <% else %>
+                      <%= image_tag(follow.facebook_picture_url, class: "avatar") %>
+                    <% end %>
                   <% end %>
-                <% end %>
-              <% else %>
-                <%= link_to user_path(follow.id) do %>
-                  <% if follow.facebook_picture_url.nil? %>
-                    <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar") %>
-                  <% else %>
-                    <%= image_tag(follow.facebook_picture_url, class: "avatar") %>
+                <% else %>
+                  <%= link_to user_path(follow.id) do %>
+                    <% if follow.facebook_picture_url.nil? %>
+                      <%= image_tag("https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg", class: "avatar") %>
+                    <% else %>
+                      <%= image_tag(follow.facebook_picture_url, class: "avatar") %>
+                    <% end %>
                   <% end %>
                 <% end %>
               <% end %>
-            <% end %>
+            </div>
+            <div class="followers-seen-info">
+              <% string_follows = pluralize(follows_seen_it.length - 1, "other") %>
+              <% if follows_seen_it.empty? %>
+              <% elsif follows_seen_it.length == 1%>
+                <%= "#{follows_seen_it[0].first_name} has seen it" %>
+              <% else %>
+                <%= "#{follows_seen_it[2].first_name} and #{string_follows} have seen it" %>
+              <% end %>
+            </div>
           </div>
-          <div class="followers-seen-info">
-            <% string_follows = pluralize(follows_seen_it.length - 1, "other") %>
-            <% if follows_seen_it.empty? %>
-            <% elsif follows_seen_it.length == 1%>
-              <%= "#{follows_seen_it[2].first_name} has seen it" %>
-            <% else %>
-              <%= "#{follows_seen_it[2].first_name} and #{string_follows} have seen it" %>
-            <% end %>
-          </div>
-        </div>
+        <% end %>
       <% end %>
       <div class="bottom-border-div">
       </div>

@@ -49,7 +49,7 @@
         <i class="fa fa-heart" id="heart-like"></i>
       <% end %>
    </div>
-  <% else %>
+  <% elsif status == "Dislike" %>
     <div class="js-interact btn-interaction dislike", data-votes-target="dislikebtn">
       <%= link_to tv_show_feedback_path(id: feedback.id, status: "Dislike", tv_show_id: @tv_show.id), remote: true, method: :patch do %>
         <i class="fa fa-thumbs-down" id="thumb-down"></i>
@@ -61,6 +61,22 @@
       <% end %>
     </div>
     <div class="js-interact btn-interaction-superlike active", data-votes-target="superlikebtn">
+      <%= link_to tv_show_feedback_path(id: feedback.id, status: "Superlike", tv_show_id: @tv_show.id), remote: true, method: :patch do %>
+        <i class="fa fa-heart" id="heart-like"></i>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="js-interact btn-interaction dislike", data-votes-target="dislikebtn">
+      <%= link_to tv_show_feedback_path(id: feedback.id, status: "Dislike", tv_show_id: @tv_show.id), remote: true, method: :patch do %>
+        <i class="fa fa-thumbs-down" id="thumb-down"></i>
+      <% end %>
+    </div>
+    <div class="js-interact btn-interaction", data-votes-target="likebtn",>
+      <%= link_to tv_show_feedback_path(id: feedback.id, status: "Like", tv_show_id: @tv_show.id), remote: true, method: :patch do %>
+          <i class="fa fa-thumbs-up" id="thumb-up"></i>
+      <% end %>
+    </div>
+    <div class="js-interact btn-interaction-superlike", data-votes-target="superlikebtn">
       <%= link_to tv_show_feedback_path(id: feedback.id, status: "Superlike", tv_show_id: @tv_show.id), remote: true, method: :patch do %>
         <i class="fa fa-heart" id="heart-like"></i>
       <% end %>

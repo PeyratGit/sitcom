@@ -1,5 +1,5 @@
 <% if @user == current_user %>
-    <%= link_to 'Modify my profil', edit_user_path(current_user), class: "btn btn-edit"%>
+    <%= link_to 'Edit my profile', edit_user_path(current_user), class: "btn btn-edit"%>
 <% elsif current_user.is_following?(@user.id) %>
   <%= link_to "Following", unfollow_user_path(@user.id), method: :post, remote: true, class: "following-button"%>
 <% else %>
